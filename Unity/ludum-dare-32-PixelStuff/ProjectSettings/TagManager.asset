@@ -17,6 +17,7 @@ TagManager:
   - GripTree
   - Tree
   - MenuMnager
+  - CanChopTree
   layers:
   - Default
   - TransparentFX

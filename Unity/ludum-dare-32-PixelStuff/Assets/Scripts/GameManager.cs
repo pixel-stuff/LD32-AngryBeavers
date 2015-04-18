@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public BeaversManager beaversManager;
 	public MenuManager menuManager;
 
-	private GameState _state = GameState.Over;
+	public GameState _state = GameState.Over;
 	private GameState state {
 		get {
 			return _state;
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour {
 
 		if (state == GameState.Start) {
 
+
 			if (Input.GetKeyDown (KeyCode.S)) {
 				DoAttack();
 			}
@@ -84,8 +85,33 @@ public class GameManager : MonoBehaviour {
 				DoChopWood();
 			}
 
+			if(Input.GetKeyDown (KeyCode.UpArrow)){
+				DoPrepareSmash();
+			}
+
+			if(Input.GetKeyDown (KeyCode.LeftArrow)){
+				ChopTreeLeft();
+			}
+			if(Input.GetKeyDown (KeyCode.RightArrow)){
+				ChopTreeRight();
+			}
+
+			if(Input.GetKeyDown (KeyCode.UpArrow)){
+				DoPrepareSmash();
+			}
+
 			if (Input.GetKeyDown (KeyCode.D)) {
+
 				state = GameState.Over;
+			}
+
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				StopAtNextTree();
+
+			}
+
+			if (Input.GetKeyUp (KeyCode.UpArrow)) {
+				DoSmash();
 			}
 		}
 
@@ -95,6 +121,25 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+	}
+
+	private void StopAtNextTree(){
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<BrothersManager> ().StopAtNextTree();
+	}
+
+	private void DoPrepareSmash(){
+		GameObject.FindGameObjectWithTag("TreeManager").GetComponent<treeManager>().PrepareSmash();
+	}
+
+	private void DoSmash(){
+		GameObject.FindGameObjectWithTag("TreeManager").GetComponent<treeManager>().Smash();
+	}
+
+	private void ChopTreeLeft(){
+		GameObject.FindGameObjectWithTag("Player").GetComponent<BrothersManager>().ChopLeft();
+	}
+	private void ChopTreeRight(){
+		GameObject.FindGameObjectWithTag("Player").GetComponent<BrothersManager>().ChopRight();
 	}
 
 	private void DoIntro() {
@@ -118,8 +163,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoGameOver() {
-		brothersManager.state = BrotherState.Dead;
-		menuManager.Reset ();
+		/*brothersManager.state = BrotherState.Dead;
+		menuManager.Reset ();*/
 	}
 
 	void OnBeaverKilled(int totalBeaverKilled) {
@@ -131,6 +176,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void BrothersDied() {
-		state = GameState.Over;
+		/*
+		state = GameState.Over;*/
 	}
 }

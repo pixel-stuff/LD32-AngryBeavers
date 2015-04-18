@@ -7,6 +7,7 @@ public class BrothersManager : MonoBehaviour {
 	private BrotherState _state;
 
 	public bool stopAtNextTree;
+	public bool AuthoriseStop;
 	public Action brothersDiedAction;
 	public bool Chop;
 	public BrotherState state {
@@ -113,24 +114,40 @@ public class BrothersManager : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("ParallaxManager").GetComponent<ParallaxManager> ().isPaused = false;
 	}
 
-	void ChopLeft(){
+	public void ChopLeft(){
+		if(Chop)
 		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopLeft ();
 	}
-	void ChopRight(){
+	public void ChopRight(){
+		if(Chop)
 		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopRight ();
+	}
+
+	public void StopAtNextTree(){
+		if (AuthoriseStop) {
+			stopAtNextTree = true;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Beaver") {
 			state = BrotherState.Dead;
 		}
-		if (col.gameObject.tag == "Tree" && stopAtNextTree) {
+		if (col.gameObject.tag == "CanChopTree") {
+			Debug.Log("COLLISION ZONE ESPACE");
+			AuthoriseStop = true;
+		}
+
+		if (col.gameObject.tag == "Tree") {
+			if(stopAtNextTree){
 			Debug.Log("COLLISION AUTHORISE TREE");
 			DoStopParallax();
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().trowWeaponOnGround ();
 			DoDropTunk();
 			Chop=true;
 			stopAtNextTree = false;
+			}
+			AuthoriseStop = false;
 		}
 
 		if (col.gameObject.tag == "GripTree") {
@@ -140,10 +157,10 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	void Update(){
-		if (Chop) {
+		/*if (Chop) {
 			ChopLeft ();
 			ChopRight ();
-		}
+		}*/
 	}
 
 }

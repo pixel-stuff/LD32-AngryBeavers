@@ -82,4 +82,20 @@ public class treeManager : MonoBehaviour {
 	public void pickWeapon(){
 		currentWeapon.GetComponent<weaponTree> ().pick ();
 	}
+
+	public void PrepareSmash(){
+		if (currentWeapon != null) {
+			if( !currentWeapon.GetComponent<weaponTree>().prepareNextTime){
+				currentWeapon.GetComponent<weaponTree>().prepareSmashASAP();
+			}
+		}
+	}
+
+	public void Smash(){
+		if (currentWeapon != null) {
+			if( !currentWeapon.GetComponent<weaponTree>().smashNextTime){
+				currentWeapon.GetComponent<weaponTree>().smashASAP();
+			}
+		}
+	}
 }

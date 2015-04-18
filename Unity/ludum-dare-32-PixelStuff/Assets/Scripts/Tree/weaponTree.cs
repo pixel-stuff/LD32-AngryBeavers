@@ -137,13 +137,13 @@ public class weaponTree : MonoBehaviour {
 
 
 	private bool setAngleTo(float angle,float seconde){
-		this.transform.RotateAround (this.transform.position, new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
+		this.transform.RotateAround (new Vector3(GameObject.FindGameObjectWithTag ("Player").transform.position.x,this.transform.position.y,this.transform.position.z), new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
 		currentTimeAnim -= Time.deltaTime;
 		return currentTimeAnim < 0.0f ;
 	}
 
 	public void isNomNom(){
-		//currentPV--;
+		currentPV--;
 		setStateForPV ();
 	}
 
