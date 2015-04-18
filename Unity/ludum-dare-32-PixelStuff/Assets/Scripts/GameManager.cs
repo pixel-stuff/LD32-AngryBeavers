@@ -71,17 +71,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoIntro() {
-		Debug.Log ("DoIntro ()");
-
 	}
 
 	private void DoRestart() {
-		Debug.Log ("DoRestart ()");
 		brothersManager.state = BrothersState.MovingIntoScene;
 	}
 
 	private void DoAttack() {
-		Debug.Log ("DoAttack ()");
 		if (brothersManager.state == BrothersState.PrepareAttack) {
 			brothersManager.state = BrothersState.Attack;
 		} else {
@@ -90,12 +86,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoChopWood() {
-		Debug.Log ("DoChopWood ()");
 		brothersManager.ChopWood ();
 	}
 
 	private void DoGameOver() {
-		Debug.Log ("DoGameOver ()");
 		brothersManager.Die ();
 	}
 

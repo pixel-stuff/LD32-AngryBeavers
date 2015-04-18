@@ -44,6 +44,8 @@ public class BrothersManager : MonoBehaviour {
 				DoRunning();
 				break;
 			}
+
+			Debug.Log("Brothers moving to state " + _state.ToString);
 		}
 	}
 	
@@ -99,8 +101,8 @@ public class BrothersManager : MonoBehaviour {
 	private void DoMovingIntoScene() {
 
 		// They start from the left
-		brother1.transform.position = new Vector3 (-200, 100);
-		brother2.transform.position = new Vector3 (-10, 5);
+		brother1.transform.position = new Vector3 (-8, 0);
+		brother2.transform.position = new Vector3 (-9, 0);
 
 		state = BrothersState.Running;
 	}
