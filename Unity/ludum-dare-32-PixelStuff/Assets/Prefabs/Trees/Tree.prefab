@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 457302}
   - 212: {fileID: 21247066}
+  - 114: {fileID: 11490984}
   m_Layer: 0
   m_Name: ChopAreaRight
   m_TagString: Untagged
@@ -59,9 +60,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 465872}
   - 212: {fileID: 21227224}
+  - 61: {fileID: 6121322}
   m_Layer: 0
   m_Name: Trunk
-  m_TagString: Untagged
+  m_TagString: Trunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +77,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475778}
   - 212: {fileID: 21256968}
-  - 114: {fileID: 11454734}
+  - 114: {fileID: 11486076}
   m_Layer: 0
   m_Name: ChopAreaLeft
   m_TagString: Untagged
@@ -154,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.529999971, y: -1.90999997, z: 0}
+  m_LocalPosition: {x: -.0900000036, y: -.0399999991, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 495838}
@@ -166,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .0399999991, y: .100000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 481870}
@@ -189,6 +191,19 @@ BoxCollider2D:
   m_Offset: {x: -2, y: 0}
   serializedVersion: 2
   m_Size: {x: 4.4000001, y: .550000012}
+--- !u!61 &6121322
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145376}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .920000017, y: 3.0999999}
 --- !u!61 &6133076
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -199,20 +214,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.79999995}
   serializedVersion: 2
   m_Size: {x: .550000012, y: 4.4000001}
---- !u!114 &11454734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610fd04540a0c6e4a95f4f0eb5d18ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11476354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +228,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8485cebefa18c44f8b49b0fcae5df58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightChop: {fileID: 107696}
+  leftChop: {fileID: 190764}
+  trunk: {fileID: 145376}
+  stump: {fileID: 199106}
+  SecondeAnimation: 1
+--- !u!114 &11486076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd3d8ca8adf2b84cb9764d8851d6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spr:
+  - {fileID: 21300000, guid: 7e652707df945b845b43553c9dcb3673, type: 3}
+  - {fileID: 21300000, guid: e849930a5f4ee83429aa061dd487a40a, type: 3}
+  - {fileID: 21300000, guid: a283f6c26f6f27c49ae26edecc26ef4d, type: 3}
+  - {fileID: 21300000, guid: aa3d8355b8de1b5409ce61846d95190c, type: 3}
+  - {fileID: 21300000, guid: 1cd143efa904e3d47b9dd5a29a08f100, type: 3}
+  nbChopForchangeState: 5
+--- !u!114 &11490984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd3d8ca8adf2b84cb9764d8851d6dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spr:
+  - {fileID: 21300000, guid: 7e652707df945b845b43553c9dcb3673, type: 3}
+  - {fileID: 21300000, guid: e849930a5f4ee83429aa061dd487a40a, type: 3}
+  - {fileID: 21300000, guid: a283f6c26f6f27c49ae26edecc26ef4d, type: 3}
+  - {fileID: 21300000, guid: aa3d8355b8de1b5409ce61846d95190c, type: 3}
+  - {fileID: 21300000, guid: 1cd143efa904e3d47b9dd5a29a08f100, type: 3}
+  nbChopForchangeState: 5
 --- !u!212 &21201492
 SpriteRenderer:
   m_ObjectHideFlags: 1

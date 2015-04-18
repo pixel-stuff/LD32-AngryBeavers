@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - SpawnArea
+  - Trunk
+  - SmashTree
+  - WeaponTree
   layers:
   - Default
   - TransparentFX

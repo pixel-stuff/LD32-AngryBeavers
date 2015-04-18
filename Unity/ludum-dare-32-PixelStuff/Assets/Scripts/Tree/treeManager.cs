@@ -11,32 +11,40 @@ public class treeManager : MonoBehaviour {
 	public GameObject treePrefab;
 	public GameObject weaponTreePrefab;
 
-
+	private bool spawnOneTree;
 	// Use this for initialization
 	void Start () {
 		currentTree = null;
 		spawnArea = GameObject.FindGameObjectWithTag ("SpawnArea").transform;
+		spawnOneTree = true; // TODO false
 	}
 
-	bool spawnTree ()
+	void spawnTree(){
+		spawnOneTree = true;
+	}
+
+	bool canSpawnTree ()
 	{
 		return currentTree ? false : true;
 	}
 
 	void refreshCurrent ()
 	{
-		if(currentTree.transform.position.x < -spawnArea.transform.position.x){
-			Destroy(currentTree);
-			currentTree = null;
+		if (currentTree) {
+			if (currentTree.transform.position.x < -spawnArea.transform.position.x) {
+				Destroy (currentTree);
+				currentTree = null;
+			}
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (spawnTree ()) {
+		if (canSpawnTree () && spawnOneTree) {
 			currentTree = Instantiate(treePrefab);
 			currentTree.transform.position = spawnArea.position;
 			currentTree.transform.SetParent (this.transform);
+			spawnOneTree = false;
 		}
 		refreshCurrent ();
 	}
