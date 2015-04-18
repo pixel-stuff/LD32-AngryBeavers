@@ -81,16 +81,7 @@ public class GameManager : MonoBehaviour {
 		brothersManager.state = BrothersState.MovingIntoScene;
 	}
 
-	// In game actions
-	private void ArmAttack() {
-		brothersManager.state = BrothersState.PrepareAttack;
-	}
-
 	private void Attack() {
-		if (state != GameState.Start) {
-			return;
-		}
-
 		if (brothersManager.state == BrothersState.PrepareAttack) {
 			brothersManager.state = BrothersState.Attack;
 		} else {
@@ -99,9 +90,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void ChopWood() {
-		if (state != GameState.Start) {
-			return;
-		}
 		brothersManager.ChopWood ();
 	}
 
