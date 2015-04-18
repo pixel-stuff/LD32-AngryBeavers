@@ -10,7 +10,8 @@ public class treeManager : MonoBehaviour {
 
 	public GameObject treePrefab;
 	public GameObject weaponTreePrefab;
-	
+
+
 	// Use this for initialization
 	void Start () {
 		currentTree = null;
@@ -33,8 +34,7 @@ public class treeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (spawnTree ()) {
-		currentTree = Instantiate(treePrefab);
-			// TODO Set the ancre transform
+			currentTree = Instantiate(treePrefab);
 			currentTree.transform.position = spawnArea.position;
 			currentTree.transform.SetParent (this.transform);
 		}
