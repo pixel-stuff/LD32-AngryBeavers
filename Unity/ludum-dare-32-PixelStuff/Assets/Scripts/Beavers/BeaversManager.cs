@@ -11,20 +11,52 @@ public class BeaversManager : MonoBehaviour {
 	private GameObject m_beaverContainer;
 	private List<Beaver> m_listBeavers;
 
-	[SerializeField]
-	private BrothersManager m_brothersManager;
+	//[SerializeField]
+	//private  m_brothersManager;
+
+	private int m_beaverCreated = 0;
+	private int m_beaverKilled = 0;
 
 	// Use this for initialization
 	void Start () {
+		m_listBeavers = new List<Beaver> ();
 		m_beaverContainer.transform.position = GameObject.FindGameObjectWithTag ("SpawnArea").transform.position;
 
-
-		GameObject plop = Instantiate (m_beaverPrefab);
-		plop.transform.SetParent (m_beaverContainer.transform);
+		CreateBeaver ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
 	
+	}
+
+
+
+
+
+
+
+
+
+
+
+	void CreateBeaver(){
+		m_beaverCreated++;
+		GameObject plop = Instantiate (m_beaverPrefab);
+		plop.transform.SetParent (m_beaverContainer.transform);
+		plop.transform.localPosition = Vector3.zero;
+		plop.name = "Beaver_"+m_beaverCreated.ToString();
+		
+		plop.gameObject.GetComponent<Beaver> ().destroyListener += removeBeaver;
+		
+		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
+	}
+
+ 	void removeBeaver(Beaver beav){
+		beav.destroyListener -= removeBeaver;
+		m_listBeavers.Remove (beav);
+		m_beaverKilled++;
 	}
 }
