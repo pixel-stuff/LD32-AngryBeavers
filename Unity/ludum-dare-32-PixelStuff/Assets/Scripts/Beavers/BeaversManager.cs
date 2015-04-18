@@ -62,21 +62,7 @@ public class BeaversManager : MonoBehaviour {
 		Beaver beav = plop.gameObject.GetComponent<Beaver> ();
 		beav.destroyListener += removeBeaver;
 		beav.Initialize ();
-		
-		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
 
-
-
-		
-		m_beaverCreated++;
-		GameObject plop2 = Instantiate (m_beaverPrefab);
-		plop2.transform.SetParent (m_beaverContainer.transform);
-		plop2.transform.localPosition = new Vector3 (-20f, 0f, 0f);
-		plop2.name = "Beaver_"+m_beaverCreated.ToString();
-		
-		Beaver beav2 = plop2.gameObject.GetComponent<Beaver> ();
-		beav2.destroyListener += removeBeaver;
-		beav2.Initialize ();
 		
 		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
 	}
