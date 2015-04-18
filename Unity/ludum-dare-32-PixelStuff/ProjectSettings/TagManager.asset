@@ -8,6 +8,7 @@ TagManager:
   - Trunk
   - SmashTree
   - WeaponTree
+  - Beaver
   layers:
   - Default
   - TransparentFX

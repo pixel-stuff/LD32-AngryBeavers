@@ -23,7 +23,25 @@ public class Brother : MonoBehaviour {
 	}
 
 	public void Run() {
-		Debug.Log ("[Brother] Run()");
 		animator.SetBool ("Running", true);
+	}
+
+	public void Idle() {
+		animator.SetBool ("Running", false);
+	}
+
+	public void Died() {
+		animator.SetBool ("Running", false);
+		animator.SetBool ("PreparingAttack", false);
+		animator.SetTrigger ("Death");
+	}
+
+	public void PrepareAttack() {
+		animator.SetBool ("PreparingAttack", true);
+	}
+	
+	public void Attack() {
+		animator.SetBool ("PreparingAttack", false);
+		animator.SetTrigger ("Attack");
 	}
 }

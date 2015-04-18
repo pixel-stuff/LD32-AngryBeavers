@@ -39,7 +39,7 @@ public class BrothersManager : MonoBehaviour {
 			}
 		}
 	}
-	
+
 	public Brother brother1;
 	public Brother brother2;
 	
@@ -47,50 +47,20 @@ public class BrothersManager : MonoBehaviour {
 		state = BrotherState.Running;
 	}
 
-	public void PrepareAttack() {
-		if (state == BrotherState.PrepareAttack) {
-			return;
-		}
-
-		state = BrotherState.PrepareAttack;
-		DoPrepareAttack ();
-	}
-
-	public void Attack() {
-		if (state == BrotherState.Attack) {
-			return;
-		}
-
-		state = BrotherState.PrepareAttack;
-		DoAttack ();
-	}
-	
-	public void ChopWood() {
-		if (state == BrotherState.ChoppingWood || state == BrotherState.GrabbingTrunk) {
-			return;
-		}
-		
-		state = BrotherState.ChoppingWood;
-		DoChopWood ();
-	}
-	
-	public void Die() {
-		if (state == BrotherState.Dead) {
-			return;
-		}
-
-		state = BrotherState.Dead;
-		DoDeath();
-	}
-
 	private void DoIdle() {
-
+		brother1.Idle ();
+		brother2.Idle ();
 	}
 	
 	private void DoPrepareAttack() {
+		brother1.PrepareAttack ();
+		brother2.PrepareAttack ();
 	}
 	
 	private void DoAttack() {
+		brother1.Attack ();
+		brother2.Attack ();
+
 		state = BrotherState.Running;
 	}
 
@@ -108,5 +78,14 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	private void DoDeath() {
+		brother1.Died ();
+		brother2.Died ();
 	}
+
+	void OnTriggerEnter2D(Collider2D col) {
+		if (col.gameObject.tag == "Beaver") {
+			DoDeath();
+		}
+	}
+
 }

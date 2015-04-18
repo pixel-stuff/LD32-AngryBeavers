@@ -48,20 +48,24 @@ public class GameManager : MonoBehaviour {
 
 		// Handle Keyboard inputs
 
-		if (Input.GetKey (KeyCode.R)) {
-			DoRestart();
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			DoIntro();
 		}
 
 		// While playing
 
 		if (state == GameState.Start) {
 
-			if (Input.GetKey (KeyCode.S)) {
+			if (Input.GetKeyDown (KeyCode.S)) {
 				DoAttack();
 			}
 			
-			if (Input.GetKey (KeyCode.Space)) {
+			if (Input.GetKeyDown (KeyCode.Space)) {
 				DoChopWood();
+			}
+
+			if (Input.GetKeyDown (KeyCode.D)) {
+				state = GameState.Over;
 			}
 		}
 
@@ -70,6 +74,7 @@ public class GameManager : MonoBehaviour {
 				state = GameState.Start;
 			}
 		}
+
 	}
 
 	private void DoIntro() {
@@ -89,11 +94,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoChopWood() {
-		brothersManager.ChopWood ();
+		brothersManager.state = BrotherState.ChoppingWood;
 	}
 
 	private void DoGameOver() {
-		brothersManager.Die ();
+		brothersManager.state = BrotherState.Dead;
 	}
 
 }
