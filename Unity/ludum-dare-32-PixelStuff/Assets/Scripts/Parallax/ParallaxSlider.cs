@@ -14,20 +14,20 @@ public class ParallaxSlider : MonoBehaviour {
 	void Start () {
 		backgroundList = new ArrayList();
 		speed.x = speedX;
-		backgroundList.Add ((GameObject)Instantiate (prefabBackground));
-		backgroundList.Add ((GameObject)Instantiate (prefabBackground));
-		backgroundList.Add ((GameObject)Instantiate (prefabBackground));
-
+		backgroundList.Add (((GameObject)Instantiate (prefabBackground)));
+		backgroundList.Add (((GameObject)Instantiate (prefabBackground)));
+		backgroundList.Add (((GameObject)Instantiate (prefabBackground)));
+		size = ((GameObject)backgroundList[0]).GetComponent<Renderer>().bounds.size;
+		print (size);
 		foreach (GameObject bg in backgroundList) {
 			bg.transform.SetParent(gameObject.transform);
 		}
-		size = ((GameObject)backgroundList[0]).GetComponent<Renderer>().bounds.size;
 		((GameObject)backgroundList[0]).transform.position = new Vector3(-size.x, 0.0f, posZ);
 		((GameObject)backgroundList[1]).transform.position = new Vector3(0.0f, 0.0f, posZ);
 		((GameObject)backgroundList[2]).transform.position = new Vector3(size.x, 0.0f, posZ);
-		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -5.0f);
+		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		foreach(GameObject slide in backgroundList) {
