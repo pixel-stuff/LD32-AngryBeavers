@@ -5,6 +5,7 @@ public class ParallaxSlider : MonoBehaviour {
 
 	public GameObject prefabBackground;
 	public float speedX = -0.1f;
+	public float posZ = 0.0f;
 
 	private Vector3 speed;
 	private ArrayList backgroundList;
@@ -21,21 +22,19 @@ public class ParallaxSlider : MonoBehaviour {
 			bg.transform.SetParent(gameObject.transform);
 		}
 		size = ((GameObject)backgroundList[0]).GetComponent<Renderer>().bounds.size;
-		((GameObject)backgroundList[0]).transform.Translate(new Vector3(-size.x, 0.0f, 0.0f));
-		((GameObject)backgroundList[1]).transform.Translate(new Vector3(0, 0.0f, 0.0f));
-		((GameObject)backgroundList[2]).transform.Translate(new Vector3(size.x, 0.0f, 0.0f));
+		((GameObject)backgroundList[0]).transform.position = new Vector3(-size.x, 0.0f, posZ);
+		((GameObject)backgroundList[1]).transform.position = new Vector3(0.0f, 0.0f, posZ);
+		((GameObject)backgroundList[2]).transform.position = new Vector3(size.x, 0.0f, posZ);
+		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -5.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		int i = 0;
 		foreach(GameObject slide in backgroundList) {
 			slide.transform.Translate(speed);
 			if(slide.transform.position.x<=-1.5f*size.x) {
-				print ("booyah "+i+" "+slide.ToString()+" "+slide.transform.position);
-				slide.transform.Translate(new Vector3(2.5f*size.x, 0.0f, 0.0f));
+				slide.transform.Translate(new Vector3(3.0f*size.x, 0.0f, 0.0f));
 			}
-			i++;
 		}
 	}
 }
