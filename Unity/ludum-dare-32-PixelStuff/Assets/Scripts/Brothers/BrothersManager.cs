@@ -45,7 +45,7 @@ public class BrothersManager : MonoBehaviour {
 				break;
 			}
 
-			Debug.Log("Brothers moving to state " + _state.ToString);
+			Debug.Log("Brothers moving to state " + _state.ToString());
 		}
 	}
 	
