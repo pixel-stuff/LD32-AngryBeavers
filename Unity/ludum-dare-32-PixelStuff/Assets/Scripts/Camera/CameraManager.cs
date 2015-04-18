@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour {
 
 	void shakeY (bool brute) {
 		if (brute) {
-			float y = Random.Range (-0.1f, 0.1f);
+			float y = Random.Range (-shakeAmplitude, shakeAmplitude);
 			Camera.main.transform.position = new Vector3 (0.0f, y, 0.0f);
 		} else {
 			if(Camera.main.transform.position.x<-shakeAmplitude) {
@@ -27,7 +27,7 @@ public class CameraManager : MonoBehaviour {
 	
 	void shakeX (bool brute) {
 		if (brute) {
-			float x = Random.Range (-0.1f, 0.1f);
+			float x = Random.Range (-shakeAmplitude, shakeAmplitude);
 			Camera.main.transform.position = new Vector3 (x, 0.0f, 0.0f);
 		} else {
 			if(Camera.main.transform.position.x<-shakeAmplitude) {
