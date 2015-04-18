@@ -36,6 +36,9 @@ public class BrothersManager : MonoBehaviour {
 			case BrotherState.Running:
 				DoRunning();
 				break;
+			case BrotherState.Dead:
+				DoDeath();
+				break;
 			}
 		}
 	}

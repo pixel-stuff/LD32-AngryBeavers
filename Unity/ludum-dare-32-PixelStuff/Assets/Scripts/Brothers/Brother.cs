@@ -32,16 +32,16 @@ public class Brother : MonoBehaviour {
 
 	public void Died() {
 		animator.SetBool ("Running", false);
-		animator.SetBool ("PreparingAttack", false);
-		animator.SetTrigger ("Death");
+//		animator.SetBool ("PreparingAttack", false);
+//		animator.SetTrigger ("Death");
 	}
 
 	public void PrepareAttack() {
-		animator.SetBool ("PreparingAttack", true);
+//		animator.SetBool ("PreparingAttack", true);
 	}
 	
 	public void Attack() {
-		animator.SetBool ("PreparingAttack", false);
-		animator.SetTrigger ("Attack");
+//		animator.SetBool ("PreparingAttack", false);
+//		animator.SetTrigger ("Attack");
 	}
 }
