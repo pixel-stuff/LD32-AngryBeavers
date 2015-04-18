@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class BeaversManager : MonoBehaviour {
-	
+
+	[SerializeField]
+	private GameObject m_beaverPrefab;
+
 	// Use this for initialization
 	void Start () {
 	
