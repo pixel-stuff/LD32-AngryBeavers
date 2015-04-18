@@ -101,7 +101,6 @@ public class Beaver : MonoBehaviour {
 			
 			return;
 		}
-		Debug.Log (this.name + " feel " + other.gameObject.name + "in state " +  other.getCurrentState());
 
 		
 	}
