@@ -38,6 +38,14 @@ public class CameraManager : MonoBehaviour {
 			Camera.main.transform.Translate(new Vector3 (shakeSpeed, 0.0f, 0.0f));
 		}
 	}
+
+	public void setShakeSpeed(float sspeed) {
+		shakeSpeed = sspeed;
+	}
+	
+	public void setShakeAmplitude(float samp) {
+		shakeSpeed = samp;
+	}
 	
 	// Update is called once per frame
 	void Update () {
