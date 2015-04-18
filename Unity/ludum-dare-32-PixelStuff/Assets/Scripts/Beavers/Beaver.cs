@@ -36,6 +36,7 @@ public class Beaver : MonoBehaviour {
 	}
 
 	float m_timeBetweenDamage = 1;
+
 	// Update is called once per frame
 	void Update () {
 		switch (m_currentState) {
@@ -63,7 +64,7 @@ public class Beaver : MonoBehaviour {
 
 			break;
 		case BeaverState.Smashed:
-
+			Debug.Log ("Ecrasé");
 			break;
 		case BeaverState.Flying:
 
@@ -82,10 +83,10 @@ public class Beaver : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
-		Beaver other = collider.gameObject.GetComponent<Beaver> ();
 		if (collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
+			//Le cadavre se déplace avec le background
 			return;
 		}
 
