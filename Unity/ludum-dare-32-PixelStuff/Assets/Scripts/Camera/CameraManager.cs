@@ -35,9 +35,9 @@ public class CameraManager : MonoBehaviour {
 			float y = Random.Range (-shakeAmplitudeY, shakeAmplitudeY);
 			Camera.main.transform.position = new Vector3 (0.0f, y, 0.0f);
 		} else {
-			if(Camera.main.transform.position.x<-shakeAmplitudeY) {
+			if(Camera.main.transform.position.y<-shakeAmplitudeY) {
 				shakeSpeedY = Mathf.Abs(shakeSpeedY);
-			}else if(Camera.main.transform.position.x>shakeAmplitudeY) {
+			}else if(Camera.main.transform.position.y>shakeAmplitudeY) {
 				shakeSpeedY = -Mathf.Abs(shakeSpeedY);
 			}
 			Camera.main.transform.Translate(new Vector3 (0.0f, shakeSpeedY, 0.0f));
