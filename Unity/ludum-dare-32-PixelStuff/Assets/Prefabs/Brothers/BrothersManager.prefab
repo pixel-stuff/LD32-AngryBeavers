@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459114}
+  - 114: {fileID: 11446298}
   m_Layer: 0
   m_Name: Brother2
   m_TagString: Untagged
@@ -23,6 +24,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428812}
+  - 114: {fileID: 11450220}
   m_Layer: 0
   m_Name: BrothersManager
   m_TagString: Untagged
@@ -39,6 +41,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 474130}
   - 212: {fileID: 21246548}
+  - 114: {fileID: 11452732}
   m_Layer: 0
   m_Name: Brother1
   m_TagString: Untagged
@@ -84,6 +87,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 428812}
   m_RootOrder: 0
+--- !u!114 &11446298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a5837b68f0d47809375751e9dac647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11450220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4cf47088bbb433d8f8bc9652c468ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brother1: {fileID: 11452732}
+  brother2: {fileID: 11446298}
+--- !u!114 &11452732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a5837b68f0d47809375751e9dac647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21246548
 SpriteRenderer:
   m_ObjectHideFlags: 1
