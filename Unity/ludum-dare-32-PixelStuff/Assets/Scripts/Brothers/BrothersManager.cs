@@ -39,6 +39,9 @@ public class BrothersManager : MonoBehaviour {
 			case BrotherState.Dead:
 				DoDeath();
 				break;
+			case BrotherState.DropThunk:
+				DoDropTunk();
+				break;
 			}
 		}
 	}
@@ -78,6 +81,13 @@ public class BrothersManager : MonoBehaviour {
 	private void DoRunning() {
 		brother1.Run ();
 		brother2.Run ();
+	}
+
+	private void DoDropTunk() {
+		brother1.DropThunk ();
+		brother2.DropThunk ();
+
+		state = BrotherState.ChoppingWood;
 	}
 
 	private void DoDeath() {

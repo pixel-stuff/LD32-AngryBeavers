@@ -5,6 +5,7 @@ public enum BrotherState {
 	Idle,
 	MovingIntoScene,
 	Running, // The somewhat Idle state
+	DropThunk,
 	ChoppingWood,
 	GrabbingTrunk,
 	PrepareAttack,
@@ -43,5 +44,9 @@ public class Brother : MonoBehaviour {
 	public void Attack() {
 //		animator.SetBool ("PreparingAttack", false);
 //		animator.SetTrigger ("Attack");
+	}
+
+	public void DropThunk() {
+//		animator.SetTrigger ("DropTrunk");
 	}
 }

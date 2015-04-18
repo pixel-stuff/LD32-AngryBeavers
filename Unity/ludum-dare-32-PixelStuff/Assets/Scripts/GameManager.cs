@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoChopWood() {
-		brothersManager.state = BrotherState.ChoppingWood;
+		brothersManager.state = BrotherState.DropThunk;
 	}
 
 	private void DoGameOver() {
