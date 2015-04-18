@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour {
 	public bool m_isShakingY = false;
 	// Use this for initialization
 	void Start () {
-		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -2.0f);
 		Camera.main.orthographicSize = 2.3f;
 	}
 	
