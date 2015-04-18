@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.49000001, y: .0599999987, z: 0}
+  m_LocalPosition: {x: -.810000002, y: .0599999987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 455136}
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -166,9 +166,11 @@ MonoBehaviour:
   secondeSmash: 1
   iddleAngle: 0
   throwDuration: 2
+  currentTimeAnim: 0
   smashNextTime: 0
   prepareNextTime: 0
   throwItNextTime: 0
+  currentEtat: 0
   widthBaseSmashBoxCollider: 0
   xBaseSharpBoxCollider: 0
 --- !u!212 &21291570

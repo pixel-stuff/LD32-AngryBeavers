@@ -20,7 +20,7 @@ public class weaponTree : MonoBehaviour {
 
 	public float throwDuration = 2.0f;
 
-	private float currentTimeAnim;
+	public float currentTimeAnim;
 
 	public bool smashNextTime;
 	public bool prepareNextTime;
@@ -29,7 +29,7 @@ public class weaponTree : MonoBehaviour {
 	private BoxCollider2D sharpBox;
 	private float throwCurrentTime = 0.0f;
 
-	enum Etat{
+	public enum Etat{
 		isOnTheFloor,
 		idle,
 		prepareSmash,
@@ -37,7 +37,7 @@ public class weaponTree : MonoBehaviour {
 		isSmashing,
 		isThrown
 	}
-	private Etat currentEtat;
+	public Etat currentEtat;
 
 	private float[] m_widthSmashBoxCollider;
 	private float[] m_xOffSmashBoxCollider;
@@ -92,7 +92,6 @@ public class weaponTree : MonoBehaviour {
 		}
 		if (currentEtat == Etat.waitForSmashing && smashNextTime) {
 			Smash ();
-			isNomNom ();
 		}
 		if (currentEtat == Etat.idle && prepareNextTime) {
 			prepareSmash ();
@@ -109,7 +108,9 @@ public class weaponTree : MonoBehaviour {
 				}
 		}
 		if (currentEtat == Etat.prepareSmash) {
+			Debug.Log("ici");
 			if(setAngleTo(smashAngle,secondePrepareSmash)){
+				Debug.Log("la");
 				this.transform.localEulerAngles = new Vector3(0,0,smashAngle) ;
 				currentEtat = Etat.waitForSmashing;
 			}
@@ -138,11 +139,11 @@ public class weaponTree : MonoBehaviour {
 	private bool setAngleTo(float angle,float seconde){
 		this.transform.RotateAround (this.transform.position, new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
 		currentTimeAnim -= Time.deltaTime;
-		return currentTimeAnim < 0f ;
+		return currentTimeAnim < 0.0f ;
 	}
 
 	public void isNomNom(){
-		currentPV--;
+		//currentPV--;
 		setStateForPV ();
 	}
 
@@ -182,6 +183,7 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void Smash(){
+		smashNextTime = false;
 		prepareNextTime = false;
 		smashBox.enabled = true;
 		sharpBox.enabled = false;
@@ -214,6 +216,7 @@ public class weaponTree : MonoBehaviour {
 
 	public void pick(){
 		this.GetComponent<FollowingGroundSpeed>().enabled = false;
+		GameObject.FindGameObjectWithTag ("GripTree").GetComponent<BoxCollider2D> ().enabled = false;;
 		currentEtat = Etat.idle;
 	}
 }
