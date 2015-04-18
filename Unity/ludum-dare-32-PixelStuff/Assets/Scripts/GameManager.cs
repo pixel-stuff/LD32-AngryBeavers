@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
 				Intro ();
 				break;
 			case GameState.Start:
-				Start ();
+				Restart ();
 				break;
 			case GameState.Over:
 				GameOver ();
