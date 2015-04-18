@@ -18,7 +18,7 @@ public class BeaversManager : MonoBehaviour {
 	//private  m_brothersManager;
 
 	private int m_beaverCreated = 0;
-	private int m_beaverKilled = 0;
+	private int m_beaverKilledTotal = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -70,9 +70,14 @@ public class BeaversManager : MonoBehaviour {
  	void removeBeaver(Beaver beav){
 		beav.destroyListener -= removeBeaver;
 		m_listBeavers.Remove (beav);
-		m_beaverKilled++;
+		m_beaverKilledTotal++;
 		if (onBeaverKilledListener != null) {
-			onBeaverKilledListener(m_beaverKilled);
+			onBeaverKilledListener(m_beaverKilledTotal);
 		}
+	}
+
+	public int getBeaverOnScreen(){
+		return m_beaverCreated - m_beaverKilledTotal;
+
 	}
 }
