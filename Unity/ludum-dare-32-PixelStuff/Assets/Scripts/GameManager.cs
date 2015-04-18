@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour {
 
 			switch (_state) {
 			case GameState.Intro:
-				Intro ();
+				DoIntro ();
 				break;
 			case GameState.Start:
-				Restart ();
+				DoRestart ();
 				break;
 			case GameState.Over:
-				GameOver ();
+				DoGameOver ();
 				break;
 			}
 		}
@@ -47,17 +47,17 @@ public class GameManager : MonoBehaviour {
 		// Handle Keyboard inputs
 
 		if (Input.GetKey (KeyCode.R)) {
-			Restart();
+			DoRestart();
 		}
 
 		if (state == GameState.Start) {
 			// While playing
 			if (Input.GetKey (KeyCode.S)) {
-				Attack();
+				DoAttack();
 			}
 			
 			if (Input.GetKey (KeyCode.Space)) {
-				ChopWood();
+				DoChopWood();
 			}
 		}
 
@@ -73,15 +73,15 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	private void Intro() {
+	private void DoIntro() {
 
 	}
 
-	private void Restart() {
+	private void DoRestart() {
 		brothersManager.state = BrothersState.MovingIntoScene;
 	}
 
-	private void Attack() {
+	private void DoAttack() {
 		if (brothersManager.state == BrothersState.PrepareAttack) {
 			brothersManager.state = BrothersState.Attack;
 		} else {
@@ -89,11 +89,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private void ChopWood() {
+	private void DoChopWood() {
 		brothersManager.ChopWood ();
 	}
 
-	private void GameOver() {
+	private void DoGameOver() {
 		brothersManager.Die ();
 	}
 
