@@ -25,7 +25,6 @@ public class ParallaxSlider : MonoBehaviour {
 		((GameObject)backgroundList[0]).transform.position = new Vector3(-size.x, 0.0f, posZ);
 		((GameObject)backgroundList[1]).transform.position = new Vector3(0.0f, 0.0f, posZ);
 		((GameObject)backgroundList[2]).transform.position = new Vector3(size.x, 0.0f, posZ);
-		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
 
 	// Update is called once per frame
