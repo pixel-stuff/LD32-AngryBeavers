@@ -1,128 +1,110 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum BrothersState {
-	MovingIntoScene,
-	Running, // The somewhat Idle state
-	ChoppingWood,
-	GrabbingTrunk,
-	PrepareAttack,
-	Attack,
-	Dead
-}
-
 public class BrothersManager : MonoBehaviour {
 
-	private BrothersState _state;
-	public BrothersState state {
+	private BrotherState _state;
+	public BrotherState state {
 		get {
 			return _state;
 		}
 		set {
+
+			Debug.Log("[BrotherManager] Changing from state: " + _state.ToString() + ", to: " + value.ToString());
+
 			if (_state == value)
 				return;
 
 			_state = value;
 
 			switch (_state) {
-			case BrothersState.MovingIntoScene:
+			case BrotherState.MovingIntoScene:
 				DoMovingIntoScene();
 				break;
-			case BrothersState.PrepareAttack:
+			case BrotherState.PrepareAttack:
 				DoPrepareAttack();
 				break;
-			case BrothersState.Attack:
+			case BrotherState.Attack:
 				DoAttack();
 				break;
-			case BrothersState.ChoppingWood:
+			case BrotherState.ChoppingWood:
 				DoChopWood();
 				break;
-			case BrothersState.GrabbingTrunk:
+			case BrotherState.GrabbingTrunk:
 				DoGrabbingTrunk();
 				break;
-			case BrothersState.Running:
+			case BrotherState.Running:
 				DoRunning();
 				break;
 			}
-
-			Debug.Log("Brothers moving to state " + _state.ToString());
 		}
 	}
 	
 	public Brother brother1;
 	public Brother brother2;
-
-	// Use this for initialization
-	void Start () {
-
-	}
 	
-	// Update is called once per frame
-	void Update () {
-
+	private void DoMovingIntoScene() {
+		state = BrotherState.Running;
 	}
 
 	public void PrepareAttack() {
-		if (state == BrothersState.PrepareAttack) {
+		if (state == BrotherState.PrepareAttack) {
 			return;
 		}
 
-		state = BrothersState.PrepareAttack;
+		state = BrotherState.PrepareAttack;
 		DoPrepareAttack ();
 	}
 
 	public void Attack() {
-		if (state == BrothersState.Attack) {
+		if (state == BrotherState.Attack) {
 			return;
 		}
 
-		state = BrothersState.PrepareAttack;
+		state = BrotherState.PrepareAttack;
 		DoAttack ();
 	}
 	
 	public void ChopWood() {
-		if (state == BrothersState.ChoppingWood || state == BrothersState.GrabbingTrunk) {
+		if (state == BrotherState.ChoppingWood || state == BrotherState.GrabbingTrunk) {
 			return;
 		}
 		
-		state = BrothersState.ChoppingWood;
+		state = BrotherState.ChoppingWood;
 		DoChopWood ();
 	}
 	
 	public void Die() {
-		if (state == BrothersState.Dead) {
+		if (state == BrotherState.Dead) {
 			return;
 		}
 
-		state = BrothersState.Dead;
+		state = BrotherState.Dead;
 		DoDeath();
 	}
-	
-	private void DoMovingIntoScene() {
 
-		// They start from the left
-		brother1.transform.position = new Vector3 (-8, 0);
-		brother2.transform.position = new Vector3 (-9, 0);
+	private void DoIdle() {
 
-		state = BrothersState.Running;
 	}
 	
 	private void DoPrepareAttack() {
 	}
 	
 	private void DoAttack() {
-		state = BrothersState.Running;
+		state = BrotherState.Running;
 	}
 
 	private void DoChopWood() {
-		state = BrothersState.GrabbingTrunk;
+		state = BrotherState.GrabbingTrunk;
 	}
 
 	private void DoGrabbingTrunk() {
-		state = BrothersState.Running;
+		state = BrotherState.Running;
 	}
 
 	private void DoRunning() {
+		brother1.Run ();
+		brother2.Run ();
 	}
 
 	private void DoDeath() {

@@ -11,12 +11,15 @@ public class GameManager : MonoBehaviour {
 
 	public BrothersManager brothersManager;
 
-	private GameState _state;
+	private GameState _state = GameState.Over;
 	private GameState state {
 		get {
 			return _state;
 		}
 		set {
+			
+			Debug.Log("[GameManager] Changing from state: " + _state.ToString() + ", to: " + value.ToString());
+
 			if (value == _state) 
 				return;
 
@@ -36,8 +39,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
-	void Start () {
+	void Awake() {
 		state = GameState.Intro;
 	}
 	
@@ -71,17 +73,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoIntro() {
+		state = GameState.Start;
 	}
 
 	private void DoRestart() {
-		brothersManager.state = BrothersState.MovingIntoScene;
+		brothersManager.state = BrotherState.MovingIntoScene;
 	}
 
 	private void DoAttack() {
-		if (brothersManager.state == BrothersState.PrepareAttack) {
-			brothersManager.state = BrothersState.Attack;
+		if (brothersManager.state == BrotherState.PrepareAttack) {
+			brothersManager.state = BrotherState.Attack;
 		} else {
-			brothersManager.state = BrothersState.PrepareAttack;
+			brothersManager.state = BrotherState.PrepareAttack;
 		}
 	}
 
