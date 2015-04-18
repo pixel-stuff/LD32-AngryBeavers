@@ -29,6 +29,8 @@ public class weaponTree : MonoBehaviour {
 	private BoxCollider2D sharpBox;
 	private float throwCurrentTime = 0.0f;
 
+
+	public float yPickUp;
 	public enum Etat{
 		isOnTheFloor,
 		idle,
@@ -103,14 +105,13 @@ public class weaponTree : MonoBehaviour {
 		if (currentEtat == Etat.isSmashing) {
 				if (setAngleTo(onTheGroundAngle -smashAngle,secondeSmash)){
 					this.transform.localEulerAngles = new Vector3(0,0,onTheGroundAngle) ;
+				this.transform.position = new Vector3(this.transform.position.x,yPickUp,this.transform.position.z);
 					smashHitTheGround();
 
 				}
 		}
 		if (currentEtat == Etat.prepareSmash) {
-			Debug.Log("ici");
 			if(setAngleTo(smashAngle,secondePrepareSmash)){
-				Debug.Log("la");
 				this.transform.localEulerAngles = new Vector3(0,0,smashAngle) ;
 				currentEtat = Etat.waitForSmashing;
 			}
@@ -123,7 +124,7 @@ public class weaponTree : MonoBehaviour {
 				}else{
 					transform.Translate(0.1f, -0.1f, 0.0f);
 				}*/
-				float y=Mathf.Sin ((throwCurrentTime/throwDuration)*Mathf.PI);
+				float y=Mathf.Sin ((throwCurrentTime/throwDuration)*Mathf.PI) *transform.position.y ;
 				transform.position = new Vector3(transform.position.x+0.01f, y*1.0f, 0.0f);
 				print ("throw "+throwCurrentTime+" < "+throwDuration);
 				throwCurrentTime += Time.deltaTime;
@@ -216,7 +217,8 @@ public class weaponTree : MonoBehaviour {
 
 	public void pick(){
 		this.GetComponent<FollowingGroundSpeed>().enabled = false;
-		GameObject.FindGameObjectWithTag ("GripTree").GetComponent<BoxCollider2D> ().enabled = false;;
+		GameObject.FindGameObjectWithTag ("GripTree").GetComponent<BoxCollider2D> ().enabled = false;
+		this.transform.position = new Vector3(this.transform.position.x,yPickUp,this.transform.position.z);
 		currentEtat = Etat.idle;
 	}
 }

@@ -170,6 +170,7 @@ MonoBehaviour:
   smashNextTime: 0
   prepareNextTime: 0
   throwItNextTime: 0
+  yPickUp: -1.45000005
   currentEtat: 0
   widthBaseSmashBoxCollider: 0
   xBaseSharpBoxCollider: 0
