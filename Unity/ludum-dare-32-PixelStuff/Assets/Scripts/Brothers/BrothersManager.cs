@@ -2,30 +2,121 @@
 using System.Collections;
 
 public enum BrothersState {
-	Idle,
 	MovingIntoScene,
-	CuttingLumber,
+	Running, // The somewhat Idle state
+	ChoppingWood,
 	GrabbingTrunk,
 	PrepareAttack,
 	Attack,
-	Dying,
-	Died
+	Dead
 }
 
 public class BrothersManager : MonoBehaviour {
-	
-	public BrothersState state = BrothersState.Idle;
 
-	private Brother brother1;
-	private Brother brother2;
+	private BrothersState _state;
+	public BrothersState state {
+		get {
+			return _state;
+		}
+		set {
+			if (_state == value)
+				return;
+
+			_state = value;
+
+			switch (_state) {
+			case BrothersState.MovingIntoScene:
+				DoMovingIntoScene();
+				break;
+			case BrothersState.PrepareAttack:
+				DoPrepareAttack();
+				break;
+			case BrothersState.Attack:
+				DoAttack();
+				break;
+			case BrothersState.ChoppingWood:
+				DoChopWood();
+				break;
+			case BrothersState.GrabbingTrunk:
+				DoGrabbingTrunk();
+				break;
+			case BrothersState.Running:
+				DoRunning();
+				break;
+			}
+		}
+	}
+	
+	public Brother brother1;
+	public Brother brother2;
 
 	// Use this for initialization
 	void Start () {
-		state = BrothersState.MovingIntoScene;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	public void PrepareAttack() {
+		if (state == BrothersState.PrepareAttack) {
+			return;
+		}
+
+		state = BrothersState.PrepareAttack;
+		DoPrepareAttack ();
+	}
+
+	public void Attack() {
+		if (state == BrothersState.Attack) {
+			return;
+		}
+
+		state = BrothersState.PrepareAttack;
+		DoAttack ();
+	}
+	
+	public void ChopWood() {
+		if (state == BrothersState.ChoppingWood || state == BrothersState.GrabbingTrunk) {
+			return;
+		}
+		
+		state = BrothersState.ChoppingWood;
+		DoChopWood ();
+	}
+	
+	public void Die() {
+		if (state == BrothersState.Dead) {
+			return;
+		}
+
+		state = BrothersState.Dead;
+		DoDeath();
+	}
+	
+	private void DoMovingIntoScene() {
+	}
+	
+	private void DoPrepareAttack() {
+	}
+	
+	private void DoAttack() {
+		state = BrothersState.Running;
+	}
+
+	private void DoChopWood() {
+		state = BrothersState.GrabbingTrunk;
+	}
+
+	private void DoGrabbingTrunk() {
+		state = BrothersState.Running;
+	}
+
+	private void DoRunning() {
+	}
+
+	private void DoDeath() {
 	}
 }
