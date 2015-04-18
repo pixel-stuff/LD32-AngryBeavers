@@ -50,8 +50,10 @@ public class GameManager : MonoBehaviour {
 			DoRestart();
 		}
 
+		// While playing
+
 		if (state == GameState.Start) {
-			// While playing
+
 			if (Input.GetKey (KeyCode.S)) {
 				DoAttack();
 			}
@@ -62,26 +64,24 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Input.GetKey (KeyCode.Return)) {
-			Submit();
+			if (state == GameState.Intro) {
+				state = GameState.Start;
+			}
 		}
-	}
-	
-	private void Submit() {
-		if (state == GameState.Intro) {
-			state = GameState.Start;
-		}
-
 	}
 
 	private void DoIntro() {
+		Debug.Log ("DoIntro ()");
 
 	}
 
 	private void DoRestart() {
+		Debug.Log ("DoRestart ()");
 		brothersManager.state = BrothersState.MovingIntoScene;
 	}
 
 	private void DoAttack() {
+		Debug.Log ("DoAttack ()");
 		if (brothersManager.state == BrothersState.PrepareAttack) {
 			brothersManager.state = BrothersState.Attack;
 		} else {
@@ -90,10 +90,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoChopWood() {
+		Debug.Log ("DoChopWood ()");
 		brothersManager.ChopWood ();
 	}
 
 	private void DoGameOver() {
+		Debug.Log ("DoGameOver ()");
 		brothersManager.Die ();
 	}
 

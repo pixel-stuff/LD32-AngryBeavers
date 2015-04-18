@@ -97,6 +97,12 @@ public class BrothersManager : MonoBehaviour {
 	}
 	
 	private void DoMovingIntoScene() {
+
+		// They start from the left
+		brother1.transform.position = new Vector3 (-200, 100);
+		brother2.transform.position = new Vector3 (-10, 5);
+
+		state = BrothersState.Running;
 	}
 	
 	private void DoPrepareAttack() {
