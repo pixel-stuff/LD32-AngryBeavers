@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class BeaversManager : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class BeaversManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject m_beaverContainer;
 	private List<Beaver> m_listBeavers;
+
+	public Action<int> onBeaverKilledListener;
 
 	//[SerializeField]
 	//private  m_brothersManager;
@@ -23,6 +26,7 @@ public class BeaversManager : MonoBehaviour {
 		m_beaverContainer.transform.position = GameObject.FindGameObjectWithTag ("SpawnArea").transform.position;
 
 		CreateBeaver ();
+
 	}
 	
 	// Update is called once per frame
@@ -37,7 +41,13 @@ public class BeaversManager : MonoBehaviour {
 
 
 
+	void SmashBeaversHangOnTree(){
+		foreach(Beaver beav in m_listBeavers){
+			if(beav.getCurrentState() == BeaverState.HangOnTree){
 
+			}
+		}
+	}
 
 
 
@@ -49,7 +59,24 @@ public class BeaversManager : MonoBehaviour {
 		plop.transform.localPosition = Vector3.zero;
 		plop.name = "Beaver_"+m_beaverCreated.ToString();
 		
-		plop.gameObject.GetComponent<Beaver> ().destroyListener += removeBeaver;
+		Beaver beav = plop.gameObject.GetComponent<Beaver> ();
+		beav.destroyListener += removeBeaver;
+		beav.Initialize ();
+		
+		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
+
+
+
+		
+		m_beaverCreated++;
+		GameObject plop2 = Instantiate (m_beaverPrefab);
+		plop2.transform.SetParent (m_beaverContainer.transform);
+		plop2.transform.localPosition = new Vector3 (-20f, 0f, 0f);
+		plop2.name = "Beaver_"+m_beaverCreated.ToString();
+		
+		Beaver beav2 = plop2.gameObject.GetComponent<Beaver> ();
+		beav2.destroyListener += removeBeaver;
+		beav2.Initialize ();
 		
 		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
 	}
@@ -58,5 +85,8 @@ public class BeaversManager : MonoBehaviour {
 		beav.destroyListener -= removeBeaver;
 		m_listBeavers.Remove (beav);
 		m_beaverKilled++;
+		if (onBeaverKilledListener != null) {
+			onBeaverKilledListener(m_beaverKilled);
+		}
 	}
 }

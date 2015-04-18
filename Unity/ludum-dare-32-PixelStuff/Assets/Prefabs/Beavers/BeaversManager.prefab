@@ -50,7 +50,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437994}
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_beaverPrefab: {fileID: 109076, guid: 82cb3c1823e1a455ea4959f08a06e0d0, type: 2}
   m_beaverContainer: {fileID: 142038}
-  m_brothersManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
