@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 
 	public BrothersManager brothersManager;
 
+	public BeaversManager beaversManager;
+
 	private GameState _state = GameState.Over;
 	private GameState state {
 		get {
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour {
 
 	void Awake() {
 		state = GameState.Intro;
+		beaversManager.onBeaverKilledListener += onBeaverKilled;
+
 	}
 	
 	// Update is called once per frame
@@ -99,6 +103,10 @@ public class GameManager : MonoBehaviour {
 
 	private void DoGameOver() {
 		brothersManager.state = BrotherState.Dead;
+	}
+
+	void onBeaverKilled(int totalBeaverKilled) {
+		Debug.Log ("[GameManager] " + totalBeaverKilled + " total beavers killed");
 	}
 
 }
