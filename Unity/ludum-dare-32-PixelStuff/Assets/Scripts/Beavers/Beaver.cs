@@ -25,9 +25,13 @@ public class Beaver : MonoBehaviour {
 
 	public Action<Beaver> destroyListener;
 
+	[SerializeField]
 	private BeaverState m_currentState = BeaverState.Spawning;
 
+	[SerializeField]
 	private int m_life = 100;
+
+	private GameObject m_positionTreeToHang; 
 
 
 
@@ -38,6 +42,7 @@ public class Beaver : MonoBehaviour {
 	float m_timeBetweenDamage = 1;
 
 	Vector3 m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(0.2f,0.5f),0f,0f);
+	Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-1f,1f),UnityEngine.Random.Range(-1f,1f),0f);
 	// Update is called once per frame
 	void Update () {
 		switch (m_currentState) {
@@ -57,9 +62,12 @@ public class Beaver : MonoBehaviour {
 				m_timeBetweenDamage = Time.deltaTime;
 			}
 
-			if(m_life <= 0){
-				Destroy(this.gameObject);
+			if(m_positionTreeToHang != null){
+				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
+				this.gameObject.transform.position = newpos;
 			}
+
+
 			break;
 		case BeaverState.Smashed:
 			//TO DO: Afficher Anim écrasé
@@ -73,6 +81,9 @@ public class Beaver : MonoBehaviour {
 			break;
 			
 		}
+		if(m_life <= 0){
+			Destroy(this.gameObject);
+		}
 	}
 
 	void OnDestroy(){
@@ -82,10 +93,11 @@ public class Beaver : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
+
 		if (collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
-
+			m_life = 0;
 			//TO DO: Le cadavre se déplace avec le background
 			return;
 		}
@@ -95,8 +107,11 @@ public class Beaver : MonoBehaviour {
 				Debug.Log ("DESTROY BEAVER");
 				Destroy(this.gameObject);
 			}else{
-				Debug.Log ("BEAVER HANG ON TREE");
 				changeState(BeaverState.HangOnTree);
+				m_positionTreeToHang = collider.gameObject;
+				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
+				this.gameObject.transform.position = newpos;
+
 			}
 
 			
