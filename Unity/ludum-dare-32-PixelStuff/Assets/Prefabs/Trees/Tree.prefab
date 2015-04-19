@@ -352,7 +352,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a283f6c26f6f27c49ae26edecc26ef4d, type: 3}
   - {fileID: 21300000, guid: aa3d8355b8de1b5409ce61846d95190c, type: 3}
   - {fileID: 21300000, guid: 1cd143efa904e3d47b9dd5a29a08f100, type: 3}
-  nbChopForchangeState: 5
+  nbChopForchangeState: 1
   totalChop: 0
 --- !u!114 &11490984
 MonoBehaviour:
@@ -371,7 +371,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a283f6c26f6f27c49ae26edecc26ef4d, type: 3}
   - {fileID: 21300000, guid: aa3d8355b8de1b5409ce61846d95190c, type: 3}
   - {fileID: 21300000, guid: 1cd143efa904e3d47b9dd5a29a08f100, type: 3}
-  nbChopForchangeState: 5
+  nbChopForchangeState: 1
   totalChop: 0
 --- !u!198 &19834278
 ParticleSystem:

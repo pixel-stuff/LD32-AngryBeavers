@@ -73,6 +73,8 @@ public class Beaver : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
 		switch (m_currentState) {
 		case BeaverState.Running:
 			this.transform.localPosition -= m_beaverSpeedRunning;
@@ -90,6 +92,7 @@ public class Beaver : MonoBehaviour {
 				m_life =  m_life - 15;
 				m_timeBetweenDamage = Time.deltaTime;
 				m_treeManager.currentWeapon.GetComponent<weaponTree>().isNomNom();
+				audioMan.Play("beaver_eat");
 			}
 
 			if(m_treeToHang != null){
@@ -108,7 +111,7 @@ public class Beaver : MonoBehaviour {
 		case BeaverState.Smashed:
 			//TO DO: Afficher Anim écrasé
 			//Debug.Log ("Ecrasé");
-
+			audioMan.Play("beaver_death");
 			if (this.transform.position.x <= -20f) {
 				Destroy (this.gameObject);
 			}
@@ -132,7 +135,6 @@ public class Beaver : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-
 		if (destroyListener != null) {
 			destroyListener(this);
 		}

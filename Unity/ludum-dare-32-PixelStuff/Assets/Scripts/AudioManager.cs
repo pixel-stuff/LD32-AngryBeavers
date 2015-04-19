@@ -3,6 +3,8 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour {
 
+	AudioSource m_backgroundAudioSource;
+
 	public void Play(string clipname)
 	{
 		//Create an empty game object
@@ -21,9 +23,24 @@ public class AudioManager : MonoBehaviour {
 		return;
 	}
 
+	public void startAudioBackground() {
+		m_backgroundAudioSource.Play();
+	}
+
+	public void stopAudioBackground() {
+		m_backgroundAudioSource.Stop();
+	}
+
 	// Use this for initialization
 	void Start () {
+		//Load clip from ressources folder
+		AudioClip bgClip =  Instantiate(Resources.Load ("Sounds/BackgroundMusic", typeof(AudioClip))) as AudioClip;
 		
+		//Add and bind an audio source
+		m_backgroundAudioSource = new AudioSource();
+		m_backgroundAudioSource.clip = bgClip;
+		m_backgroundAudioSource.loop = true;
+		//Play and destroy the component
 	}
 	
 	// Update is called once per frame
