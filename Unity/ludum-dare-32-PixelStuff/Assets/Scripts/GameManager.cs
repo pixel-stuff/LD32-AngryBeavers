@@ -10,8 +10,8 @@ public enum GameState {
 public class GameManager : MonoBehaviour {
 
 	public BrothersManager brothersManager;
-
 	public BeaversManager beaversManager;
+	public MenuManager menuManager;
 
 	private GameState _state = GameState.Over;
 	private GameState state {
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour {
 
 	void Awake() {
 		state = GameState.Intro;
-		beaversManager.onBeaverKilledListener += onBeaverKilled;
-
+		beaversManager.onBeaverKilledListener += OnBeaverKilled;
+		menuManager.restartClicked += MenuRestartBtnClicked;
 	}
 	
 	// Update is called once per frame
@@ -103,10 +103,16 @@ public class GameManager : MonoBehaviour {
 
 	private void DoGameOver() {
 		brothersManager.state = BrotherState.Dead;
+		menuManager.Reset ();
 	}
 
-	void onBeaverKilled(int totalBeaverKilled) {
+	void OnBeaverKilled(int totalBeaverKilled) {
 		Debug.Log ("[GameManager] " + totalBeaverKilled + " total beavers killed");
+		menuManager.IncrementScore ();
+	}
+
+	public void MenuRestartBtnClicked() {
+		DoIntro ();
 	}
 
 }
