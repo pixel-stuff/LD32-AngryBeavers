@@ -57,7 +57,7 @@ public class Beaver : MonoBehaviour {
 	void Start(){
 		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 		// TODO : Changer l'audio à la création du castor
-		audioMan.Play("Bwaaa");
+		//audioMan.Play("Bwaaa");
 		//m_BeaversAnimations.Play ();
 	}
 		
