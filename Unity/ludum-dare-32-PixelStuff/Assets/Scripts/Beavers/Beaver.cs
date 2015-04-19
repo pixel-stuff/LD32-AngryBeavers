@@ -39,7 +39,10 @@ public class Beaver : MonoBehaviour {
 	[SerializeField]
 	private Animation m_BeaversAnimations;
 
+	[SerializeField]
+	private EndFlyingAnimation m_endAnimationScript;
 
+	private treeManager m_treeManager;
 
 	float m_timeBetweenDamage = 1;
 
@@ -48,21 +51,24 @@ public class Beaver : MonoBehaviour {
 
 
 
-	public void Initialize(){
+	public void Initialize(treeManager treeManager){
+		m_treeManager = treeManager;
 		m_currentState= BeaverState.Running;
-		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/10,this.transform.lossyScale.x/4),0f,0f);
-		
+		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/20,this.transform.lossyScale.x/10),0f,0f);
+		m_endAnimationScript.endFlyingAnimationAction += endFlyingAnimationListener;
 	}
 
 	void Start(){
 		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 		// TODO : Changer l'audio à la création du castor
 		//audioMan.Play("Bwaaa");
-		//m_BeaversAnimations.Play ();
+		
+
 	}
 		
 	private float m_timeFlyStateBegin;
 	private float m_timeSmashStateBegin;
+
 
 	// Update is called once per frame
 	void Update () {
@@ -73,6 +79,7 @@ public class Beaver : MonoBehaviour {
 			
 			if (this.transform.localPosition.x <= -20f) {
 				Destroy (this.gameObject);
+
 			}
 
 			break;
@@ -81,6 +88,7 @@ public class Beaver : MonoBehaviour {
 			if(m_timeBetweenDamage >= 1.0f){
 				m_life =  m_life - 15;
 				m_timeBetweenDamage = Time.deltaTime;
+				//m_treeManager.
 			}
 
 			if(m_positionTreeToHang != null){
@@ -107,6 +115,8 @@ public class Beaver : MonoBehaviour {
 			break;
 		case BeaverState.Flying:
 			//TO DO: Lancer anim d'envole du beaver <3
+
+
 			if(Time.time - m_timeFlyStateBegin >= 5){
 				Destroy (this.gameObject);
 			}
@@ -127,7 +137,6 @@ public class Beaver : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider){
 
 		if ((collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") && m_currentState != BeaverState.HangOnTree) {
-			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
 			m_life = 0;
 			this.gameObject.GetComponent<FollowingGroundSpeed>().enabled = true;
@@ -136,12 +145,13 @@ public class Beaver : MonoBehaviour {
 
 		if (collider.gameObject.tag == "WeaponTree") {
 			if( UnityEngine.Random.Range(0.0f,1.0f) <= 0.1f){
-				Debug.Log ("DESTROY BEAVER");
-				Destroy(this.gameObject);
+				changeState(BeaverState.Smashed);
+				m_life = 0;
+				this.gameObject.GetComponent<FollowingGroundSpeed>().enabled = true;
 			}else{
 				changeState(BeaverState.HangOnTree);
 				m_positionTreeToHang = collider.gameObject;
-				Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-m_positionTreeToHang.transform.lossyScale.x,m_positionTreeToHang.transform.lossyScale.x),UnityEngine.Random.Range(m_positionTreeToHang.transform.lossyScale.y,m_positionTreeToHang.transform.lossyScale.y),0f);
+				Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-m_positionTreeToHang.transform.lossyScale.x/4,m_positionTreeToHang.transform.lossyScale.x/4),UnityEngine.Random.Range(m_positionTreeToHang.transform.lossyScale.y/4,m_positionTreeToHang.transform.lossyScale.y/4),0f);
 				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
 				this.gameObject.transform.position = newpos;
 
@@ -152,6 +162,10 @@ public class Beaver : MonoBehaviour {
 		}
 
 		
+	}
+
+	private void endFlyingAnimationListener(){
+		Destroy (this.gameObject);
 	}
 
 	public void changeState(BeaverState state){

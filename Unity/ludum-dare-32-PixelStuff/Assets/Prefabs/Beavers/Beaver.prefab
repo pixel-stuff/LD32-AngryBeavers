@@ -11,7 +11,6 @@ GameObject:
   - 114: {fileID: 11478168}
   - 61: {fileID: 6171046}
   - 50: {fileID: 5041448}
-  - 111: {fileID: 11106590}
   - 114: {fileID: 11417918}
   m_Layer: 0
   m_Name: Beaver
@@ -22,7 +21,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &119510
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -38,7 +37,7 @@ GameObject:
   m_IsActive: 0
 --- !u!1 &154062
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -54,7 +53,7 @@ GameObject:
   m_IsActive: 0
 --- !u!1 &161668
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -68,9 +67,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &197948
+--- !u!1 &195240
 GameObject:
   m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 433724}
+  - 111: {fileID: 11172242}
+  - 114: {fileID: 11433402}
+  m_Layer: 0
+  m_Name: BeaverAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &197948
+GameObject:
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -84,6 +100,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &433724
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 453204}
+  - {fileID: 461176}
+  - {fileID: 471128}
+  - {fileID: 434324}
+  m_Father: {fileID: 484264}
+  m_RootOrder: 0
 --- !u!4 &434324
 Transform:
   m_ObjectHideFlags: 1
@@ -94,7 +126,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -.25, z: 0}
   m_LocalScale: {x: 1, y: .5, z: 1}
   m_Children: []
-  m_Father: {fileID: 484264}
+  m_Father: {fileID: 433724}
   m_RootOrder: 3
 --- !u!4 &453204
 Transform:
@@ -106,7 +138,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 484264}
+  m_Father: {fileID: 433724}
   m_RootOrder: 0
 --- !u!4 &461176
 Transform:
@@ -118,7 +150,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 484264}
+  m_Father: {fileID: 433724}
   m_RootOrder: 1
 --- !u!4 &471128
 Transform:
@@ -130,7 +162,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 484264}
+  m_Father: {fileID: 433724}
   m_RootOrder: 2
 --- !u!4 &484264
 Transform:
@@ -142,10 +174,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 453204}
-  - {fileID: 461176}
-  - {fileID: 471128}
-  - {fileID: 434324}
+  - {fileID: 433724}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5041448
@@ -176,12 +205,12 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .5, y: .5}
---- !u!111 &11106590
+--- !u!111 &11172242
 Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109076}
+  m_GameObject: {fileID: 195240}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 0010b14b4813a41c5be53bd08ba3ed7a, type: 2}
@@ -202,6 +231,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d767f6055f4547d58c95cfde03b4340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11433402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5e3369d0399463b851370690cc6f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11478168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +259,8 @@ MonoBehaviour:
   m_smashSprite: {fileID: 154062}
   m_currentState: 0
   m_life: 100
-  m_BeaversAnimations: {fileID: 11106590}
+  m_BeaversAnimations: {fileID: 11172242}
+  m_endAnimationScript: {fileID: 11433402}
 --- !u!212 &21206900
 SpriteRenderer:
   m_ObjectHideFlags: 1
