@@ -38,7 +38,8 @@ public class weaponTree : MonoBehaviour {
 		prepareSmash,
 		waitForSmashing,
 		isSmashing,
-		isThrown
+		isThrown,
+		throwFinish
 	}
 	public Etat currentEtat;
 
@@ -143,7 +144,7 @@ public class weaponTree : MonoBehaviour {
 				throwCurrentTime += Time.deltaTime;
 			}else{
 				throwCurrentTime = 0.0f;
-				currentEtat = Etat.idle;
+				currentEtat = Etat.throwFinish;
 				throwItNextTime = false;
 			}
 		}
@@ -151,7 +152,8 @@ public class weaponTree : MonoBehaviour {
 
 
 	private bool setAngleTo(float angle,float seconde){
-		this.transform.RotateAround (new Vector3(this.transform.position.x - TabState[CurrentState].rect.width/200 ,this.transform.position.y,this.transform.position.z), new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
+		//this.transform.RotateAround (new Vector3(this.transform.position.x - TabState[CurrentState].rect.width/200 ,this.transform.position.y,this.transform.position.z), new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
+		this.transform.RotateAround (GameObject.FindGameObjectWithTag("PivotPoint").transform.position, new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
 		currentTimeAnim -= Time.deltaTime;
 		return currentTimeAnim < 0.0f ;
 	}

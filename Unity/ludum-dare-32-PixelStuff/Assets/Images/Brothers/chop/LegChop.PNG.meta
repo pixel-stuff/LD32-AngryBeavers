@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 285a0f91d190a4d40b6399495f126573
-timeCreated: 1429424815
+guid: bf495306e87ed8449a978a6123319dd1
+timeCreated: 1429426929
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LegRun_0
-    21300002: LegRun_1
-    21300004: LegRun_2
-    21300006: LegRun_3
+    21300000: LegChop_0
+    21300002: LegChop_1
+    21300004: LegChop_2
+    21300006: LegChop_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,43 +53,43 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: LegRun_0
+    - name: LegChop_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 11
-        width: 85
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LegRun_1
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 3
-        width: 40
-        height: 53
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LegRun_2
-      rect:
-        serializedVersion: 2
-        x: 191
+        x: 8
         y: 0
-        width: 33
-        height: 57
+        width: 70
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LegRun_3
+    - name: LegChop_1
       rect:
         serializedVersion: 2
-        x: 268
-        y: 7
-        width: 53
-        height: 40
+        x: 84
+        y: 0
+        width: 75
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LegChop_2
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 64
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LegChop_3
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 60
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

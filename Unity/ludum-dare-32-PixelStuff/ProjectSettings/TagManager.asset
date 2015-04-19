@@ -19,6 +19,7 @@ TagManager:
   - MenuMnager
   - CanChopTree
   - TreeAnimation
+  - PivotPoint
   layers:
   - Default
   - TransparentFX
