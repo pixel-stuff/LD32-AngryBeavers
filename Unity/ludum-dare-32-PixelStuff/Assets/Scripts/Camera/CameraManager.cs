@@ -82,7 +82,6 @@ public class CameraManager : MonoBehaviour {
 
 	public void writeOnScreen(string text, float offsetX, float offsetY) {
 		m_guiText.text = text;
-		print (offsetX + " " + offsetY);
 		m_guiText.anchor = TextAnchor.MiddleCenter;
 		m_guiText.alignment = TextAlignment.Center;
 		m_guiText.pixelOffset = Camera.main.WorldToScreenPoint (transform.position)+(new Vector3(offsetX, offsetY, 0.0f));
