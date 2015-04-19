@@ -107,8 +107,10 @@ MonoBehaviour:
   onTheGroundAngle: 0
   secondeSmash: 1
   iddleAngle: 0
+  throwDuration: 2
   smashNextTime: 0
   prepareNextTime: 0
+  throwNextTime: 0
 --- !u!212 &21291570
 SpriteRenderer:
   m_ObjectHideFlags: 1

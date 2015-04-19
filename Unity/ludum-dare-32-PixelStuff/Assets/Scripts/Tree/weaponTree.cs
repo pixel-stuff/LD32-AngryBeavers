@@ -18,18 +18,23 @@ public class weaponTree : MonoBehaviour {
 	public float secondeSmash;
 	public float iddleAngle;
 
+	public float throwDuration = 2.0f;
+
 	private float currentTimeAnim;
 
 	public bool smashNextTime;
 	public bool prepareNextTime;
+	public bool throwItNextTime;
 	private BoxCollider2D smashBox;
 	private BoxCollider2D sharpBox;
+	private float throwCurrentTime = 0.0f;
 
 	enum Etat{
 		idle,
 		prepareSmash,
 		waitForSmashing,
-		isSmashing
+		isSmashing,
+		isThrown
 	}
 	private Etat currentEtat;
 
@@ -58,18 +63,39 @@ public class weaponTree : MonoBehaviour {
 		if (currentEtat == Etat.idle && prepareNextTime) {
 			prepareSmash ();
 		}
+		if (currentEtat == Etat.idle && throwItNextTime) {
+			currentEtat = Etat.isThrown;
+		}
 
-	if (currentEtat == Etat.isSmashing) {
-			if (setAngleTo(onTheGroundAngle -smashAngle,secondeSmash)){
-				this.transform.localEulerAngles = new Vector3(0,0,onTheGroundAngle) ;
-				smashHitTheGround();
+		if (currentEtat == Etat.isSmashing) {
+				if (setAngleTo(onTheGroundAngle -smashAngle,secondeSmash)){
+					this.transform.localEulerAngles = new Vector3(0,0,onTheGroundAngle) ;
+					smashHitTheGround();
 
-			}
-	}
-	if (currentEtat == Etat.prepareSmash) {
+				}
+		}
+		if (currentEtat == Etat.prepareSmash) {
 			if(setAngleTo(smashAngle,secondePrepareSmash)){
 				this.transform.localEulerAngles = new Vector3(0,0,smashAngle) ;
 				currentEtat = Etat.waitForSmashing;
+			}
+		}
+		if (currentEtat == Etat.isThrown) {
+			// throw the tree :D hell yeah !
+			if(throwCurrentTime<throwDuration) {
+				/*if(throwCurrentTime<(throwDuration/2.0f)) {
+					transform.Translate(0.1f, 0.1f, 0.0f);
+				}else{
+					transform.Translate(0.1f, -0.1f, 0.0f);
+				}*/
+				float y=Mathf.Sin ((throwCurrentTime/throwDuration)*Mathf.PI);
+				transform.position = new Vector3(transform.position.x+0.01f, y*1.0f, 0.0f);
+				print ("throw "+throwCurrentTime+" < "+throwDuration);
+				throwCurrentTime += Time.deltaTime;
+			}else{
+				throwCurrentTime = 0.0f;
+				currentEtat = Etat.idle;
+				throwItNextTime = false;
 			}
 		}
 	}
@@ -133,5 +159,4 @@ public class weaponTree : MonoBehaviour {
 	public void prepareSmashASAP(){
 		prepareNextTime = true;
 	}
-
 }
