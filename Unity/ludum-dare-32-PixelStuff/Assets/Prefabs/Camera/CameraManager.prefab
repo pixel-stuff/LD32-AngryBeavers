@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &123906
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 402150}
+  m_Layer: 0
+  m_Name: BeaversContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &140106
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +47,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &144294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432064}
+  - 114: {fileID: 11453796}
+  m_Layer: 0
+  m_Name: BeaversManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &184036
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +116,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &402150
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 432064}
+  m_RootOrder: 0
 --- !u!4 &408588
 Transform:
   m_ObjectHideFlags: 1
@@ -123,8 +166,22 @@ Transform:
   - {fileID: 408588}
   - {fileID: 435164}
   - {fileID: 432892}
+  - {fileID: 432064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &432064
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 402150}
+  m_Father: {fileID: 424722}
+  m_RootOrder: 3
 --- !u!4 &432892
 Transform:
   m_ObjectHideFlags: 1
@@ -187,7 +244,7 @@ Skybox:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!81 &8130668
 AudioListener:
@@ -283,6 +340,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e47ea54b622234f85a3050dd34db6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11453796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a2d9794f66347b2a2a41a9467c8bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_beaverPrefab: {fileID: 109076, guid: 82cb3c1823e1a455ea4959f08a06e0d0, type: 2}
+  m_beaverContainer: {fileID: 123906}
 --- !u!114 &11481232
 MonoBehaviour:
   m_ObjectHideFlags: 1
