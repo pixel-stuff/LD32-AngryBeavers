@@ -79,6 +79,14 @@ public class weaponTree : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (currentEtat == Etat.idle) {
+			smashBox.size = new Vector2(m_widthSmashBoxCollider[CurrentState+1], smashBox.size.y);
+			smashBox.offset = new Vector2(m_xOffSmashBoxCollider[CurrentState+1], smashBox.offset.y);
+			sharpBox.transform.localPosition = new Vector3(
+				m_xSharpBoxCollider[CurrentState+1],
+				sharpBox.transform.localPosition.y,
+				sharpBox.transform.localPosition.z);
+		}
 		if (currentEtat == Etat.isOnTheFloor) {
 			this.GetComponent<FollowingGroundSpeed>().enabled = true;
 		}
@@ -124,12 +132,6 @@ public class weaponTree : MonoBehaviour {
 				throwItNextTime = false;
 			}
 		}
-		smashBox.size = new Vector2(m_widthSmashBoxCollider[CurrentState+1], smashBox.size.y);
-		smashBox.offset = new Vector2(m_xOffSmashBoxCollider[CurrentState+1], smashBox.offset.y);
-		sharpBox.transform.localPosition = new Vector3(
-			m_xSharpBoxCollider[CurrentState+1],
-			sharpBox.transform.localPosition.y,
-			sharpBox.transform.localPosition.z);
 	}
 
 
@@ -148,24 +150,21 @@ public class weaponTree : MonoBehaviour {
 		if (CurrentState == -1) {
 			return;
 		}
-		if (currentPV <= 0) {
+		/*if (currentPV <= 0) {
 			sharpBox.enabled = false;
 			smashBox.enabled = false;
 			return;
-		}
+		}*/
 		if (currentPV <= PVLastState) {
 			this.GetComponent<SpriteRenderer>().sprite = finalSprite;
 			//CurrentState =-1;
 			return;
 		}
 		int PVStateLost = currentPV - PVLastState;
-		int state = Mathf.CeilToInt(PVStateLost / nbPVForState);
-		print ("PM "+PVStateLost + " " + nbPVForState);
+		int state = PVStateLost / nbPVForState;
 		if (CurrentState != state) {
-
-
-			/*
 			this.GetComponent<SpriteRenderer>().sprite = TabState[state];
+			/*
 			float pWidth = TabState[state].rect.width/TabState[TabState.Length-1].rect.width;
 			smashBox.size = new Vector2(pWidth*widthBaseSmashBoxCollider, smashBox.size.y);
 
@@ -184,10 +183,8 @@ public class weaponTree : MonoBehaviour {
 
 	public void Smash(){
 		prepareNextTime = false;
-		if (currentPV > 0) {
-			smashBox.enabled = true;
-			sharpBox.enabled = false;
-		}
+		smashBox.enabled = true;
+		sharpBox.enabled = false;
 		currentEtat = Etat.isSmashing;
 		currentTimeAnim = secondeSmash;
 		prepareNextTime = false;
@@ -201,10 +198,8 @@ public class weaponTree : MonoBehaviour {
 
 	public void smashHitTheGround(){
 		smashNextTime = false;
-		if (currentPV > 0) {
-			sharpBox.enabled = true;
-			smashBox.enabled = false;
-		}
+		sharpBox.enabled = true;
+		smashBox.enabled = false;
 		currentEtat = Etat.idle;
 		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
 		GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ().SmashBeaversHangOnTree ();
