@@ -48,6 +48,10 @@ public class tree : MonoBehaviour {
 			remaningSeconde -= Time.deltaTime;
 			fall ();
 		}
+
+		if (remaningSeconde < 0) {
+			state = TreeState.FALLEN;
+		}
 	}
 
 	void updatePosition(){
@@ -79,5 +83,9 @@ public class tree : MonoBehaviour {
 	void fall(){
 		//trunk.transform.position = new Vector3 (trunk.transform.position.x + PositionXIteration * Time.deltaTime, trunk.transform.position.y + PositionYIteration * Time.deltaTime, 0);
 		trunk.transform.RotateAround (stump.transform.position, new Vector3 (0, 0, 1), RotationZIteration * Time.deltaTime);
+	}
+
+	public bool isFallen(){
+		return state == TreeState.FALLEN;
 	}
 }
