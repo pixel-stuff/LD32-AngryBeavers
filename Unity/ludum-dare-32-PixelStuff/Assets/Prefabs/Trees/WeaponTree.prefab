@@ -43,6 +43,7 @@ GameObject:
   - 212: {fileID: 21291570}
   - 61: {fileID: 6158334}
   - 114: {fileID: 11448268}
+  - 114: {fileID: 11439228}
   m_Layer: 0
   m_Name: WeaponTree
   m_TagString: SmashTree
@@ -127,6 +128,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .720000029, y: .439999998}
+--- !u!114 &11439228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183298}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d767f6055f4547d58c95cfde03b4340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11448268
 MonoBehaviour:
   m_ObjectHideFlags: 1

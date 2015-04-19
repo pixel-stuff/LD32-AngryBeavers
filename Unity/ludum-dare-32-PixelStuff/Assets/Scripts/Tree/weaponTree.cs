@@ -30,6 +30,7 @@ public class weaponTree : MonoBehaviour {
 	private float throwCurrentTime = 0.0f;
 
 	enum Etat{
+		isOnTheFloor,
 		idle,
 		prepareSmash,
 		waitForSmashing,
@@ -56,12 +57,14 @@ public class weaponTree : MonoBehaviour {
 		sharpBox = this.GetComponentsInChildren<BoxCollider2D> ()[1];
 		xBaseSharpBoxCollider = sharpBox.transform.position.x;
 
-		currentEtat = Etat.idle;
+		currentEtat = Etat.isOnTheFloor;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (currentEtat == Etat.isOnTheFloor) {
+			this.GetComponent<FollowingGroundSpeed>().enabled = true;
+		}
 		if (currentEtat == Etat.waitForSmashing && smashNextTime) {
 			Smash ();
 			isNomNom ();
@@ -183,5 +186,10 @@ public class weaponTree : MonoBehaviour {
 	}
 	public void prepareSmashASAP(){
 		prepareNextTime = true;
+	}
+
+	public void pick(){
+		this.GetComponent<FollowingGroundSpeed>().enabled = false;
+		currentEtat = Etat.idle;
 	}
 }

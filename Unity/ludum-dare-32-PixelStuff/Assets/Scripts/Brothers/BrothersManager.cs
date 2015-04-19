@@ -132,7 +132,7 @@ public class BrothersManager : MonoBehaviour {
 
 		if (col.gameObject.tag == "GripTree") {
 			Debug.Log("COLLISION new arme");
-			//todo desativer le script de mouvement
+			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().pickWeapon();
 		}
 	}
 
