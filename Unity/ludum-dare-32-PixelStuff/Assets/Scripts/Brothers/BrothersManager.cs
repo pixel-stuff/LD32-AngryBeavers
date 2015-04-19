@@ -4,6 +4,9 @@ using System.Collections;
 public class BrothersManager : MonoBehaviour {
 
 	private BrotherState _state;
+
+	public bool stopAtNextTree;
+	public bool Chop;
 	public BrotherState state {
 		get {
 			return _state;
@@ -89,7 +92,7 @@ public class BrothersManager : MonoBehaviour {
 
 		state = BrotherState.ChoppingWood;
 
-		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().trowWeaponOnGround ();
+
 	}
 
 	private void DoDeath() {
@@ -97,12 +100,47 @@ public class BrothersManager : MonoBehaviour {
 		brother2.Died ();
 	}
 
+	void DoStopParallax(){
+		Debug.Log("Pause enable");
+		GameObject.FindGameObjectWithTag ("ParallaxManager").GetComponent<ParallaxManager> ().isPaused = true;
+	}
+
+	void DoRestartParallax(){
+		Debug.Log("Pause disable");
+		GameObject.FindGameObjectWithTag ("ParallaxManager").GetComponent<ParallaxManager> ().isPaused = false;
+	}
+
+	void ChopLeft(){
+		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopLeft ();
+	}
+	void ChopRight(){
+		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopRight ();
+	}
+
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Beaver") {
 			DoDeath();
 		}
-		if (col.gameObject.tag == "Tree") {
+		if (col.gameObject.tag == "Tree" && stopAtNextTree) {
+			Debug.Log("COLLISION AUTHORISE TREE");
+			DoStopParallax();
+			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().trowWeaponOnGround ();
 			DoDropTunk();
+			Chop=true;
+			stopAtNextTree = false;
+		}
+
+		if (col.gameObject.tag == "GripTree") {
+			Debug.Log("COLLISION new arme");
+			//todo desativer le script de mouvement
+		}
+	}
+
+	void Update(){
+		if (Chop) {
+			Debug.Log ("Chop");
+			ChopLeft ();
+			ChopRight ();
 		}
 	}
 

@@ -69,4 +69,13 @@ public class treeManager : MonoBehaviour {
 		return currentWeapon;
 
 	}
+
+
+	public void ChopLeft(){
+		currentTree.GetComponent<tree> ().chopLeft ();
+	}
+
+	public void ChopRight(){
+		currentTree.GetComponent<tree> ().chopRight ();
+	}
 }

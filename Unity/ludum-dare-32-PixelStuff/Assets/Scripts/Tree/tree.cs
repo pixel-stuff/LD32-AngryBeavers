@@ -57,6 +57,7 @@ public class tree : MonoBehaviour {
 				isShake = false;
 				state=TreeState.ONFLOOR;
 				trunk.GetComponent<SpriteRenderer>().enabled=false;
+				GameObject.FindGameObjectWithTag ("ParallaxManager").GetComponent<ParallaxManager> ().isPaused = false;
 			}else{
 			state = TreeState.FALLEN;
 			}
@@ -68,10 +69,10 @@ public class tree : MonoBehaviour {
 		//return true;
 	}
 
-	void chopLeft(){
+	public void chopLeft(){
 		leftChop.GetComponent<ChopOnTree> ().triggerChop ();
 	}
-	void chopRight(){
+	public void chopRight(){
 		rightChop.GetComponent<ChopOnTree> ().triggerChop ();
 	}
 
