@@ -67,6 +67,7 @@ public class CameraManager : MonoBehaviour {
 		if (!m_isGameOverScreenShowing) {
 			gameOverScreenSprite.SetActive (true);
 			m_isGameOverScreenShowing = true;
+			writeOnScreen("GAME OVER", 0.0f, 0.0f);
 		}
 	}
 	
