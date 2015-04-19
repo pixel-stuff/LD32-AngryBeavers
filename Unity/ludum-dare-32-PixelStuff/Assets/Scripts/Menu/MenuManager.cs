@@ -30,6 +30,7 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void RestartBtnClicked() {
+		Debug.Log ("!!! Restart Btn Clicked !!!!");
 		if (restartClicked != null) {
 			restartClicked ();
 		}

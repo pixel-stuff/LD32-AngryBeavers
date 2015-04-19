@@ -141,7 +141,6 @@ public class BrothersManager : MonoBehaviour {
 
 	void Update(){
 		if (Chop) {
-			Debug.Log ("Chop");
 			ChopLeft ();
 			ChopRight ();
 		}
