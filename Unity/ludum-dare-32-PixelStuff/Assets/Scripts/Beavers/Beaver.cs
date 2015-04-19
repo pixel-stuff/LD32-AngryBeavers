@@ -78,8 +78,7 @@ public class Beaver : MonoBehaviour {
 			
 			
 			if (this.transform.localPosition.x <= -20f) {
-				m_BeaversAnimations.Play ();
-				//Destroy (this.gameObject);
+				Destroy (this.gameObject);
 
 			}
 
@@ -146,11 +145,13 @@ public class Beaver : MonoBehaviour {
 
 		if (collider.gameObject.tag == "WeaponTree") {
 			if( UnityEngine.Random.Range(0.0f,1.0f) <= 0.1f){
-				Destroy(this.gameObject);
+				changeState(BeaverState.Smashed);
+				m_life = 0;
+				this.gameObject.GetComponent<FollowingGroundSpeed>().enabled = true;
 			}else{
 				changeState(BeaverState.HangOnTree);
 				m_positionTreeToHang = collider.gameObject;
-				Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-m_positionTreeToHang.transform.lossyScale.x,m_positionTreeToHang.transform.lossyScale.x),UnityEngine.Random.Range(m_positionTreeToHang.transform.lossyScale.y,m_positionTreeToHang.transform.lossyScale.y),0f);
+				Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-m_positionTreeToHang.transform.lossyScale.x/4,m_positionTreeToHang.transform.lossyScale.x/4),UnityEngine.Random.Range(m_positionTreeToHang.transform.lossyScale.y/4,m_positionTreeToHang.transform.lossyScale.y/4),0f);
 				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
 				this.gameObject.transform.position = newpos;
 
