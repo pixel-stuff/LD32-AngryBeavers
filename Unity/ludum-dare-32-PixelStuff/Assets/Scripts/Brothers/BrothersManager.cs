@@ -144,6 +144,7 @@ public class BrothersManager : MonoBehaviour {
 
 	public void prepareChop(){
 		brother1.prepareChop ();
+		brother1.changePositionForTree ();
 		brother2.prepareChop ();
 		leg1.prepareChop ();
 		leg2.prepareChop ();
@@ -156,7 +157,7 @@ public class BrothersManager : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Beaver") {
-			state = BrotherState.Dead;
+			DoDeath();
 		}
 		if (col.gameObject.tag == "CanChopTree") {
 			Debug.Log("COLLISION ZONE ESPACE");
@@ -187,6 +188,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 	
 	public void treeIsChop(){
+		brother1.backToNormal ();
 		DoRunning();
 	}
 	void Update(){

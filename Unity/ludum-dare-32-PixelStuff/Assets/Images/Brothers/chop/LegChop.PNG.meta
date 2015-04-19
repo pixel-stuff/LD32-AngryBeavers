@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bf495306e87ed8449a978a6123319dd1
-timeCreated: 1429426929
+timeCreated: 1429435595
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -56,9 +56,9 @@ TextureImporter:
     - name: LegChop_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 3
         y: 0
-        width: 70
+        width: 60
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -66,9 +66,9 @@ TextureImporter:
     - name: LegChop_1
       rect:
         serializedVersion: 2
-        x: 84
+        x: 80
         y: 0
-        width: 75
+        width: 64
         height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -76,9 +76,9 @@ TextureImporter:
     - name: LegChop_2
       rect:
         serializedVersion: 2
-        x: 165
+        x: 151
         y: 0
-        width: 64
+        width: 75
         height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -86,9 +86,9 @@ TextureImporter:
     - name: LegChop_3
       rect:
         serializedVersion: 2
-        x: 246
+        x: 238
         y: 0
-        width: 60
+        width: 70
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}

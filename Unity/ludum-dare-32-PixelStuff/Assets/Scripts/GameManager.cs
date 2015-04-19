@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
 
 		restartGameScript.gameObject.SetActive (false);
 		introScript.gameObject.SetActive (true);
+
+		brothersManager.brothersDiedAction += BrothersDied;
 	}
 
 	void Awake() {
@@ -167,8 +169,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoGameOver() {
-		/*brothersManager.state = BrotherState.Dead;
-		menuManager.Reset ();*/
+		//brothersManager.state = BrotherState.Dead;
+		BrothersDied ();
 	}
 
 	void OnBeaverKilled(int totalBeaverKilled) {

@@ -20,6 +20,7 @@ TagManager:
   - CanChopTree
   - TreeAnimation
   - PivotPoint
+  - TreeBrotherPosition
   layers:
   - Default
   - TransparentFX

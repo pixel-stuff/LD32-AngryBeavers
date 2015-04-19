@@ -17,12 +17,31 @@ public class Brother : MonoBehaviour {
 
 	private Animator animator;
 
+	private Vector3 normalPosition;
+
+	public GameObject TreeRepere;
+
 	// Use this for initialization
 	void Awake () 
 	{
 		animator = GetComponent<Animator> ();
+		normalPosition = this.transform.position;
 	}
 
+
+	public void changePositionForTree(){
+
+		if (TreeRepere != null) {
+			this.transform.position = TreeRepere.transform.position;
+			this.transform.Rotate( new Vector3(0,180,0));
+		}
+
+	}
+
+	public void backToNormal(){
+		this.transform.position = normalPosition;
+		this.transform.Rotate( new Vector3(0,0,0));
+	}
 	public void reset(){
 		//animator.SetBool ("NoTree",false);
 	}
