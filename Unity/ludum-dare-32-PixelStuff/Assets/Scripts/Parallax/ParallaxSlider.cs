@@ -36,4 +36,8 @@ public class ParallaxSlider : MonoBehaviour {
 			}
 		}
 	}
+
+	public Vector3 getSpeed() {
+		return speed;
+	}
 }
