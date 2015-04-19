@@ -11,7 +11,7 @@ GameObject:
   - 61: {fileID: 6163564}
   m_Layer: 0
   m_Name: GripTree
-  m_TagString: Untagged
+  m_TagString: GripTree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
