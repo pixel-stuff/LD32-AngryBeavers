@@ -4,7 +4,7 @@ using System;
 
 public class BrothersManager : MonoBehaviour {
 
-	private BrotherState _state;
+	private BrotherState _state = BrotherState.Running;
 
 	public bool stopAtNextTree;
 	public bool AuthoriseStop;
@@ -123,6 +123,11 @@ public class BrothersManager : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopRight ();
 	}
 
+
+	public void prepareChop(){
+		brother1.prepareChop ();
+		brother2.prepareChop ();
+	}
 	public void StopAtNextTree(){
 		if (AuthoriseStop) {
 			stopAtNextTree = true;
@@ -141,6 +146,7 @@ public class BrothersManager : MonoBehaviour {
 		if (col.gameObject.tag == "Tree") {
 			if(stopAtNextTree){
 			Debug.Log("COLLISION AUTHORISE TREE");
+			
 			DoStopParallax();
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().trowWeaponOnGround ();
 			DoDropTunk();
@@ -148,6 +154,8 @@ public class BrothersManager : MonoBehaviour {
 			stopAtNextTree = false;
 			}
 			AuthoriseStop = false;
+
+			prepareChop();
 		}
 
 		if (col.gameObject.tag == "GripTree") {
@@ -155,8 +163,10 @@ public class BrothersManager : MonoBehaviour {
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().pickWeapon();
 		}
 	}
+	
 
 	void Update(){
+
 		/*if (Chop) {
 			ChopLeft ();
 			ChopRight ();

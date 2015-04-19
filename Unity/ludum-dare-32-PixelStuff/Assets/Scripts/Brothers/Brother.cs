@@ -24,7 +24,13 @@ public class Brother : MonoBehaviour {
 	}
 
 	public void Run() {
-		animator.SetBool ("Running", true);
+		Debug.Log ("RUN");
+		animator.SetTrigger ("noTree");
+	}
+
+	public void prepareChop() {
+		Debug.Log ("Chop");
+		animator.SetTrigger ("startChop");
 	}
 
 	public void Idle() {
