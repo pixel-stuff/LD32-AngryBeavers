@@ -123,7 +123,8 @@ public class weaponTree : MonoBehaviour {
 		sharpBox.enabled = true;
 		smashBox.enabled = false;
 		currentEtat = Etat.idle;
-		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.3f);
+		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
+		GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ().SmashBeaversHangOnTree ();
 	}
 
 	public void smashASAP(){

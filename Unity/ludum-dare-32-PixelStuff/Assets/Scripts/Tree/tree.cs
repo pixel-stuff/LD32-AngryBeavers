@@ -49,7 +49,7 @@ public class tree : MonoBehaviour {
 
 		if (remaningSeconde < 0) {
 			trunk.GetComponent<BoxCollider2D>().enabled = false;
-			GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.3f);
+			GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
 			state = TreeState.FALLEN;
 		}
 	}
