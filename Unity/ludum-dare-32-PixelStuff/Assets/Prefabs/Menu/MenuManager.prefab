@@ -53,7 +53,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &171568
 GameObject:
   m_ObjectHideFlags: 1
@@ -170,7 +170,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: '
+  m_Text: '100 beavers killed
+
+'
 --- !u!114 &11467016
 MonoBehaviour:
   m_ObjectHideFlags: 1

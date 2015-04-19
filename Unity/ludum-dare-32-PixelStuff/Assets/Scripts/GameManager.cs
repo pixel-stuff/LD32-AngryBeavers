@@ -41,6 +41,20 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	void Start(){
+		if (brothersManager == null) {
+			brothersManager = GameObject.FindGameObjectWithTag ("Player").GetComponent<BrothersManager> ();
+		}
+
+		if (beaversManager == null) {
+			beaversManager = GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ();
+		}
+
+		if (menuManager == null) {
+			menuManager = GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<MenuManager> ();
+		}
+	}
+
 	void Awake() {
 		state = GameState.Intro;
 		beaversManager.onBeaverKilledListener += OnBeaverKilled;
