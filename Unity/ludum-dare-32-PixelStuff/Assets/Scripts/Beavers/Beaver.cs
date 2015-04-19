@@ -54,7 +54,8 @@ public class Beaver : MonoBehaviour {
 		//m_BeaversAnimations.Play ();
 	}
 		
-		private float m_timeSmashStateBegin;
+	private float m_timeFlyStateBegin;
+	private float m_timeSmashStateBegin;
 
 	// Update is called once per frame
 	void Update () {
@@ -88,14 +89,18 @@ public class Beaver : MonoBehaviour {
 			break;
 		case BeaverState.Smashed:
 			//TO DO: Afficher Anim écrasé
-			Debug.Log ("Ecrasé");
+			//Debug.Log ("Ecrasé");
+
 			if (this.transform.localPosition.x <= -20f) {
+				Destroy (this.gameObject);
+			}
+			if(Time.time - m_timeSmashStateBegin >= 2){
 				Destroy (this.gameObject);
 			}
 			break;
 		case BeaverState.Flying:
 			//TO DO: Lancer anim d'envole du beaver <3
-			if(Time.time - m_timeSmashStateBegin >= 5){
+			if(Time.time - m_timeFlyStateBegin >= 2){
 				Destroy (this.gameObject);
 			}
 			break;
@@ -118,7 +123,6 @@ public class Beaver : MonoBehaviour {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
 			m_life = 0;
-			m_timeSmashStateBegin = Time.time;
 			//TO DO: Le cadavre se déplace avec le background
 			return;
 		}
@@ -156,10 +160,13 @@ public class Beaver : MonoBehaviour {
 				break;
 			case BeaverState.Smashed:
 				m_idleSprite.SetActive (true);
+				m_timeSmashStateBegin = Time.time;
 				break;
 			case BeaverState.Flying:
 				m_ejectSprite.SetActive (true);
 				m_BeaversAnimations.Play();
+				m_timeFlyStateBegin = Time.time;
+
 				break;
 			default:
 				m_idleSprite.SetActive(true);
