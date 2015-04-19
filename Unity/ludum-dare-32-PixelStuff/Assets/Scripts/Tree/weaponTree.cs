@@ -4,7 +4,7 @@ using System.Collections;
 public class weaponTree : MonoBehaviour {
 	public Sprite finalSprite;
 	public Sprite[] TabState;
-	public int PVmax;
+	public int PVMAX;
 	public int PVLastState;
 	
 	private int CurrentState;
@@ -36,7 +36,8 @@ public class weaponTree : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		CurrentState = 0;
-		statePV = (PVmax - PVLastState);
+		currentPV = PVMAX;
+		statePV = (PVMAX - PVLastState);
 		nbPVForState = statePV / TabState.Length;
 		this.GetComponent<SpriteRenderer>().sprite = TabState[CurrentState];
 
@@ -52,6 +53,7 @@ public class weaponTree : MonoBehaviour {
 
 		if (currentEtat == Etat.waitForSmashing && smashNextTime) {
 			Smash ();
+			isNomNom ();
 		}
 		if (currentEtat == Etat.idle && prepareNextTime) {
 			prepareSmash ();
@@ -60,7 +62,6 @@ public class weaponTree : MonoBehaviour {
 	if (currentEtat == Etat.isSmashing) {
 			if (setAngleTo(onTheGroundAngle -smashAngle,secondeSmash)){
 				this.transform.localEulerAngles = new Vector3(0,0,onTheGroundAngle) ;
-				isNomNom ();
 				smashHitTheGround();
 
 			}
@@ -81,19 +82,19 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void isNomNom(){
-		currentPV = -50;
+		currentPV -=30;
 		setStateForPV ();
 	}
 
 	private void setStateForPV ()	{
 		if (CurrentState == -1)
 			return;
-		if (currentPV < PVLastState) {
+		if (currentPV <= PVLastState) {
 			this.GetComponent<SpriteRenderer>().sprite = finalSprite;
 			CurrentState =-1;
 			return;
 		}
-		int PVStateLost = PVmax - PVLastState;
+		int PVStateLost = currentPV - PVLastState;
 		int state = PVStateLost / nbPVForState;
 		if (CurrentState != state) {
 			this.GetComponent<SpriteRenderer>().sprite = TabState[state];

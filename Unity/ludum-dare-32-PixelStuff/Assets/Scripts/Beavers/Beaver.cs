@@ -91,16 +91,16 @@ public class Beaver : MonoBehaviour {
 			//TO DO: Afficher Anim écrasé
 			//Debug.Log ("Ecrasé");
 
-			if (this.transform.localPosition.x <= -20f) {
+			if (this.transform.position.x <= -20f) {
 				Destroy (this.gameObject);
 			}
-			if(Time.time - m_timeSmashStateBegin >= 2){
+			if(Time.time - m_timeSmashStateBegin >= 5){
 				Destroy (this.gameObject);
 			}
 			break;
 		case BeaverState.Flying:
 			//TO DO: Lancer anim d'envole du beaver <3
-			if(Time.time - m_timeFlyStateBegin >= 2){
+			if(Time.time - m_timeFlyStateBegin >= 5){
 				Destroy (this.gameObject);
 			}
 			break;
@@ -119,7 +119,7 @@ public class Beaver : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider){
 
-		if (collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") {
+		if ((collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") && m_currentState != BeaverState.HangOnTree) {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
 			m_life = 0;

@@ -100,11 +100,11 @@ MonoBehaviour:
   TabState:
   - {fileID: 21300000, guid: 1382d4ee5f0f24a86b3fc632ae9e5ed8, type: 3}
   - {fileID: 21300000, guid: a23c013d29e6f0643b45dd559233c094, type: 3}
-  PVmax: 100
+  PVMAX: 0
   PVLastState: 40
   smashAngle: 60
   secondePrepareSmash: 2
-  onTheGroundAngle: -60
+  onTheGroundAngle: 0
   secondeSmash: 1
   iddleAngle: 0
   smashNextTime: 0
