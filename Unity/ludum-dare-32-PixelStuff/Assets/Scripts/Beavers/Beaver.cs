@@ -88,7 +88,7 @@ public class Beaver : MonoBehaviour {
 			if(m_timeBetweenDamage >= 1.0f){
 				m_life =  m_life - 15;
 				m_timeBetweenDamage = Time.deltaTime;
-				//m_treeManager.
+				m_treeManager.currentWeapon.GetComponent<weaponTree>().isNomNom();
 			}
 
 			if(m_positionTreeToHang != null){
@@ -99,6 +99,8 @@ public class Beaver : MonoBehaviour {
 			
 			if(m_life <= 0){
 				Destroy(this.gameObject);
+				//changeState (BeaverState.Flying);
+
 			}
 
 			break;
@@ -129,6 +131,7 @@ public class Beaver : MonoBehaviour {
 	}
 
 	void OnDestroy(){
+
 		if (destroyListener != null) {
 			destroyListener(this);
 		}
