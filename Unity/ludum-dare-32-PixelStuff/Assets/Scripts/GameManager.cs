@@ -44,8 +44,9 @@ public class GameManager : MonoBehaviour {
 	void Start(){
 		if (brothersManager == null) {
 			brothersManager = GameObject.FindGameObjectWithTag ("Player").GetComponent<BrothersManager> ();
-			brothersManager.brothersDiedAction += BrothersDied;
 		}
+
+		brothersManager.brothersDiedAction += BrothersDied;
 
 		if (beaversManager == null) {
 			beaversManager = GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ();
