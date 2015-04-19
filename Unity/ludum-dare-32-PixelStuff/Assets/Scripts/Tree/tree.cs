@@ -21,6 +21,8 @@ public class tree : MonoBehaviour {
 	private float remaningSeconde;
 	private float RotationZIteration;
 
+	private bool isShake=true;
+
 	void Start () {
 		state = TreeState.UP;
 
@@ -49,7 +51,10 @@ public class tree : MonoBehaviour {
 
 		if (remaningSeconde < 0) {
 			trunk.GetComponent<BoxCollider2D>().enabled = false;
+			if(isShake){
 			GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
+				isShake = false;
+			}
 			state = TreeState.FALLEN;
 		}
 	}
