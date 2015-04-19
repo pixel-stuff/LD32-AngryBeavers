@@ -8,16 +8,23 @@ public class CameraManager : MonoBehaviour {
 	public float shakeSpeedY = 0.01f;
 	public float shakeAmplitudeY = 0.1f;
 
+	public GameObject gameOverScreenSprite;
+
 	public bool m_isShakingX = false;
 	public bool m_isShakingY = false;
+	public bool m_isGameOver = false;
+	
+	private float m_shakingDuration = 0.0f;
 	// Use this for initialization
 	void Start () {
 		restartSettings();
+		setShaking (false, true, 2.0f);
 	}
 
 	private void restartSettings() {
 		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -2.0f);
 		Camera.main.orthographicSize = 2.3f;
+		gameOverScreenSprite.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
 	
 	private void shakeX (bool brute) {
@@ -48,6 +55,22 @@ public class CameraManager : MonoBehaviour {
 		}
 	}
 
+	private void enableGameOverScreen() {
+		gameOverScreenSprite.SetActive(true);
+	}
+	
+	private void disableGameOverScreen() {
+		gameOverScreenSprite.SetActive(false);
+	}
+
+	public void writeOnScreen(string text) {
+		GUIText guiText = gameOverScreenSprite.AddComponent<GUIText> ();
+		guiText.color = Color.red;
+		guiText.transform.position = new Vector3(0.5f,0.5f,0f);
+		guiText.font = Font.CreateDynamicFontFromOSFont("Arial", 11);
+		guiText.text = text;
+	}
+
 	public void setShakeSpeedX(float sspeed) {
 		shakeSpeedX = sspeed;
 	}
@@ -64,21 +87,32 @@ public class CameraManager : MonoBehaviour {
 		shakeSpeedY = samp;
 	}
 
-	public void setShaking(bool x, bool y) {
+	public void setShaking(bool x, bool y, float duration) {
 		m_isShakingX = x;
 		m_isShakingY = y;
+		m_shakingDuration = duration;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (m_isShakingX) {
+		if (m_isShakingX && m_shakingDuration>0.0f) {
 			shakeX (false);
 		}
-		if (m_isShakingY) {
+		if (m_isShakingY && m_shakingDuration>0.0f) {
 			shakeY (false);
+		}
+		if (m_shakingDuration <= 0.0f) {
+			m_isShakingX = false;
+			m_isShakingY = false;
 		}
 		if (!m_isShakingX && !m_isShakingY) {
 			restartSettings();
 		}
+		if (m_isGameOver) {
+			enableGameOverScreen ();
+		} else {
+			disableGameOverScreen ();
+		}
+		m_shakingDuration -= Time.deltaTime;
 	}
 }
