@@ -27,11 +27,23 @@ public class CameraManager : MonoBehaviour {
 		m_guiText.font = Font.CreateDynamicFontFromOSFont("Arial", 11);
 		m_guiText.text = "";
 		m_guiText.enabled = false;
-		restartSettings();
+		initSettings();
+	}
+
+	private void initSettings() {
+		Camera.main.transform.position = new Vector3 (1.0f, 0.0f, -2.0f);
+		Camera.main.orthographicSize = 2.3f;
+		Camera.main.rect = new Rect(0.0f, 0.25f, 1.0f, 0.55f);
+		m_guiText.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
+		gameOverScreenSprite.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
 
 	private void restartSettings() {
-		Camera.main.transform.position = new Vector3 (1.0f, 0.0f, -2.0f);
+		Camera.main.transform.position = new Vector3 (
+			Mathf.SmoothStep (Camera.main.transform.position.x, 1.0f, 0.01f),
+			Mathf.SmoothStep (Camera.main.transform.position.y, 0.0f, 0.01f),
+			Mathf.SmoothStep (Camera.main.transform.position.z, -2.0f, 0.01f)
+			);
 		Camera.main.orthographicSize = 2.3f;
 		Camera.main.rect = new Rect(0.0f, 0.25f, 1.0f, 0.55f);
 		m_guiText.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
