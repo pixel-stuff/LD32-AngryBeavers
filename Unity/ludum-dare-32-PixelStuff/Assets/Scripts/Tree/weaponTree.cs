@@ -141,10 +141,14 @@ public class weaponTree : MonoBehaviour {
 			this.GetComponent<SpriteRenderer>().sprite = TabState[state];
 
 			float pWidth = TabState[state].rect.width/TabState[TabState.Length-1].rect.width;
-			print (pWidth*smashBox.size.x);
+			print(pWidth*smashBox.size.x);
 			smashBox.size = new Vector2(pWidth*widthBaseSmashBoxCollider, smashBox.size.y);
+			print (widthBaseSmashBoxCollider+" "+smashBox.size.x);
+			float deltaW = widthBaseSmashBoxCollider-smashBox.size.x;
+			print (deltaW);
 			sharpBox.transform.position = new Vector3(
-				sharpBox.transform.position.x-sharpBox.size.x,
+				//sharpBox.transform.position.x+sharpBox.size.x,
+				xBaseSharpBoxCollider-deltaW,
 				sharpBox.transform.position.y,
 				sharpBox.transform.position.z);
 
