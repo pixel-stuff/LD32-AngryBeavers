@@ -336,6 +336,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 459114, guid: 814997581e49447a882961816588bbce, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.38999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814997581e49447a882961816588bbce, type: 2}
   m_IsPrefabParent: 0
@@ -519,6 +523,12 @@ Prefab:
     - target: {fileID: 22430182, guid: b6574b687855e4d4594ddd4b31a99ec5, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435834, guid: b6574b687855e4d4594ddd4b31a99ec5, type: 2}
+      propertyPath: m_Text
+      value: '100 beavers killed
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6574b687855e4d4594ddd4b31a99ec5, type: 2}
