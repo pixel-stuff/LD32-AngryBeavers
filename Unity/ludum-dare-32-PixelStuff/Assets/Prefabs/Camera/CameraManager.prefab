@@ -364,10 +364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d6ab885e4b0a34c9ea21d5846bf0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeSpeedX: .00999999978
-  shakeAmplitudeX: .100000001
-  shakeSpeedY: .00999999978
-  shakeAmplitudeY: .100000001
+  shakeSpeedX: .0399999991
+  shakeAmplitudeX: .0599999987
+  shakeSpeedY: .0399999991
+  shakeAmplitudeY: .0599999987
   gameOverScreenSprite: {fileID: 142656}
   screenFont: {fileID: 12800000, guid: 828c7f40f2b5348eea37747deb8a0c72, type: 3}
   m_isShakingX: 0

@@ -123,7 +123,7 @@ public class weaponTree : MonoBehaviour {
 		sharpBox.enabled = true;
 		smashBox.enabled = false;
 		currentEtat = Etat.idle;
-		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking (true,false,1);
+		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.3f);
 	}
 
 	public void smashASAP(){
