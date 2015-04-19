@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
 		if (brothersManager == null) {
 			brothersManager = GameObject.FindGameObjectWithTag ("Player").GetComponent<BrothersManager> ();
 		}
-
+			
 		brothersManager.brothersDiedAction += BrothersDied;
 
 		if (beaversManager == null) {
@@ -123,7 +123,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnBeaverKilled(int totalBeaverKilled) {
-		Debug.Log ("[GameManager] " + totalBeaverKilled + " total beavers killed");
 		menuManager.IncrementScore ();
 	}
 
