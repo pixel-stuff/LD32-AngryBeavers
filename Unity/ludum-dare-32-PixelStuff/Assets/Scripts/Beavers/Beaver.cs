@@ -34,7 +34,6 @@ public class Beaver : MonoBehaviour {
 	[SerializeField]
 	private int m_life = 100;
 
-	private GameObject m_positionTreeToHang; 
 
 	[SerializeField]
 	private Animation m_BeaversAnimations;
@@ -47,14 +46,16 @@ public class Beaver : MonoBehaviour {
 	float m_timeBetweenDamage = 1;
 
 	Vector3 m_beaverSpeedRunning = new Vector3 (); 
-	Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-1f,1f),UnityEngine.Random.Range(-1f,1f),0f);
-
+	Vector3 m_decalageHangOnTree = new Vector3 (); 
+	GameObject m_treeToHang;
 
 
 	public void Initialize(treeManager treeManager){
 		m_treeManager = treeManager;
 		m_currentState= BeaverState.Running;
 		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/20,this.transform.lossyScale.x/10),0f,0f);
+		m_decalageHangOnTree = new Vector3 (UnityEngine.Random.Range (-1.0f, 0.8f), UnityEngine.Random.Range (-0.5f, 0.5f), 0f);
+
 		m_endAnimationScript.endFlyingAnimationAction += endFlyingAnimationListener;
 	}
 
@@ -91,8 +92,8 @@ public class Beaver : MonoBehaviour {
 				m_treeManager.currentWeapon.GetComponent<weaponTree>().isNomNom();
 			}
 
-			if(m_positionTreeToHang != null){
-				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
+			if(m_treeToHang != null){
+				Vector3 newpos = m_treeToHang.transform.position + m_decalageHangOnTree;
 				this.gameObject.transform.position = newpos;
 			}
 
@@ -153,9 +154,8 @@ public class Beaver : MonoBehaviour {
 				this.gameObject.GetComponent<FollowingGroundSpeed>().enabled = true;
 			}else{
 				changeState(BeaverState.HangOnTree);
-				m_positionTreeToHang = collider.gameObject;
-				Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-m_positionTreeToHang.transform.lossyScale.x/4,m_positionTreeToHang.transform.lossyScale.x/4),UnityEngine.Random.Range(m_positionTreeToHang.transform.lossyScale.y/4,m_positionTreeToHang.transform.lossyScale.y/4),0f);
-				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
+				m_treeToHang = collider.gameObject;
+				Vector3 newpos = m_treeToHang.transform.position + m_decalageHangOnTree;
 				this.gameObject.transform.position = newpos;
 
 			}
