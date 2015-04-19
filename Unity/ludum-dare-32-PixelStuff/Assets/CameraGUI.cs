@@ -26,6 +26,6 @@ public class CameraGUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		m_guiText.text = "Score: "+m_score;
+		//m_guiText.text = "Score: "+m_score;
 	}
 }
