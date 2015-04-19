@@ -33,18 +33,29 @@ public class Beaver : MonoBehaviour {
 
 	private GameObject m_positionTreeToHang; 
 
+	[SerializeField]
+	private Animation m_BeaversAnimations;
 
 
-	public void Initialize(){
-		m_currentState= BeaverState.Running;
-		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/10,this.transform.lossyScale.x/4),0f,0f);
-	
-	}
 
 	float m_timeBetweenDamage = 1;
 
 	Vector3 m_beaverSpeedRunning = new Vector3 (); 
 	Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-1f,1f),UnityEngine.Random.Range(-1f,1f),0f);
+	
+	public void Initialize(){
+		m_currentState= BeaverState.Running;
+		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/10,this.transform.lossyScale.x/4),0f,0f);
+		
+	}
+
+	void Start(){
+		
+		//m_BeaversAnimations.Play ();
+	}
+		
+		private float m_timeSmashStateBegin;
+
 	// Update is called once per frame
 	void Update () {
 		switch (m_currentState) {
@@ -69,22 +80,29 @@ public class Beaver : MonoBehaviour {
 				this.gameObject.transform.position = newpos;
 			}
 
+			
+			if(m_life <= 0){
+				Destroy(this.gameObject);
+			}
 
 			break;
 		case BeaverState.Smashed:
 			//TO DO: Afficher Anim écrasé
 			Debug.Log ("Ecrasé");
+			if (this.transform.localPosition.x <= -20f) {
+				Destroy (this.gameObject);
+			}
 			break;
 		case BeaverState.Flying:
 			//TO DO: Lancer anim d'envole du beaver <3
+			if(Time.time - m_timeSmashStateBegin >= 5){
+				Destroy (this.gameObject);
+			}
 			break;
 		default:
 
 			break;
 			
-		}
-		if(m_life <= 0){
-			Destroy(this.gameObject);
 		}
 	}
 
@@ -100,6 +118,7 @@ public class Beaver : MonoBehaviour {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
 			m_life = 0;
+			m_timeSmashStateBegin = Time.time;
 			//TO DO: Le cadavre se déplace avec le background
 			return;
 		}
@@ -140,6 +159,7 @@ public class Beaver : MonoBehaviour {
 				break;
 			case BeaverState.Flying:
 				m_ejectSprite.SetActive (true);
+				m_BeaversAnimations.Play();
 				break;
 			default:
 				m_idleSprite.SetActive(true);
