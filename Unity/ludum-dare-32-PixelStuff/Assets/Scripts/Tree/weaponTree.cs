@@ -152,9 +152,10 @@ public class weaponTree : MonoBehaviour {
 
 	public void Smash(){
 		prepareNextTime = false;
-
-		smashBox.enabled= true;
-		sharpBox.enabled = false;
+		if (currentPV > 0) {
+			smashBox.enabled = true;
+			sharpBox.enabled = false;
+		}
 		currentEtat = Etat.isSmashing;
 		currentTimeAnim = secondeSmash;
 		prepareNextTime = false;
@@ -168,8 +169,10 @@ public class weaponTree : MonoBehaviour {
 
 	public void smashHitTheGround(){
 		smashNextTime = false;
-		sharpBox.enabled = true;
-		smashBox.enabled = false;
+		if (currentPV > 0) {
+			sharpBox.enabled = true;
+			smashBox.enabled = false;
+		}
 		currentEtat = Etat.idle;
 		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
 		GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ().SmashBeaversHangOnTree ();
