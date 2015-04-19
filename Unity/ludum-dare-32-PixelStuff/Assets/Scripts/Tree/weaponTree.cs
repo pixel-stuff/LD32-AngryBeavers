@@ -39,6 +39,10 @@ public class weaponTree : MonoBehaviour {
 	}
 	private Etat currentEtat;
 
+	private float[] m_widthSmashBoxCollider;
+	private float[] m_xOffSmashBoxCollider;
+	private float[] m_xSharpBoxCollider;
+
 	public float widthBaseSmashBoxCollider;
 	private float previousXSharpBoxCollider;
 	public float xBaseSharpBoxCollider;
@@ -51,12 +55,23 @@ public class weaponTree : MonoBehaviour {
 		nbPVForState = statePV / TabState.Length;
 		this.GetComponent<SpriteRenderer>().sprite = TabState[CurrentState];
 
+		// Ground truth values
+		m_widthSmashBoxCollider = new float[]{1.6f, 2.45f, 3.14f, 3.82f, 4.4f};
+		m_xOffSmashBoxCollider = new float[]{-0.2f, -0.25f, -0.25f, -0.25f, -0.25f};
+		m_xSharpBoxCollider = new float[]{0.8f, 1.25f, 1.55f, 1.88f, 2.2f};
 
 		smashBox = this.GetComponent<BoxCollider2D> ();
-		widthBaseSmashBoxCollider = smashBox.size.x;
-
 		sharpBox = this.GetComponentsInChildren<BoxCollider2D> ()[1];
-		xBaseSharpBoxCollider = sharpBox.transform.position.x;
+
+		smashBox.size = new Vector2(m_widthSmashBoxCollider[CurrentState+1], smashBox.size.y);
+		smashBox.offset = new Vector2(m_xOffSmashBoxCollider[CurrentState+1], smashBox.offset.y);
+		sharpBox.transform.localPosition = new Vector3(
+			m_xSharpBoxCollider[CurrentState+1],
+			sharpBox.transform.localPosition.y,
+			sharpBox.transform.localPosition.z);
+
+		widthBaseSmashBoxCollider = smashBox.size.x;
+		xBaseSharpBoxCollider = sharpBox.transform.localPosition.x;
 		previousXSharpBoxCollider = xBaseSharpBoxCollider;
 
 		currentEtat = Etat.isOnTheFloor;
@@ -109,6 +124,12 @@ public class weaponTree : MonoBehaviour {
 				throwItNextTime = false;
 			}
 		}
+		smashBox.size = new Vector2(m_widthSmashBoxCollider[CurrentState+1], smashBox.size.y);
+		smashBox.offset = new Vector2(m_xOffSmashBoxCollider[CurrentState+1], smashBox.offset.y);
+		sharpBox.transform.localPosition = new Vector3(
+			m_xSharpBoxCollider[CurrentState+1],
+			sharpBox.transform.localPosition.y,
+			sharpBox.transform.localPosition.z);
 	}
 
 
@@ -138,21 +159,25 @@ public class weaponTree : MonoBehaviour {
 			return;
 		}
 		int PVStateLost = currentPV - PVLastState;
-		int state = (PVStateLost / nbPVForState);
+		int state = Mathf.CeilToInt(PVStateLost / nbPVForState);
+		print ("PM "+PVStateLost + " " + nbPVForState);
 		if (CurrentState != state) {
-			this.GetComponent<SpriteRenderer>().sprite = TabState[state];
 
+
+			/*
+			this.GetComponent<SpriteRenderer>().sprite = TabState[state];
 			float pWidth = TabState[state].rect.width/TabState[TabState.Length-1].rect.width;
-			print(pWidth*smashBox.size.x);
 			smashBox.size = new Vector2(pWidth*widthBaseSmashBoxCollider, smashBox.size.y);
 
+			print ("SB.x = "+smashBox.size.x);
 			sharpBox.transform.Translate( new Vector3(
 				//sharpBox.transform.position.x+sharpBox.size.x,
-				-(previousXSharpBoxCollider-smashBox.size.x),
+				2*xBaseSharpBoxCollider*pWidth-xBaseSharpBoxCollider,
+				//-Mathf.Abs(widthBaseSmashBoxCollider-smashBox.size.x+2*smashBox.offset.x),
 				0,
 				0));
 			previousXSharpBoxCollider = smashBox.size.x;
-			//smashBox.transform.postion.x-=smashBox.
+			//smashBox.transform.postion.x-=smashBox.*/
 			CurrentState = state;
 		}
 	}
