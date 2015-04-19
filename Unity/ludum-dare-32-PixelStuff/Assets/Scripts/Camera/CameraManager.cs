@@ -31,8 +31,9 @@ public class CameraManager : MonoBehaviour {
 	}
 
 	private void restartSettings() {
-		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -2.0f);
+		Camera.main.transform.position = new Vector3 (1.0f, 0.0f, -2.0f);
 		Camera.main.orthographicSize = 2.3f;
+		Camera.main.rect = new Rect(0.0f, 0.25f, 1.0f, 0.55f);
 		m_guiText.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 		gameOverScreenSprite.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
