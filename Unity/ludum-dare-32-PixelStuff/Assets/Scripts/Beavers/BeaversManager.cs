@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+public enum BeaversManagerState{
+	LettingPlayerCutDowntree,
+	Assault
+	
+}
+
 public class BeaversManager : MonoBehaviour {
 
 	[SerializeField]
@@ -14,8 +20,7 @@ public class BeaversManager : MonoBehaviour {
 
 	public Action<int> onBeaverKilledListener;
 
-	//[SerializeField]
-	//private  m_brothersManager;
+	private BeaversManagerState m_currentState;
 
 	private int m_beaverCreated = 0;
 	private int m_beaverKilledTotal = 0;
@@ -26,25 +31,53 @@ public class BeaversManager : MonoBehaviour {
 		m_beaverContainer.transform.position = GameObject.FindGameObjectWithTag ("SpawnArea").transform.position;
 
 		CreateBeaver ();
-
+		m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
+		
+		m_timeStateStarted[(int)m_currentState] = Time.time;
 	}
-	
+
+
+	private float m_lastCreated;
+	private float[] m_frequenceCreationBeaver = new float[]{
+		1,	//LettingPlayerCutDowntree
+		2	//Assault
+	};
+
+	private float[] m_timeStateStarted = new float[]{
+		0f,	//LettingPlayerCutDowntree
+		0f	//Assault
+	};
+	private float[] m_timeToStayInState = new float[]{
+		10f,	//LettingPlayerCutDowntree
+		10f		//Assault
+	};
 	// Update is called once per frame
 	void Update () {
+		if (m_beaverCreated - m_beaverKilledTotal >= 35) {
+			m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
+			return;
+		}
+
+		
+		if(Time.time - m_lastCreated >= 1/m_frequenceCreationBeaver[(int)m_currentState]){
+			CreateBeaver();
+			m_lastCreated = Time.time;
+		}
 
 
-	
+		//Change State lorsque temps écoulé
+		if (Time.time - m_timeStateStarted [(int)m_currentState] > m_timeToStayInState [(int)m_currentState]) {
+			int cur = (int)m_currentState;
+			cur = (cur+1)%2;
+			m_currentState = (BeaversManagerState)cur;
+			m_timeStateStarted[(int)m_currentState] = Time.time;
+		}
 	}
-
-
-
-
-
 
 	void SmashBeaversHangOnTree(){
 		foreach(Beaver beav in m_listBeavers){
 			if(beav.getCurrentState() == BeaverState.HangOnTree){
-
+				beav.changeState(BeaverState.Flying);
 			}
 		}
 	}
@@ -65,6 +98,12 @@ public class BeaversManager : MonoBehaviour {
 
 		
 		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
+	}
+
+
+	public void letThePlayerCuttingDownTree(){
+		m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
+		m_timeStateStarted[1] = Time.time;
 	}
 
  	void removeBeaver(Beaver beav){

@@ -32,16 +32,17 @@ public class Beaver : MonoBehaviour {
 
 
 	public void Initialize(){
-		m_currentState= BeaverState.HangOnTree;
+		m_currentState= BeaverState.Running;
 	}
 
 	float m_timeBetweenDamage = 1;
 
+	Vector3 m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(0.2f,0.5f),0f,0f);
 	// Update is called once per frame
 	void Update () {
 		switch (m_currentState) {
 		case BeaverState.Running:
-			this.transform.localPosition -= new Vector3 (0.05f, 0f, 0f);
+			this.transform.localPosition -= m_beaverSpeedRunning;
 			
 			
 			if (this.transform.localPosition.x <= -20f) {
@@ -54,20 +55,18 @@ public class Beaver : MonoBehaviour {
 			if(m_timeBetweenDamage >= 1.0f){
 				m_life =  m_life - 15;
 				m_timeBetweenDamage = Time.deltaTime;
-
 			}
 
 			if(m_life <= 0){
 				Destroy(this.gameObject);
 			}
-
-
 			break;
 		case BeaverState.Smashed:
+			//TO DO: Afficher Anim écrasé
 			Debug.Log ("Ecrasé");
 			break;
 		case BeaverState.Flying:
-
+			//TO DO: Lancer anim d'envole du beaver <3
 			break;
 		default:
 
@@ -86,7 +85,8 @@ public class Beaver : MonoBehaviour {
 		if (collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
-			//Le cadavre se déplace avec le background
+
+			//TO DO: Le cadavre se déplace avec le background
 			return;
 		}
 
@@ -106,7 +106,7 @@ public class Beaver : MonoBehaviour {
 		
 	}
 
-	private void changeState(BeaverState state){
+	public void changeState(BeaverState state){
 
 		m_currentState = state;
 		resetImage ();
