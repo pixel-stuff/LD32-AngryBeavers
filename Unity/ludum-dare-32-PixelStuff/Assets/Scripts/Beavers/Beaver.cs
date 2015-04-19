@@ -42,7 +42,9 @@ public class Beaver : MonoBehaviour {
 
 	Vector3 m_beaverSpeedRunning = new Vector3 (); 
 	Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-1f,1f),UnityEngine.Random.Range(-1f,1f),0f);
-	
+
+
+
 	public void Initialize(){
 		m_currentState= BeaverState.Running;
 		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/10,this.transform.lossyScale.x/4),0f,0f);
@@ -123,7 +125,7 @@ public class Beaver : MonoBehaviour {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
 			m_life = 0;
-			//TO DO: Le cadavre se déplace avec le background
+			this.gameObject.GetComponent<FollowingGroundSpeed>().enabled = true;
 			return;
 		}
 
