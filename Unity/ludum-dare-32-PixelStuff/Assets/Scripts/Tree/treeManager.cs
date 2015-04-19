@@ -51,6 +51,12 @@ public class treeManager : MonoBehaviour {
 		playerPickUpWeapon ();
 	}
 
+	public void trowWeaponOnGround(){
+		if (currentWeapon != null) {
+			currentWeapon.GetComponent<weaponTree>().throwItNextTime = true;
+		}
+	}
+
 	public GameObject playerPickUpWeapon(){
 		if (currentTree !=null && currentTree.GetComponent<tree> ().isOnFloor()) {
 			if (currentWeapon){

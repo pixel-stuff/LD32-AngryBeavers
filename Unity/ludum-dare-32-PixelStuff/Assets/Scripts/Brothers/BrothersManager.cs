@@ -88,6 +88,8 @@ public class BrothersManager : MonoBehaviour {
 		brother2.DropThunk ();
 
 		state = BrotherState.ChoppingWood;
+
+		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().trowWeaponOnGround ();
 	}
 
 	private void DoDeath() {
@@ -98,6 +100,9 @@ public class BrothersManager : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Beaver") {
 			DoDeath();
+		}
+		if (col.gameObject.tag == "Tree") {
+			DoDropTunk();
 		}
 	}
 

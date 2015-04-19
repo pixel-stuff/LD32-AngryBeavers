@@ -31,14 +31,14 @@ public class tree : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		/*
 		//test 
 		if (this.gameObject.transform.position.x < 0) {
 			chopLeft();
 			chopRight();
 		}
 		//!test
-
+*/
 		if ( state == TreeState.UP && isChoped()) {
 			state = TreeState.CHOPED;
 			calculFallPosition();
