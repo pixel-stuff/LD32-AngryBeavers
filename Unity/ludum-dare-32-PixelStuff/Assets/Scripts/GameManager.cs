@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void ChopTreeLeft(){
+		Debug.Log ("LEFT");
 		GameObject.FindGameObjectWithTag("Player").GetComponent<BrothersManager>().ChopLeft();
 	}
 	private void ChopTreeRight(){

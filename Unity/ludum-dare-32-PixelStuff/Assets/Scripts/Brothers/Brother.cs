@@ -24,26 +24,36 @@ public class Brother : MonoBehaviour {
 	}
 
 	public void reset(){
-		animator.SetBool ("NoTree",false);
+		//animator.SetBool ("NoTree",false);
 	}
 	public void Run() {
 		Debug.Log ("RUN");
+		reset ();
 		animator.SetBool ("NoTree",true);
+		animator.SetBool ("HaveTree",false);
+		animator.SetBool ("StartChop",false);
 	}
 
 	public void prepareChop() {
 		Debug.Log ("Chop");
 		reset ();
+		animator.SetBool ("NoTree",false);
 		animator.SetBool ("StartChop",true);
+		animator.SetBool ("HaveTree",false);
 
 	}
 
+	public void HaveTree(){
+		animator.SetBool ("NoTree",false);
+		animator.SetBool ("StartChop",false);
+		animator.SetBool ("HaveTree",true);
+	}
 	public void Idle() {
-		animator.SetBool ("Running", false);
+		//animator.SetBool ("Running", false);
 	}
 
 	public void Died() {
-		animator.SetBool ("Running", false);
+		//animator.SetBool ("Running", false);
 //		animator.SetBool ("PreparingAttack", false);
 //		animator.SetTrigger ("Death");
 	}

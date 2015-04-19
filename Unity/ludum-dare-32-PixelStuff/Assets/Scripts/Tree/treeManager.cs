@@ -87,8 +87,11 @@ public class treeManager : MonoBehaviour {
 
 
 	public void ChopLeft(){
-		if(currentTree != null)
-		currentTree.GetComponent<tree> ().chopLeft ();
+		Debug.Log ("LEFT");
+		if (currentTree != null) {
+			Debug.Log ("doleft");
+			currentTree.GetComponent<tree> ().chopLeft ();
+		}
 	}
 
 	public void ChopRight(){

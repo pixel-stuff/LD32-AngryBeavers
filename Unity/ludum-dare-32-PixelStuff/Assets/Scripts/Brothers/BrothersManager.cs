@@ -7,7 +7,7 @@ public class BrothersManager : MonoBehaviour {
 	private BrotherState _state = BrotherState.Running;
 
 
-	private bool lok=false;
+	private bool lok;
 	public bool stopAtNextTree;
 	public bool AuthoriseStop;
 	public Action brothersDiedAction;
@@ -25,7 +25,7 @@ public class BrothersManager : MonoBehaviour {
 
 			_state = value;
 
-			switch (_state) {
+			/*switch (_state) {
 			case BrotherState.MovingIntoScene:
 				DoMovingIntoScene();
 				break;
@@ -50,12 +50,17 @@ public class BrothersManager : MonoBehaviour {
 			case BrotherState.DropThunk:
 				DoDropTunk();
 				break;
-			}
+			}*/
 		}
 	}
 	
 	public Brother brother1;
 	public Brother brother2;
+
+	public Leg leg1;
+	public Leg leg2;
+
+	public GameObject armBrother1;
 	
 	private void DoMovingIntoScene() {
 		state = BrotherState.Running;
@@ -88,7 +93,16 @@ public class BrothersManager : MonoBehaviour {
 
 	private void DoRunning() {
 		brother1.Run ();
+		leg1.Run ();
 		brother2.Run ();
+		leg2.Run ();
+	}
+
+	private void DoHaveTree() {
+		brother1.HaveTree ();
+		leg1.Run ();
+		brother2.HaveTree ();
+		leg2.Run ();
 	}
 
 	private void DoDropTunk() {
@@ -117,8 +131,10 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	public void ChopLeft(){
-		if(Chop)
-		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopLeft ();
+		if (Chop) {
+			Debug.Log ("LEFT");
+			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopLeft ();
+		}
 	}
 	public void ChopRight(){
 		if(Chop)
@@ -129,6 +145,8 @@ public class BrothersManager : MonoBehaviour {
 	public void prepareChop(){
 		brother1.prepareChop ();
 		brother2.prepareChop ();
+		leg1.prepareChop ();
+		leg2.prepareChop ();
 	}
 	public void StopAtNextTree(){
 		if (AuthoriseStop) {
@@ -164,10 +182,13 @@ public class BrothersManager : MonoBehaviour {
 		if (col.gameObject.tag == "GripTree") {
 			Debug.Log("COLLISION new arme");
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().pickWeapon();
+			DoHaveTree();
 		}
 	}
 	
-
+	public void treeIsChop(){
+		DoRunning();
+	}
 	void Update(){
 		if(!lok){
 			DoRunning();
