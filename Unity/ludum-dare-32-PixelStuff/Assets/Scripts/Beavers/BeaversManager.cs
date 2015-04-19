@@ -18,6 +18,8 @@ public class BeaversManager : MonoBehaviour {
 	private GameObject m_beaverContainer;
 	private List<Beaver> m_listBeavers;
 
+	private treeManager m_treeManager;
+
 	public Action<int> onBeaverKilledListener;
 
 	private BeaversManagerState m_currentState;
@@ -30,17 +32,18 @@ public class BeaversManager : MonoBehaviour {
 		m_listBeavers = new List<Beaver> ();
 		m_beaverContainer.transform.position = GameObject.FindGameObjectWithTag ("SpawnArea").transform.position;
 
-		CreateBeaver ();
 		m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
 		
 		m_timeStateStarted[(int)m_currentState] = Time.time;
+
+		m_treeManager = GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager>();
 	}
 
 
 	private float m_lastCreated;
 	private float[] m_frequenceCreationBeaver = new float[]{
 		1,	//LettingPlayerCutDowntree
-		2	//Assault
+		4	//Assault
 	};
 
 	private float[] m_timeStateStarted = new float[]{
@@ -94,7 +97,7 @@ public class BeaversManager : MonoBehaviour {
 		
 		Beaver beav = plop.gameObject.GetComponent<Beaver> ();
 		beav.destroyListener += removeBeaver;
-		beav.Initialize ();
+		beav.Initialize (m_treeManager);
 
 		
 		m_listBeavers.Add (plop.gameObject.GetComponent<Beaver> ());
