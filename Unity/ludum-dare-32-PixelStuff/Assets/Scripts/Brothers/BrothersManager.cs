@@ -93,8 +93,6 @@ public class BrothersManager : MonoBehaviour {
 		brother2.DropThunk ();
 
 		state = BrotherState.ChoppingWood;
-
-
 	}
 
 	private void DoDeath() {
