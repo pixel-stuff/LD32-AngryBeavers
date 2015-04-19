@@ -11,6 +11,7 @@ TagManager:
   - Beaver
   - CameraManager
   - ParallaxManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX
