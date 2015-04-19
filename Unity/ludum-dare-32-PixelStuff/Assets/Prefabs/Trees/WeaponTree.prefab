@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .209999993, y: .949999988, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 429908}
@@ -138,12 +138,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723c3d3e578926e488d4c95acc537fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalSprite: {fileID: 21300000, guid: 08b3b54783d834b6887cbe5507761cc2, type: 3}
+  finalSprite: {fileID: 21300000, guid: 3505fb67b51b3834fb5500438ec8e73c, type: 3}
   TabState:
-  - {fileID: 21300000, guid: 1382d4ee5f0f24a86b3fc632ae9e5ed8, type: 3}
-  - {fileID: 21300000, guid: a23c013d29e6f0643b45dd559233c094, type: 3}
+  - {fileID: 21300000, guid: 39cb8b3d47ce7894a931b208391b859f, type: 3}
+  - {fileID: 21300000, guid: 142af7918af335d40b1ed4c74790d020, type: 3}
+  - {fileID: 21300000, guid: d7cf516d65692fb44bb2d4e747f5917c, type: 3}
+  - {fileID: 21300000, guid: 380410b21ae8a0e44b4c47473beb58a2, type: 3}
   PVMAX: 200
   PVLastState: 40
+  CurrentState: 0
+  currentPV: 0
   smashAngle: 60
   secondePrepareSmash: 2
   onTheGroundAngle: 0

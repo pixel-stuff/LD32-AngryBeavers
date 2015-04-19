@@ -7,8 +7,8 @@ public class weaponTree : MonoBehaviour {
 	public int PVMAX;
 	public int PVLastState;
 	
-	private int CurrentState;
-	private int currentPV;
+	public int CurrentState;
+	public int currentPV;
 	private int statePV;
 	private int nbPVForState;
 
@@ -38,17 +38,23 @@ public class weaponTree : MonoBehaviour {
 	}
 	private Etat currentEtat;
 
+	private float widthBaseSmashBoxCollider;
+	private float xBaseSharpBoxCollider;
+
 	// Use this for initialization
 	void Start () {
-		CurrentState = 0;
+		CurrentState = TabState.Length-1;
 		currentPV = PVMAX;
 		statePV = (PVMAX - PVLastState);
 		nbPVForState = statePV / TabState.Length;
 		this.GetComponent<SpriteRenderer>().sprite = TabState[CurrentState];
 
+
 		smashBox = this.GetComponent<BoxCollider2D> ();
+		widthBaseSmashBoxCollider = smashBox.size.x;
 
 		sharpBox = this.GetComponentsInChildren<BoxCollider2D> ()[1];
+		xBaseSharpBoxCollider = sharpBox.transform.position.x;
 
 		currentEtat = Etat.idle;
 	}
@@ -108,22 +114,38 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void isNomNom(){
-		currentPV -=30;
+		currentPV--;
 		setStateForPV ();
 	}
 
 	private void setStateForPV ()	{
-		if (CurrentState == -1)
+		if (CurrentState == -1) {
 			return;
+		}
+		if (currentPV <= 0) {
+			sharpBox.enabled = false;
+			smashBox.enabled = false;
+			return;
+		}
 		if (currentPV <= PVLastState) {
 			this.GetComponent<SpriteRenderer>().sprite = finalSprite;
-			CurrentState =-1;
+			//CurrentState =-1;
 			return;
 		}
 		int PVStateLost = currentPV - PVLastState;
-		int state = PVStateLost / nbPVForState;
+		int state = (PVStateLost / nbPVForState);
 		if (CurrentState != state) {
 			this.GetComponent<SpriteRenderer>().sprite = TabState[state];
+
+			float pWidth = TabState[state].rect.width/TabState[TabState.Length-1].rect.width;
+			print (pWidth*smashBox.size.x);
+			smashBox.size = new Vector2(pWidth*widthBaseSmashBoxCollider, smashBox.size.y);
+			sharpBox.transform.position = new Vector3(
+				sharpBox.transform.position.x-sharpBox.size.x,
+				sharpBox.transform.position.y,
+				sharpBox.transform.position.z);
+
+			//smashBox.transform.postion.x-=smashBox.
 			CurrentState = state;
 		}
 	}
