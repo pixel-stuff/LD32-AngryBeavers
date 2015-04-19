@@ -184,6 +184,8 @@ public class Beaver : MonoBehaviour {
 				break;
 			case BeaverState.Smashed:
 				m_smashSprite.SetActive (true);
+			Debug.Log("ISSAMSH");
+			m_smashSprite.GetComponentInChildren<ParticleSystem>().Play();
 				m_timeSmashStateBegin = Time.time;
 				this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 				break;

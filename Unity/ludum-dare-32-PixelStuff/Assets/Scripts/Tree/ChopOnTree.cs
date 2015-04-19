@@ -5,7 +5,7 @@ public class ChopOnTree : MonoBehaviour {
 		public Sprite[] spr;
 		public int nbChopForchangeState = 5;
 		
-		private int totalChop;
+		public int totalChop;
 		
 		// Use this for initialization
 		void Start () {
@@ -14,8 +14,11 @@ public class ChopOnTree : MonoBehaviour {
 		
 		public void triggerChop(){
 			totalChop++;
-			if(!isCompletlyChop())
-				this.GetComponent<SpriteRenderer>().sprite = spr [totalChop / nbChopForchangeState];
+			if (!isCompletlyChop ()) {
+			this.GetComponent<SpriteRenderer> ().sprite = spr [totalChop / nbChopForchangeState];
+			this.GetComponentInChildren<ParticleSystem> ().Play ();
+			GameObject.FindGameObjectWithTag("TreeAnimation").GetComponent<ParticleSystem>().Play();
+		}
 		}
 
 		public bool isCompletlyChop(){
