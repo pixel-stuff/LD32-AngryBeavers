@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09a35bf5354c48f7bed71c81bdc10af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  restartBtn: {fileID: 0}
+  scoreText: {fileID: 11435834}
+  restartBtn: {fileID: 11428402}
 --- !u!114 &11469494
 MonoBehaviour:
   m_ObjectHideFlags: 1

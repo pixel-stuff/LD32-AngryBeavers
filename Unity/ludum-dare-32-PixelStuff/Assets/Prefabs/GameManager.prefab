@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408862}
+  - 114: {fileID: 11492466}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -27,6 +28,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11492466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6bb545184cf4d9f91dfd7f65717fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brothersManager: {fileID: 0}
+  beaversManager: {fileID: 0}
+  menuManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
