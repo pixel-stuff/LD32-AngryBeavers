@@ -37,11 +37,13 @@ public class Beaver : MonoBehaviour {
 
 	public void Initialize(){
 		m_currentState= BeaverState.Running;
+		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/10,this.transform.lossyScale.x/4),0f,0f);
+	
 	}
 
 	float m_timeBetweenDamage = 1;
 
-	Vector3 m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(0.2f,0.5f),0f,0f);
+	Vector3 m_beaverSpeedRunning = new Vector3 (); 
 	Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-1f,1f),UnityEngine.Random.Range(-1f,1f),0f);
 	// Update is called once per frame
 	void Update () {
@@ -109,6 +111,7 @@ public class Beaver : MonoBehaviour {
 			}else{
 				changeState(BeaverState.HangOnTree);
 				m_positionTreeToHang = collider.gameObject;
+				Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-m_positionTreeToHang.transform.lossyScale.x,m_positionTreeToHang.transform.lossyScale.x),UnityEngine.Random.Range(m_positionTreeToHang.transform.lossyScale.y,m_positionTreeToHang.transform.lossyScale.y),0f);
 				Vector3 newpos = m_positionTreeToHang.transform.position + m_decalageHangOnTree;
 				this.gameObject.transform.position = newpos;
 
