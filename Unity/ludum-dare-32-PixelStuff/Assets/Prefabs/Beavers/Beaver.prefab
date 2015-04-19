@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 453204}
   - 212: {fileID: 21286006}
+  - 95: {fileID: 9502372}
   m_Layer: 0
   m_Name: Idle
   m_TagString: Untagged
@@ -206,6 +207,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .5, y: .5}
+--- !u!95 &9502372
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197948}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5a77e76245da724cb1a60996e7bd070, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9518454
 Animator:
   serializedVersion: 3
@@ -303,7 +321,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3d1d478b71ddf4e9e85a363a73cdfa7d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07fcf4bdde4f64aa5ad6b79d87bb6caf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21277340
 SpriteRenderer:

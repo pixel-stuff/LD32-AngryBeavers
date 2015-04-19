@@ -46,6 +46,8 @@ public class tree : MonoBehaviour {
 		}
 		
 		if (state == TreeState.CHOPED && remaningSeconde > 0) {
+			rightChop.SetActive(false);
+			leftChop.SetActive(false);
 			remaningSeconde -= Time.deltaTime;
 			fall ();
 		}

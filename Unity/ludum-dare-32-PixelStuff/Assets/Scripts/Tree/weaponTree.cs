@@ -149,6 +149,10 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	private void setStateForPV ()	{
+
+		if (currentPV <= 0) {
+			Destroy(this.gameObject);
+		}
 		if (CurrentState == -1) {
 			return;
 		}

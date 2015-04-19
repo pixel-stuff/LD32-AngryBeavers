@@ -75,7 +75,9 @@ public class treeManager : MonoBehaviour {
 				Destroy(currentWeapon);
 			}
 			currentWeapon = Instantiate(weaponTreePrefab);
-			currentWeapon.transform.position = currentTree.GetComponent<tree>().trunk.transform.position;
+			currentWeapon.transform.position = new Vector3(currentTree.GetComponent<tree>().trunk.transform.position.x,
+			                                               currentTree.GetComponent<tree>().trunk.transform.position.y,
+			                                               currentTree.GetComponent<tree>().trunk.transform.position.z-0.1f);
 			currentWeapon.transform.eulerAngles = new Vector3(0,0,0);
 		}
 		return currentWeapon;

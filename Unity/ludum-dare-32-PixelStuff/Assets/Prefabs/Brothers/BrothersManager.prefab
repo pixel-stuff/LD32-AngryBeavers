@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4cf47088bbb433d8f8bc9652c468ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopAtNextTree: 0
+  stopAtNextTree: 1
   AuthoriseStop: 0
   Chop: 0
   brother1: {fileID: 11452732}
