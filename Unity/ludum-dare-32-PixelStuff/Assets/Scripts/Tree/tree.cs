@@ -54,7 +54,7 @@ public class tree : MonoBehaviour {
 
 	void updatePosition(){
 		if (this.gameObject.transform.position.x > 0) {
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - 0.1f, 0, 0);
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - 0.1f, this.gameObject.transform.position.y, 0);
 		}
 	}
 
