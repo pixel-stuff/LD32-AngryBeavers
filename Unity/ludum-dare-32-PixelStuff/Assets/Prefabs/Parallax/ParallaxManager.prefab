@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482782}
+  - 114: {fileID: 11439384}
   m_Layer: 0
   m_Name: ParallaxManager
   m_TagString: Untagged
@@ -134,7 +135,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482782}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &455866
 Transform:
   m_ObjectHideFlags: 1
@@ -146,7 +147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482782}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!4 &469970
 Transform:
   m_ObjectHideFlags: 1
@@ -158,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482782}
-  m_RootOrder: 1
+  m_RootOrder: 5
 --- !u!4 &475044
 Transform:
   m_ObjectHideFlags: 1
@@ -170,7 +171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482782}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &482782
 Transform:
   m_ObjectHideFlags: 1
@@ -182,11 +183,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 430820}
-  - {fileID: 469970}
   - {fileID: 434590}
-  - {fileID: 494232}
   - {fileID: 455866}
+  - {fileID: 494232}
   - {fileID: 475044}
+  - {fileID: 469970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &494232
@@ -212,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad6b5ae794db5429068f7d33095b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBackground: {fileID: 0}
+  prefabBackground: {fileID: 188732, guid: 50b993f12cbf01541bccc5b77799ea75, type: 2}
   speedX: 0
   posZ: 8
 --- !u!114 &11425268
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad6b5ae794db5429068f7d33095b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBackground: {fileID: 0}
+  prefabBackground: {fileID: 133148, guid: 8e441970399742546b26a83c5e6aeb4a, type: 2}
   speedX: -.00800000038
   posZ: 4
 --- !u!114 &11428972
@@ -240,9 +241,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad6b5ae794db5429068f7d33095b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBackground: {fileID: 0}
+  prefabBackground: {fileID: 110838, guid: 16b59072d50a050409a0451d87970bb9, type: 2}
   speedX: -.100000001
   posZ: -1
+--- !u!114 &11439384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f9a053de872dd4fae65767fece5977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refGroundMaster: {fileID: 155324}
 --- !u!114 &11440718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad6b5ae794db5429068f7d33095b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBackground: {fileID: 0}
+  prefabBackground: {fileID: 183448, guid: d6e8626715f0be14d89dc6c9f9b738a6, type: 2}
   speedX: -.00999999978
   posZ: 2
 --- !u!114 &11477640
@@ -268,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad6b5ae794db5429068f7d33095b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBackground: {fileID: 0}
+  prefabBackground: {fileID: 127454, guid: 32ad1838a2695d0468516b1f5f1a8bc8, type: 2}
   speedX: -.0500000007
   posZ: .5
 --- !u!114 &11482422
@@ -282,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad6b5ae794db5429068f7d33095b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBackground: {fileID: 0}
+  prefabBackground: {fileID: 147990, guid: b2b361492650b51408b70d5a4df0e755, type: 2}
   speedX: -.00499999989
   posZ: 6
 --- !u!1001 &100100000
