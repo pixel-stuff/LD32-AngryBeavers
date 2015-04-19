@@ -134,11 +134,15 @@ public class BrothersManager : MonoBehaviour {
 		if (Chop) {
 			Debug.Log ("LEFT");
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopLeft ();
+			brother2.chop();
+			//leg2.chop();
 		}
 	}
 	public void ChopRight(){
-		if(Chop)
-		GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopRight ();
+		if (Chop) {
+			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopRight ();
+			brother1.chop();
+		}
 	}
 
 

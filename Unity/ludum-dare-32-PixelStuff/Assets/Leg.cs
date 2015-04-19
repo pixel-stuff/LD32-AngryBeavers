@@ -48,4 +48,9 @@ public class Leg : MonoBehaviour {
 		
 	}
 
+	public void chop(){
+		animator.SetTrigger("Chop");
+		
+	}
+
 }

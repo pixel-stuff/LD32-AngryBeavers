@@ -67,6 +67,11 @@ public class Brother : MonoBehaviour {
 		animator.SetBool ("StartChop",false);
 		animator.SetBool ("HaveTree",true);
 	}
+
+	public void chop(){
+		animator.SetTrigger("Chop");
+
+	}
 	public void Idle() {
 		//animator.SetBool ("Running", false);
 	}
