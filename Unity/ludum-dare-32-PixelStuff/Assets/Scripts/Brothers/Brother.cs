@@ -40,7 +40,7 @@ public class Brother : MonoBehaviour {
 
 	public void backToNormal(){
 		this.transform.position = normalPosition;
-		this.transform.Rotate( new Vector3(0,0,0));
+		this.transform.Rotate( new Vector3(0,180,0));
 	}
 	public void reset(){
 		//animator.SetBool ("NoTree",false);
