@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
 	void Start(){
 		if (brothersManager == null) {
 			brothersManager = GameObject.FindGameObjectWithTag ("Player").GetComponent<BrothersManager> ();
+			brothersManager.brothersDiedAction += BrothersDied;
 		}
 
 		if (beaversManager == null) {
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (menuManager == null) {
-			menuManager = GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<MenuManager> ();
+			menuManager = GameObject.FindGameObjectWithTag ("MenuManager").GetComponent<MenuManager> ();
 		}
 	}
 
@@ -129,4 +130,7 @@ public class GameManager : MonoBehaviour {
 		DoIntro ();
 	}
 
+	public void BrothersDied() {
+		state = GameState.Over;
+	}
 }

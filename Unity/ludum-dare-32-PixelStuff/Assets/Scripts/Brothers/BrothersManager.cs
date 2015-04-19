@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class BrothersManager : MonoBehaviour {
 
 	private BrotherState _state;
 
 	public bool stopAtNextTree;
+	public Action brothersDiedAction;
 	public bool Chop;
 	public BrotherState state {
 		get {
@@ -98,6 +100,9 @@ public class BrothersManager : MonoBehaviour {
 	private void DoDeath() {
 		brother1.Died ();
 		brother2.Died ();
+		if (brothersDiedAction != null) {
+			brothersDiedAction ();
+		}
 	}
 
 	void DoStopParallax(){
@@ -119,7 +124,7 @@ public class BrothersManager : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Beaver") {
-			DoDeath();
+			state = BrotherState.Dead;
 		}
 		if (col.gameObject.tag == "Tree" && stopAtNextTree) {
 			Debug.Log("COLLISION AUTHORISE TREE");
