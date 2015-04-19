@@ -241,6 +241,7 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void pick(){
+		Debug.Log ("PICCCCKKKKKK");
 		this.GetComponent<FollowingGroundSpeed>().enabled = false;
 		GameObject.FindGameObjectWithTag ("GripTree").GetComponent<BoxCollider2D> ().enabled = false;
 		xPickUp = this.transform.position.x;
