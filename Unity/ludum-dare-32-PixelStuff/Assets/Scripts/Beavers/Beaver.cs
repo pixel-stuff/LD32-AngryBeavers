@@ -21,7 +21,9 @@ public class Beaver : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject m_ejectSprite;
-
+	
+	[SerializeField]
+	private GameObject m_smashSprite;
 
 	public Action<Beaver> destroyListener;
 
@@ -161,7 +163,7 @@ public class Beaver : MonoBehaviour {
 				m_eatSprite.SetActive (true);
 				break;
 			case BeaverState.Smashed:
-				m_idleSprite.SetActive (true);
+				m_smashSprite.SetActive (true);
 				m_timeSmashStateBegin = Time.time;
 				break;
 			case BeaverState.Flying:
