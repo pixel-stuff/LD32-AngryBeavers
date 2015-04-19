@@ -185,11 +185,13 @@ public class Beaver : MonoBehaviour {
 			case BeaverState.Smashed:
 				m_smashSprite.SetActive (true);
 				m_timeSmashStateBegin = Time.time;
+				this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 				break;
 			case BeaverState.Flying:
 				m_ejectSprite.SetActive (true);
 				m_BeaversAnimations.Play();
 				m_timeFlyStateBegin = Time.time;
+				this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
 				break;
 			default:
