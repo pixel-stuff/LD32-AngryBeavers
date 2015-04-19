@@ -48,7 +48,7 @@ public class ParallaxSlider : MonoBehaviour {
 				}
 			}
 			m_pausedTime += Time.deltaTime;
-			print (m_speed.x + "<" + speedMaxX);
+			//print (m_speed.x + "<" + speedMaxX);
 			if(Mathf.Abs(m_speed.x)<Mathf.Abs(speedMaxX)) {
 				m_speed.x = sign*m_pausedTime/6.0f;//(-Mathf.Pow(2, -10 * m_pausedTime/2.0f) +1);
 				//m_speed.x = sign*(Mathf.Log10(m_pausedTime+80.0f) - 1.90f);

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class treeManager : MonoBehaviour {
 
-	private GameObject currentTree;
+	public GameObject currentTree;
 
-	private GameObject currentWeapon;
+	public GameObject currentWeapon;
 	private Transform spawnArea;
 
 	public GameObject treePrefab;
@@ -15,6 +15,7 @@ public class treeManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentTree = null;
+		currentWeapon = null;
 		spawnArea = GameObject.FindGameObjectWithTag ("SpawnArea").transform;
 		spawnOneTree = true; // TODO false
 	}
@@ -47,5 +48,19 @@ public class treeManager : MonoBehaviour {
 			spawnOneTree = false;
 		}
 		refreshCurrent ();
+		playerPickUpWeapon ();
+	}
+
+	public GameObject playerPickUpWeapon(){
+		if (currentTree !=null && currentTree.GetComponent<tree> ().isOnFloor()) {
+			if (currentWeapon){
+				Destroy(currentWeapon);
+			}
+			currentWeapon = Instantiate(weaponTreePrefab);
+			currentWeapon.transform.position = currentTree.GetComponent<tree>().trunk.transform.position;
+			currentWeapon.transform.eulerAngles = new Vector3(0,0,0);
+		}
+		return currentWeapon;
+
 	}
 }

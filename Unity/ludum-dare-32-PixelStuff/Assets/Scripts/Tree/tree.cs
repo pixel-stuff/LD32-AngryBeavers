@@ -6,6 +6,7 @@ public class tree : MonoBehaviour {
 		UP,
 		CHOPED,
 		FALLEN,
+		ONFLOOR,
 		PICKED
 	};
 	public GameObject rightChop;
@@ -54,8 +55,11 @@ public class tree : MonoBehaviour {
 			if(isShake){
 			GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
 				isShake = false;
-			}
+				state=TreeState.ONFLOOR;
+				trunk.GetComponent<SpriteRenderer>().enabled=false;
+			}else{
 			state = TreeState.FALLEN;
+			}
 		}
 	}
 
@@ -84,5 +88,8 @@ public class tree : MonoBehaviour {
 
 	public bool isFallen(){
 		return state == TreeState.FALLEN;
+	}
+	public bool isOnFloor(){
+		return state == TreeState.ONFLOOR;
 	}
 }
