@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11475670}
   m_Layer: 0
   m_Name: TreeManager
-  m_TagString: Untagged
+  m_TagString: TreeManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,6 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829e0055f3d60314fb28f514a90de7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTree: {fileID: 0}
+  currentWeapon: {fileID: 0}
   treePrefab: {fileID: 123868, guid: 0d959b480e9167b4aadd858463bd0ca6, type: 2}
   weaponTreePrefab: {fileID: 183298, guid: f41d06de0d8e479439111f0e0bc02b84, type: 2}
 --- !u!1001 &100100000
