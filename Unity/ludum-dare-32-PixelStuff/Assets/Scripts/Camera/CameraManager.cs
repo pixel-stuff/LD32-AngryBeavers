@@ -70,7 +70,7 @@ public class CameraManager : MonoBehaviour {
 		}
 	}
 	
-	private void disableGameOverScreen() {
+	public void disableGameOverScreen() {
 		gameOverScreenSprite.SetActive(false);
 		m_isGameOverScreenShowing = false;
 		m_guiText.enabled = true;
@@ -119,6 +119,7 @@ public class CameraManager : MonoBehaviour {
 		if (m_shakingDuration <= 0.0f) {
 			m_isShakingX = false;
 			m_isShakingY = false;
+			m_shakingDuration = 0.0f;
 		}
 		if (!m_isShakingX && !m_isShakingY) {
 			restartSettings();
@@ -128,10 +129,8 @@ public class CameraManager : MonoBehaviour {
 		} else {
 			disableGameOverScreen ();
 		}
-		if (m_shakingDuration >= 0.0f) {
+		if ((m_isShakingX || m_isShakingY) && m_shakingDuration > 0.0f) {
 			m_shakingDuration -= Time.deltaTime;
-		} else {
-			m_shakingDuration = 0.0f;
 		}
 	}
 }
