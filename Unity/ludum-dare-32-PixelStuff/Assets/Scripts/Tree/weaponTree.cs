@@ -209,10 +209,14 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void smashASAP(){
-		smashNextTime = true;
+		if (currentEtat != Etat.isThrown) {
+			smashNextTime = true;
+		}
 	}
 	public void prepareSmashASAP(){
-		prepareNextTime = true;
+		if (currentEtat != Etat.isThrown) {
+			prepareNextTime = true;
+		}
 	}
 
 	public void pick(){
