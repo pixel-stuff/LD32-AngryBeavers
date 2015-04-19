@@ -19,8 +19,6 @@ public class tree : MonoBehaviour {
 	private Transform fallenTransform;
 
 	private float remaningSeconde;
-	private float PositionXIteration;
-	private float PositionYIteration;
 	private float RotationZIteration;
 
 	void Start () {
@@ -74,8 +72,6 @@ public class tree : MonoBehaviour {
 
 	void calculFallPosition(){
 	
-		PositionXIteration = (trunk.transform.position.x) / SecondeAnimation;
-		PositionYIteration = (stump.transform.position.y) / SecondeAnimation;
 		RotationZIteration = (-90f) / SecondeAnimation;
 	
 	}
