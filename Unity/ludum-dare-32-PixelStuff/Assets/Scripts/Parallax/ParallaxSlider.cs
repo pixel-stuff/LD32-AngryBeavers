@@ -18,7 +18,6 @@ public class ParallaxSlider : MonoBehaviour {
 		backgroundList.Add (((GameObject)Instantiate (prefabBackground)));
 		backgroundList.Add (((GameObject)Instantiate (prefabBackground)));
 		size = ((GameObject)backgroundList[0]).GetComponent<Renderer>().bounds.size;
-		print (size);
 		foreach (GameObject bg in backgroundList) {
 			bg.transform.SetParent(gameObject.transform);
 		}

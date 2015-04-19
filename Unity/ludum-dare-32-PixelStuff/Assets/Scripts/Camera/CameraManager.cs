@@ -13,17 +13,25 @@ public class CameraManager : MonoBehaviour {
 	public bool m_isShakingX = false;
 	public bool m_isShakingY = false;
 	public bool m_isGameOver = false;
+
+	private bool m_isGameOverScreenShowing = false;
+	private GUIText m_guiText = null;
 	
 	private float m_shakingDuration = 0.0f;
 	// Use this for initialization
 	void Start () {
+		m_guiText = gameOverScreenSprite.AddComponent<GUIText> ();
+		m_guiText.color = new Color (1.0f, 0.0f, 0.0f);
+		m_guiText.font = Font.CreateDynamicFontFromOSFont("Arial", 11);
+		m_guiText.text = "";
+		m_guiText.enabled = false;
 		restartSettings();
-		setShaking (false, true, 2.0f);
 	}
 
 	private void restartSettings() {
 		Camera.main.transform.position = new Vector3 (0.0f, 0.0f, -2.0f);
 		Camera.main.orthographicSize = 2.3f;
+		m_guiText.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 		gameOverScreenSprite.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
 	
@@ -56,19 +64,26 @@ public class CameraManager : MonoBehaviour {
 	}
 
 	private void enableGameOverScreen() {
-		gameOverScreenSprite.SetActive(true);
+		if (!m_isGameOverScreenShowing) {
+			gameOverScreenSprite.SetActive (true);
+			m_isGameOverScreenShowing = true;
+		}
 	}
 	
 	private void disableGameOverScreen() {
 		gameOverScreenSprite.SetActive(false);
+		m_isGameOverScreenShowing = false;
+		m_guiText.enabled = true;
 	}
 
-	public void writeOnScreen(string text) {
-		GUIText guiText = gameOverScreenSprite.AddComponent<GUIText> ();
-		guiText.color = Color.red;
-		guiText.transform.position = new Vector3(0.5f,0.5f,0f);
-		guiText.font = Font.CreateDynamicFontFromOSFont("Arial", 11);
-		guiText.text = text;
+	public void writeOnScreen(string text, float offsetX, float offsetY) {
+		m_guiText.text = text;
+		print (offsetX + " " + offsetY);
+		m_guiText.anchor = TextAnchor.MiddleCenter;
+		m_guiText.alignment = TextAlignment.Center;
+		m_guiText.pixelOffset = Camera.main.WorldToScreenPoint (transform.position)+(new Vector3(offsetX, offsetY, 0.0f));
+		m_guiText.enabled = true;
+
 	}
 
 	public void setShakeSpeedX(float sspeed) {
