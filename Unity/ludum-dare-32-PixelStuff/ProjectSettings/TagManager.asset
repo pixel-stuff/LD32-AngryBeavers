@@ -15,6 +15,7 @@ TagManager:
   - BeaversManager
   - TreeManager
   - GripTree
+  - Tree
   layers:
   - Default
   - TransparentFX
