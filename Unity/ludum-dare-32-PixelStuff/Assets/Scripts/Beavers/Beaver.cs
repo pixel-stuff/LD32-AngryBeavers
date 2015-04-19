@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public enum BeaverState{
@@ -54,7 +55,9 @@ public class Beaver : MonoBehaviour {
 	}
 
 	void Start(){
-		
+		AudioManager audioMan = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+		// TODO : Changer l'audio à la création du castor
+		audioMan.Play("Bwaaa");
 		//m_BeaversAnimations.Play ();
 	}
 		
