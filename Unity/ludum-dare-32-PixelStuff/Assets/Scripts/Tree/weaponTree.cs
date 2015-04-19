@@ -228,12 +228,12 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void smashASAP(){
-		if (currentEtat == Etat.idle) {
+		if (currentEtat != Etat.isThrown) {
 			smashNextTime = true;
 		}
 	}
 	public void prepareSmashASAP(){
-		if (currentEtat == Etat.waitForSmashing && currentEtat == Etat.prepareSmash) {
+		if (currentEtat != Etat.isThrown) {
 			prepareNextTime = true;
 		}
 	}
