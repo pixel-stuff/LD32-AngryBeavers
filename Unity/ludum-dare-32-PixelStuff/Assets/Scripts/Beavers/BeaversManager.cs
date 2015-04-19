@@ -85,7 +85,18 @@ public class BeaversManager : MonoBehaviour {
 		}
 	}
 
-
+	public void destroyBeaversOnTree(){
+		foreach (Beaver beav in m_listBeavers) {
+			if (beav.getCurrentState () == BeaverState.HangOnTree) {
+				beav.transform.position = new Vector3(
+					beav.transform.position.x,
+					GameObject.FindGameObjectWithTag ("SpawnArea").transform.position.y,
+					beav.transform.position.z
+					);
+				beav.changeState(BeaverState.Running);
+			}
+		}
+	}
 
 
 	void CreateBeaver(){

@@ -83,7 +83,7 @@ public class weaponTree : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentEtat == Etat.idle) {
+		if (currentEtat == Etat.idle && smashBox != null && sharpBox !=null ) {
 			smashBox.size = new Vector2(m_widthSmashBoxCollider[CurrentState+1], smashBox.size.y);
 			smashBox.offset = new Vector2(m_xOffSmashBoxCollider[CurrentState+1], smashBox.offset.y);
 			sharpBox.transform.localPosition = new Vector3(
@@ -168,7 +168,9 @@ public class weaponTree : MonoBehaviour {
 	private void setStateForPV ()	{
 
 		if (currentPV <= 0) {
+			GameObject.FindGameObjectWithTag("BeaversManager").GetComponent<BeaversManager>().destroyBeaversOnTree();
 			Destroy(this.gameObject);
+			Destroy(this);
 		}
 		if (CurrentState == -1) {
 			return;
@@ -230,12 +232,12 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void smashASAP(){
-		if (currentEtat != Etat.isThrown) {
+		if (currentEtat == Etat.idle) {
 			smashNextTime = true;
 		}
 	}
 	public void prepareSmashASAP(){
-		if (currentEtat != Etat.isThrown) {
+		if (currentEtat == Etat.waitForSmashing && currentEtat == Etat.prepareSmash) {
 			prepareNextTime = true;
 		}
 	}
