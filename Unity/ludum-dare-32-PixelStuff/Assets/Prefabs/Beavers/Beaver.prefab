@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11478168}
   - 61: {fileID: 6171046}
   - 50: {fileID: 5041448}
+  - 111: {fileID: 11106590}
   m_Layer: 0
   m_Name: Beaver
   m_TagString: Beaver
@@ -145,6 +146,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .5, y: .5}
+--- !u!111 &11106590
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109076}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0010b14b4813a41c5be53bd08ba3ed7a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0010b14b4813a41c5be53bd08ba3ed7a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11478168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,6 +177,7 @@ MonoBehaviour:
   m_ejectSprite: {fileID: 161668}
   m_currentState: 0
   m_life: 100
+  m_BeaversAnimations: {fileID: 11106590}
 --- !u!212 &21206900
 SpriteRenderer:
   m_ObjectHideFlags: 1
