@@ -39,8 +39,9 @@ public class weaponTree : MonoBehaviour {
 	}
 	private Etat currentEtat;
 
-	private float widthBaseSmashBoxCollider;
-	private float xBaseSharpBoxCollider;
+	public float widthBaseSmashBoxCollider;
+	private float previousXSharpBoxCollider;
+	public float xBaseSharpBoxCollider;
 
 	// Use this for initialization
 	void Start () {
@@ -56,6 +57,7 @@ public class weaponTree : MonoBehaviour {
 
 		sharpBox = this.GetComponentsInChildren<BoxCollider2D> ()[1];
 		xBaseSharpBoxCollider = sharpBox.transform.position.x;
+		previousXSharpBoxCollider = xBaseSharpBoxCollider;
 
 		currentEtat = Etat.isOnTheFloor;
 	}
@@ -143,15 +145,13 @@ public class weaponTree : MonoBehaviour {
 			float pWidth = TabState[state].rect.width/TabState[TabState.Length-1].rect.width;
 			print(pWidth*smashBox.size.x);
 			smashBox.size = new Vector2(pWidth*widthBaseSmashBoxCollider, smashBox.size.y);
-			print (widthBaseSmashBoxCollider+" "+smashBox.size.x);
-			float deltaW = widthBaseSmashBoxCollider-smashBox.size.x;
-			print (deltaW);
-			sharpBox.transform.position = new Vector3(
-				//sharpBox.transform.position.x+sharpBox.size.x,
-				xBaseSharpBoxCollider-widthBaseSmashBoxCollider+smashBox.size.x,
-				sharpBox.transform.position.y,
-				sharpBox.transform.position.z);
 
+			sharpBox.transform.Translate( new Vector3(
+				//sharpBox.transform.position.x+sharpBox.size.x,
+				-(previousXSharpBoxCollider-smashBox.size.x),
+				0,
+				0));
+			previousXSharpBoxCollider = smashBox.size.x;
 			//smashBox.transform.postion.x-=smashBox.
 			CurrentState = state;
 		}
