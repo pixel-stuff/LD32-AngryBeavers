@@ -19,8 +19,6 @@ public class tree : MonoBehaviour {
 	private Transform fallenTransform;
 
 	private float remaningSeconde;
-	private float PositionXIteration;
-	private float PositionYIteration;
 	private float RotationZIteration;
 
 	void Start () {
@@ -48,11 +46,15 @@ public class tree : MonoBehaviour {
 			remaningSeconde -= Time.deltaTime;
 			fall ();
 		}
+
+		if (remaningSeconde < 0) {
+			state = TreeState.FALLEN;
+		}
 	}
 
 	void updatePosition(){
 		if (this.gameObject.transform.position.x > 0) {
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - 0.1f, 0, 0);
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - 0.1f, this.gameObject.transform.position.y, 0);
 		}
 	}
 
@@ -70,8 +72,6 @@ public class tree : MonoBehaviour {
 
 	void calculFallPosition(){
 	
-		PositionXIteration = (trunk.transform.position.x) / SecondeAnimation;
-		PositionYIteration = (stump.transform.position.y) / SecondeAnimation;
 		RotationZIteration = (-90f) / SecondeAnimation;
 	
 	}
@@ -79,5 +79,9 @@ public class tree : MonoBehaviour {
 	void fall(){
 		//trunk.transform.position = new Vector3 (trunk.transform.position.x + PositionXIteration * Time.deltaTime, trunk.transform.position.y + PositionYIteration * Time.deltaTime, 0);
 		trunk.transform.RotateAround (stump.transform.position, new Vector3 (0, 0, 1), RotationZIteration * Time.deltaTime);
+	}
+
+	public bool isFallen(){
+		return state == TreeState.FALLEN;
 	}
 }

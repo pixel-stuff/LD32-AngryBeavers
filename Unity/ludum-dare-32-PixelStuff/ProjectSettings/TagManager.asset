@@ -9,6 +9,7 @@ TagManager:
   - SmashTree
   - WeaponTree
   - Beaver
+  - CameraManager
   layers:
   - Default
   - TransparentFX
