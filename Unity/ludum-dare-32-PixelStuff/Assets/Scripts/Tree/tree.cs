@@ -48,6 +48,7 @@ public class tree : MonoBehaviour {
 		}
 
 		if (remaningSeconde < 0) {
+			this.GetComponent<BoxCollider2D>().enabled = false;
 			state = TreeState.FALLEN;
 		}
 	}
