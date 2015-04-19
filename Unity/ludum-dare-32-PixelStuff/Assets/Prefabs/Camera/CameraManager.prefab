@@ -369,6 +369,7 @@ MonoBehaviour:
   shakeSpeedY: .00999999978
   shakeAmplitudeY: .100000001
   gameOverScreenSprite: {fileID: 142656}
+  screenFont: {fileID: 12800000, guid: 828c7f40f2b5348eea37747deb8a0c72, type: 3}
   m_isShakingX: 0
   m_isShakingY: 0
   m_shakingDuration: 0
