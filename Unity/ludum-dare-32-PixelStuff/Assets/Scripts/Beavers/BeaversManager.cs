@@ -74,7 +74,7 @@ public class BeaversManager : MonoBehaviour {
 		}
 	}
 
-	void SmashBeaversHangOnTree(){
+	public void SmashBeaversHangOnTree(){
 		foreach(Beaver beav in m_listBeavers){
 			if(beav.getCurrentState() == BeaverState.HangOnTree){
 				beav.changeState(BeaverState.Flying);
