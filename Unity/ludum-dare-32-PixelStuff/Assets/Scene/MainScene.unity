@@ -213,6 +213,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4cd30d870a2b69649b738049b7b4be36, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &501057858 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11453796, guid: 4cd30d870a2b69649b738049b7b4be36,
+    type: 2}
+  m_PrefabInternal: {fileID: 501057857}
+  m_Script: {fileID: 11500000, guid: d8a2d9794f66347b2a2a41a9467c8bb8, type: 3}
 --- !u!1001 &709551898
 Prefab:
   m_ObjectHideFlags: 0
@@ -294,6 +300,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11492466, guid: edd80377b2bb3405480b344b40989ee9, type: 2}
+      propertyPath: brothersManager
+      value: 
+      objectReference: {fileID: 790898133}
+    - target: {fileID: 11492466, guid: edd80377b2bb3405480b344b40989ee9, type: 2}
+      propertyPath: beaversManager
+      value: 
+      objectReference: {fileID: 501057858}
+    - target: {fileID: 11492466, guid: edd80377b2bb3405480b344b40989ee9, type: 2}
+      propertyPath: menuManager
+      value: 
+      objectReference: {fileID: 1705918822}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edd80377b2bb3405480b344b40989ee9, type: 2}
   m_IsPrefabParent: 0
@@ -343,6 +361,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814997581e49447a882961816588bbce, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &790898133 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11450220, guid: 814997581e49447a882961816588bbce,
+    type: 2}
+  m_PrefabInternal: {fileID: 790898132}
+  m_Script: {fileID: 11500000, guid: bd4cf47088bbb433d8f8bc9652c468ff, type: 3}
 --- !u!1001 &1129094285
 Prefab:
   m_ObjectHideFlags: 0
@@ -533,3 +557,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6574b687855e4d4594ddd4b31a99ec5, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1705918822 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11467798, guid: b6574b687855e4d4594ddd4b31a99ec5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1705918821}
+  m_Script: {fileID: 11500000, guid: e09a35bf5354c48f7bed71c81bdc10af, type: 3}
