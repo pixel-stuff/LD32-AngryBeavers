@@ -10,6 +10,7 @@ TagManager:
   - WeaponTree
   - Beaver
   - CameraManager
+  - ParallaxManager
   layers:
   - Default
   - TransparentFX
