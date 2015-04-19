@@ -12,12 +12,12 @@ public class CameraManager : MonoBehaviour {
 
 	public bool m_isShakingX = false;
 	public bool m_isShakingY = false;
+	public float m_shakingDuration = 0.0f;
 	public bool m_isGameOver = false;
 
 	private bool m_isGameOverScreenShowing = false;
 	private GUIText m_guiText = null;
-	
-	private float m_shakingDuration = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 		m_guiText = gameOverScreenSprite.AddComponent<GUIText> ();
@@ -128,6 +128,10 @@ public class CameraManager : MonoBehaviour {
 		} else {
 			disableGameOverScreen ();
 		}
-		m_shakingDuration -= Time.deltaTime;
+		if (m_shakingDuration >= 0.0f) {
+			m_shakingDuration -= Time.deltaTime;
+		} else {
+			m_shakingDuration = 0.0f;
+		}
 	}
 }
