@@ -161,10 +161,14 @@ public class weaponTree : MonoBehaviour {
 		setStateForPV ();
 	}
 
+	public void removeHangBeaver(){
+		GameObject.FindGameObjectWithTag("BeaversManager").GetComponent<BeaversManager>().destroyBeaversOnTree();
+	}
+
 	private void setStateForPV ()	{
 
 		if (currentPV <= 0) {
-			GameObject.FindGameObjectWithTag("BeaversManager").GetComponent<BeaversManager>().destroyBeaversOnTree();
+			removeHangBeaver();
 			Destroy(this.gameObject);
 			Destroy(this);
 		}

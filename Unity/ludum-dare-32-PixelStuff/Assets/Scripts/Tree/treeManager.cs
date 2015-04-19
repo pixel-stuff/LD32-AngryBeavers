@@ -72,6 +72,7 @@ public class treeManager : MonoBehaviour {
 	public GameObject playerPickUpWeapon(){
 		if (currentTree !=null && currentTree.GetComponent<tree> ().isOnFloor()) {
 			if (currentWeapon){
+				currentWeapon.GetComponent<weaponTree>().removeHangBeaver();
 				Destroy(currentWeapon);
 			}
 			currentWeapon = Instantiate(weaponTreePrefab);
