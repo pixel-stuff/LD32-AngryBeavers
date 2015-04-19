@@ -148,7 +148,7 @@ public class weaponTree : MonoBehaviour {
 			print (deltaW);
 			sharpBox.transform.position = new Vector3(
 				//sharpBox.transform.position.x+sharpBox.size.x,
-				xBaseSharpBoxCollider-deltaW,
+				xBaseSharpBoxCollider-widthBaseSmashBoxCollider+smashBox.size.x,
 				sharpBox.transform.position.y,
 				sharpBox.transform.position.z);
 
