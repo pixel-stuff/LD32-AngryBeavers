@@ -1,16 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &140106
+--- !u!1 &123906
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 432892}
-  - 82: {fileID: 8299646}
+  - 4: {fileID: 402150}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BeaversContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +31,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &144294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432064}
+  - 114: {fileID: 11453796}
+  m_Layer: 0
+  m_Name: BeaversManager
+  m_TagString: BeaversManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &184036
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +100,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &402150
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 432064}
+  m_RootOrder: 0
 --- !u!4 &408588
 Transform:
   m_ObjectHideFlags: 1
@@ -122,19 +149,20 @@ Transform:
   m_Children:
   - {fileID: 408588}
   - {fileID: 435164}
-  - {fileID: 432892}
+  - {fileID: 432064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &432892
+--- !u!4 &432064
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140106}
+  m_GameObject: {fileID: 144294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 402150}
   m_Father: {fileID: 424722}
   m_RootOrder: 2
 --- !u!4 &435164
@@ -187,7 +215,7 @@ Skybox:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!81 &8130668
 AudioListener:
@@ -196,75 +224,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184036}
   m_Enabled: 1
---- !u!82 &8299646
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140106}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 23fb964797fb8994886d505ee9d33ae3, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!92 &9290872
 Behaviour:
   m_ObjectHideFlags: 1
@@ -283,6 +242,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e47ea54b622234f85a3050dd34db6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11453796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a2d9794f66347b2a2a41a9467c8bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_beaverPrefab: {fileID: 109076, guid: 82cb3c1823e1a455ea4959f08a06e0d0, type: 2}
+  m_beaverContainer: {fileID: 123906}
 --- !u!114 &11481232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,11 +266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d6ab885e4b0a34c9ea21d5846bf0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeSpeedX: .00999999978
-  shakeAmplitudeX: .100000001
-  shakeSpeedY: .00999999978
-  shakeAmplitudeY: .100000001
+  shakeSpeedX: .0399999991
+  shakeAmplitudeX: .0599999987
+  shakeSpeedY: .0399999991
+  shakeAmplitudeY: .0599999987
   gameOverScreenSprite: {fileID: 142656}
+  screenFont: {fileID: 12800000, guid: 828c7f40f2b5348eea37747deb8a0c72, type: 3}
   m_isShakingX: 0
   m_isShakingY: 0
   m_shakingDuration: 0

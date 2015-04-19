@@ -28,7 +28,7 @@ public class tree : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		updatePosition ();
+
 		//test 
 		if (this.gameObject.transform.position.x < 0) {
 			chopLeft();
@@ -48,13 +48,9 @@ public class tree : MonoBehaviour {
 		}
 
 		if (remaningSeconde < 0) {
+			trunk.GetComponent<BoxCollider2D>().enabled = false;
+			GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.3f);
 			state = TreeState.FALLEN;
-		}
-	}
-
-	void updatePosition(){
-		if (this.gameObject.transform.position.x > 0) {
-			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x - 0.1f, this.gameObject.transform.position.y, 0);
 		}
 	}
 

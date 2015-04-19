@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		scoreText.text = string.Format ("Score: %d", score);
+		scoreText.text = string.Format ("Score: {0}", score);
 	}
 
 	public void IncrementScore() {

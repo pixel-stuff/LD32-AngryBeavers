@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public enum BeaverState{
@@ -21,7 +22,9 @@ public class Beaver : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject m_ejectSprite;
-
+	
+	[SerializeField]
+	private GameObject m_smashSprite;
 
 	public Action<Beaver> destroyListener;
 
@@ -42,7 +45,9 @@ public class Beaver : MonoBehaviour {
 
 	Vector3 m_beaverSpeedRunning = new Vector3 (); 
 	Vector3 m_decalageHangOnTree = new Vector3(UnityEngine.Random.Range(-1f,1f),UnityEngine.Random.Range(-1f,1f),0f);
-	
+
+
+
 	public void Initialize(){
 		m_currentState= BeaverState.Running;
 		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/10,this.transform.lossyScale.x/4),0f,0f);
@@ -50,7 +55,9 @@ public class Beaver : MonoBehaviour {
 	}
 
 	void Start(){
-		
+		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+		// TODO : Changer l'audio à la création du castor
+		//audioMan.Play("Bwaaa");
 		//m_BeaversAnimations.Play ();
 	}
 		
@@ -91,16 +98,16 @@ public class Beaver : MonoBehaviour {
 			//TO DO: Afficher Anim écrasé
 			//Debug.Log ("Ecrasé");
 
-			if (this.transform.localPosition.x <= -20f) {
+			if (this.transform.position.x <= -20f) {
 				Destroy (this.gameObject);
 			}
-			if(Time.time - m_timeSmashStateBegin >= 2){
+			if(Time.time - m_timeSmashStateBegin >= 5){
 				Destroy (this.gameObject);
 			}
 			break;
 		case BeaverState.Flying:
 			//TO DO: Lancer anim d'envole du beaver <3
-			if(Time.time - m_timeFlyStateBegin >= 2){
+			if(Time.time - m_timeFlyStateBegin >= 5){
 				Destroy (this.gameObject);
 			}
 			break;
@@ -119,11 +126,11 @@ public class Beaver : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider){
 
-		if (collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") {
+		if ((collider.gameObject.tag == "Trunk" || collider.gameObject.tag == "SmashTree") && m_currentState != BeaverState.HangOnTree) {
 			Debug.Log ("LANCER ANIMATION DE GERBE DE SANG");
 			changeState(BeaverState.Smashed);
 			m_life = 0;
-			//TO DO: Le cadavre se déplace avec le background
+			this.gameObject.GetComponent<FollowingGroundSpeed>().enabled = true;
 			return;
 		}
 
@@ -159,7 +166,7 @@ public class Beaver : MonoBehaviour {
 				m_eatSprite.SetActive (true);
 				break;
 			case BeaverState.Smashed:
-				m_idleSprite.SetActive (true);
+				m_smashSprite.SetActive (true);
 				m_timeSmashStateBegin = Time.time;
 				break;
 			case BeaverState.Flying:

@@ -10,6 +10,8 @@ public class CameraManager : MonoBehaviour {
 
 	public GameObject gameOverScreenSprite;
 
+	public Font screenFont;
+
 	public bool m_isShakingX = false;
 	public bool m_isShakingY = false;
 	public float m_shakingDuration = 0.0f;
