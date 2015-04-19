@@ -6,6 +6,8 @@ public class BrothersManager : MonoBehaviour {
 
 	private BrotherState _state = BrotherState.Running;
 
+
+	private bool lok=false;
 	public bool stopAtNextTree;
 	public bool AuthoriseStop;
 	public Action brothersDiedAction;
@@ -51,7 +53,7 @@ public class BrothersManager : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	public Brother brother1;
 	public Brother brother2;
 	
@@ -152,10 +154,11 @@ public class BrothersManager : MonoBehaviour {
 			DoDropTunk();
 			Chop=true;
 			stopAtNextTree = false;
+				prepareChop();
 			}
 			AuthoriseStop = false;
 
-			prepareChop();
+
 		}
 
 		if (col.gameObject.tag == "GripTree") {
@@ -166,6 +169,10 @@ public class BrothersManager : MonoBehaviour {
 	
 
 	void Update(){
+		if(!lok){
+			DoRunning();
+			lok = true;
+		}
 
 		/*if (Chop) {
 			ChopLeft ();

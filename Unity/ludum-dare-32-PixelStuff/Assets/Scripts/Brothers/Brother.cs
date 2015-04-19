@@ -23,14 +23,19 @@ public class Brother : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 	}
 
+	public void reset(){
+		animator.SetBool ("NoTree",false);
+	}
 	public void Run() {
 		Debug.Log ("RUN");
-		animator.SetTrigger ("noTree");
+		animator.SetBool ("NoTree",true);
 	}
 
 	public void prepareChop() {
 		Debug.Log ("Chop");
-		animator.SetTrigger ("startChop");
+		reset ();
+		animator.SetBool ("StartChop",true);
+
 	}
 
 	public void Idle() {
