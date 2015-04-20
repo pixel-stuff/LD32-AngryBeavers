@@ -229,6 +229,8 @@ public class weaponTree : MonoBehaviour {
 		sharpBox.enabled = true;
 		smashBox.enabled = false;
 		currentEtat = Etat.idle;
+		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+		audioMan.Play ("tree_smash");
 		GameObject.FindGameObjectWithTag ("CameraManager").GetComponent<CameraManager> ().setShaking(true,true,0.2f);
 		GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ().SmashBeaversHangOnTree ();
 	}

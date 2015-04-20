@@ -74,9 +74,13 @@ public class tree : MonoBehaviour {
 
 	public void chopLeft(){
 		leftChop.GetComponent<ChopOnTree> ().triggerChop ();
+		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+		audioMan.Play ("tree_chop");
 	}
 	public void chopRight(){
 		rightChop.GetComponent<ChopOnTree> ().triggerChop ();
+		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+		audioMan.Play ("tree_chop");
 	}
 
 	void calculFallPosition(){
