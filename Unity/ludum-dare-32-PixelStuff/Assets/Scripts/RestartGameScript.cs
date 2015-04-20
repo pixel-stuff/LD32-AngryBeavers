@@ -12,7 +12,7 @@ public class RestartGameScript : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Return) /*&& !isPush*/) {
 			//isPush = true;
 			if(onKeyDown != null){
-				onKeyDown();
+				//onKeyDown();
 			}
 		}
 	}
