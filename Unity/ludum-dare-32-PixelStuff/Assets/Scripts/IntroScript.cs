@@ -6,11 +6,11 @@ public class IntroScript : MonoBehaviour {
 
 	public Action onKeyDown;
 	
-	bool isPush = false;
+	//public bool isPush = false;
 	// Update is called once per frame
 	void Update () {
-		if ( Input.GetKey(KeyCode.Return)  && !isPush) {
-			isPush = true;
+		if ( Input.GetKey(KeyCode.Return) /* && !isPush*/) {
+			//isPush = true;
 			if(onKeyDown != null){
 				Debug.Log ("INTRO ");
 				onKeyDown();

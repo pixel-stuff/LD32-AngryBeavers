@@ -21,6 +21,7 @@ public class ScoreGUI : MonoBehaviour {
 		GUIStyle myStyle = new GUIStyle();
 		myStyle.font = myFont;
 		myStyle.normal.textColor = Color.white;
-		GUI.Label(new Rect(Screen.width/2-40, Screen.height/2-50, 100, 20),"Beavers Killed: "+beaverKilled,myStyle);
+
+		GUI.Label(new Rect(Screen.width/2-10, Screen.height/2-50, 100, 20),""+beaverKilled,myStyle);
 	}
 }
