@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour {
 	
 	GameObject m_brothersRunGameObject;
 	AudioSource m_brothersRunAudioSource;
+	
+	public float m_backgroundVolume = 0.01f;
+	public float m_brothersRunVolume = 0.5f;
+	public float m_globalVolume = 1.0f;
 
 	public void Play(string clipname)
 	{
@@ -20,7 +24,7 @@ public class AudioManager : MonoBehaviour {
 		//Add and bind an audio source
 		AudioSource source = go.AddComponent<AudioSource>();
 		source.clip = newClip;
-	
+		source.volume = source.volume * m_globalVolume;
 		//Play and destroy the component
 		source.Play();
 		Destroy (go, newClip.length);
@@ -54,7 +58,7 @@ public class AudioManager : MonoBehaviour {
 		m_backgroundAudioSource = m_backgroundGameObject.AddComponent<AudioSource>();
 		m_backgroundAudioSource.clip = bgClip;
 		m_backgroundAudioSource.loop = true;
-		m_backgroundAudioSource.volume = 0.01f;
+		m_backgroundAudioSource.volume = m_backgroundVolume * m_globalVolume;
 		//Play and destroy the component
 		//Create an empty game object
 		m_brothersRunGameObject = new GameObject ("Audio_BrothersRunning");
@@ -65,7 +69,7 @@ public class AudioManager : MonoBehaviour {
 		m_brothersRunAudioSource = m_backgroundGameObject.AddComponent<AudioSource>();
 		m_brothersRunAudioSource.clip = brotherClip;
 		m_brothersRunAudioSource.loop = true;
-		m_brothersRunAudioSource.volume = 1.0f;
+		m_brothersRunAudioSource.volume = m_brothersRunVolume * m_globalVolume;
 		//Play and destroy the component
 	}
 	
