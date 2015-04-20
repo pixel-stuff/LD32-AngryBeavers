@@ -215,7 +215,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -284,6 +284,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_beaverPrefab: {fileID: 109076, guid: 82cb3c1823e1a455ea4959f08a06e0d0, type: 2}
   m_beaverContainer: {fileID: 123906}
+  m_frequenceCreationBeaver:
+  - 0
+  - .333000004
+  - 2
 --- !u!114 &11481232
 MonoBehaviour:
   m_ObjectHideFlags: 1
