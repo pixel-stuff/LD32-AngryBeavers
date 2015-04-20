@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ScoreGUI : MonoBehaviour {
 
+	public Font myFont;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +17,9 @@ public class ScoreGUI : MonoBehaviour {
 
 
 	void OnGUI(){
-		
-		GUI.Label(new Rect(Screen.width/2, Screen.height/2, 100, 20), "Hello World!");
+		GUIStyle myStyle = new GUIStyle();
+		myStyle.font = myFont;
+
+		GUI.Label(new Rect(Screen.width/2-40, Screen.height/2-50, 100, 20),"Beavers Killed: "+54,myStyle);
 	}
 }
