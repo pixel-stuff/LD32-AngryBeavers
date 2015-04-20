@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour {
 		brothersManager.gameObject.SetActive (false);
 		beaversManager.gameObject.SetActive (false);
 		parallaxManager.gameObject.SetActive (false);
+		treeMan.gameObject.GetComponent<treeManager> ().currentWeapon.SetActive (false);
 		treeMan.gameObject.SetActive (false);
 		restartGameScript.gameObject.SetActive (true);
 		introScript.gameObject.SetActive (false);
