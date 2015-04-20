@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 403614}
   - 212: {fileID: 21245880}
   - 95: {fileID: 9512144}
+  - 114: {fileID: 11417156}
   m_Layer: 0
   m_Name: LegBrother1
   m_TagString: Untagged
@@ -60,6 +61,7 @@ GameObject:
   - 4: {fileID: 494300}
   - 212: {fileID: 21240368}
   - 95: {fileID: 9521174}
+  - 114: {fileID: 11466880}
   m_Layer: 0
   m_Name: LegBrother2
   m_TagString: Untagged
@@ -305,13 +307,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11417156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0dc0baaf1687e468118484289ff997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11446298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108890}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13a5837b68f0d47809375751e9dac647, type: 3}
   m_Name: 
@@ -332,6 +345,9 @@ MonoBehaviour:
   Chop: 0
   brother1: {fileID: 11452732}
   brother2: {fileID: 11446298}
+  leg1: {fileID: 11417156}
+  leg2: {fileID: 11466880}
+  armBrother1: {fileID: 132430}
 --- !u!114 &11452732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,6 +357,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13a5837b68f0d47809375751e9dac647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11466880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0dc0baaf1687e468118484289ff997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21205654

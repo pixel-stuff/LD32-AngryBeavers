@@ -40,6 +40,7 @@ public class tree : MonoBehaviour {
 		//!test
 */
 		if ( state == TreeState.UP && isChoped()) {
+			GameObject.FindGameObjectWithTag("Player").GetComponent<BrothersManager>().treeIsChop();
 			state = TreeState.CHOPED;
 			calculFallPosition();
 			remaningSeconde = SecondeAnimation;
