@@ -122,4 +122,8 @@ public class BeaversManager : MonoBehaviour {
 		return m_beaverCreated - m_beaverKilledTotal;
 
 	}
+
+	public int getBeaverKilledTotal() {
+		return m_beaverKilledTotal;
+	}
 }

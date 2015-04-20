@@ -12,16 +12,20 @@ public class treeManager : MonoBehaviour {
 	public GameObject weaponTreePrefab;
 
 	private bool spawnOneTree;
+
+	public int spawnBeaverMin;
+	public int spawnBeaverMax;
+	public int nbBeaverUntilSpawnTree;
+	public int lastDeadBeaverNumber;
+
 	// Use this for initialization
 	void Start () {
 		currentTree = null;
 		currentWeapon = null;
 		spawnArea = GameObject.FindGameObjectWithTag ("SpawnArea").transform;
 		spawnOneTree = true; // TODO false
-	}
-
-	void spawnTree(){
-		spawnOneTree = true;
+		nbBeaverUntilSpawnTree = getRandNbBeaver();
+		lastDeadBeaverNumber = 0;
 	}
 
 	bool canSpawnTree ()
@@ -46,7 +50,15 @@ public class treeManager : MonoBehaviour {
 			currentTree.transform.position = spawnArea.position;
 			currentTree.transform.SetParent (this.transform);
 			spawnOneTree = false;
+
+			nbBeaverUntilSpawnTree = getRandNbBeaver();
+
+			lastDeadBeaverNumber = GameObject.FindGameObjectWithTag("BeaversManager").GetComponent<BeaversManager>().getBeaverKilledTotal();
 		}
+
+		if (nbBeaverUntilSpawnTree < GameObject.FindGameObjectWithTag("BeaversManager").GetComponent<BeaversManager>().getBeaverKilledTotal()-lastDeadBeaverNumber)
+			spawnOneTree = true;
+
 		refreshCurrent ();
 		playerPickUpWeapon ();
 	}
@@ -93,9 +105,13 @@ public class treeManager : MonoBehaviour {
 
 	public void Smash(){
 		if (currentWeapon != null) {
-			if( !currentWeapon.GetComponent<weaponTree>().smashNextTime){
-				currentWeapon.GetComponent<weaponTree>().smashASAP();
+			if (!currentWeapon.GetComponent<weaponTree> ().smashNextTime) {
+				currentWeapon.GetComponent<weaponTree> ().smashASAP ();
 			}
 		}
+	}
+
+	private int getRandNbBeaver() {
+		return (int) Mathf.Floor(Random.Range (spawnBeaverMin, spawnBeaverMax+1));
 	}
 }
