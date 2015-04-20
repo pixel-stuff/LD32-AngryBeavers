@@ -12,6 +12,9 @@ public class BrothersManager : MonoBehaviour {
 	public bool AuthoriseStop;
 	public Action brothersDiedAction;
 	public bool Chop;
+
+	private AudioManager m_audioManager;
+
 	public BrotherState state {
 		get {
 			return _state;
@@ -92,6 +95,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	private void DoRunning() {
+		m_audioManager.startAudioBrothersRunning ();
 		brother1.Run ();
 		leg1.Run ();
 		brother2.Run ();
@@ -99,6 +103,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	private void DoHaveTree() {
+		m_audioManager.startAudioBrothersRunning ();
 		brother1.HaveTree ();
 		leg1.Run ();
 		brother2.HaveTree ();
@@ -106,6 +111,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	private void DoDropTunk() {
+		m_audioManager.stopAudioBrothersRunning ();
 		brother1.DropThunk ();
 		brother2.DropThunk ();
 
@@ -113,6 +119,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	private void DoDeath() {
+		m_audioManager.stopAudioBrothersRunning ();
 		brother1.Died ();
 		brother2.Died ();
 		if (brothersDiedAction != null) {
@@ -197,6 +204,10 @@ public class BrothersManager : MonoBehaviour {
 		leg1.backToNormal ();
 		DoRunning();
 	}
+	void Start() {
+		m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+	}
+
 	void Update(){
 		if(!lok){
 			DoRunning();

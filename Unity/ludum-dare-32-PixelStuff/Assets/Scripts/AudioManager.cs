@@ -5,6 +5,9 @@ public class AudioManager : MonoBehaviour {
 	
 	GameObject m_backgroundGameObject;
 	AudioSource m_backgroundAudioSource;
+	
+	GameObject m_brothersRunGameObject;
+	AudioSource m_brothersRunAudioSource;
 
 	public void Play(string clipname)
 	{
@@ -31,6 +34,14 @@ public class AudioManager : MonoBehaviour {
 	public void stopAudioBackground() {
 		m_backgroundAudioSource.Stop();
 	}
+	
+	public void startAudioBrothersRunning() {
+		m_brothersRunAudioSource.Play();
+	}
+	
+	public void stopAudioBrothersRunning() {
+		m_brothersRunAudioSource.Stop();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -43,7 +54,18 @@ public class AudioManager : MonoBehaviour {
 		m_backgroundAudioSource = m_backgroundGameObject.AddComponent<AudioSource>();
 		m_backgroundAudioSource.clip = bgClip;
 		m_backgroundAudioSource.loop = true;
-		m_backgroundAudioSource.volume = 0.2f;
+		m_backgroundAudioSource.volume = 0.01f;
+		//Play and destroy the component
+		//Create an empty game object
+		m_brothersRunGameObject = new GameObject ("Audio_BrothersRunning");
+		//Load clip from ressources folder
+		AudioClip brotherClip =  Instantiate(Resources.Load ("Sounds/foot_step", typeof(AudioClip))) as AudioClip;
+		
+		//Add and bind an audio source
+		m_brothersRunAudioSource = m_backgroundGameObject.AddComponent<AudioSource>();
+		m_brothersRunAudioSource.clip = brotherClip;
+		m_brothersRunAudioSource.loop = true;
+		m_brothersRunAudioSource.volume = 1.0f;
 		//Play and destroy the component
 	}
 	
