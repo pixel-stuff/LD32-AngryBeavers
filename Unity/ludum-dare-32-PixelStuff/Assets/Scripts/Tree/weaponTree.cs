@@ -136,13 +136,9 @@ public class weaponTree : MonoBehaviour {
 		if (currentEtat == Etat.isThrown) {
 			// throw the tree :D hell yeah !
 			if(throwCurrentTime<throwDuration) {
-				/*if(throwCurrentTime<(throwDuration/2.0f)) {
-					transform.Translate(0.1f, 0.1f, 0.0f);
-				}else{
-					transform.Translate(0.1f, -0.1f, 0.0f);
-				}*/
-				float y=Mathf.Sin ((throwCurrentTime/throwDuration)*Mathf.PI) *transform.position.y ;
-				transform.position = new Vector3(transform.position.x+0.01f, y*1.0f, 0.0f);
+
+				float y=Mathf.Sin ((throwCurrentTime/throwDuration)*(Mathf.PI+0.2f)) + yPickUp ;
+				transform.position = new Vector3(transform.position.x+0.01f, y, 0.0f);
 				print ("throw "+throwCurrentTime+" < "+throwDuration);
 				throwCurrentTime += Time.deltaTime;
 			}else{
