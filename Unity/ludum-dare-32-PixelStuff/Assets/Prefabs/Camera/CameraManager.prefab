@@ -309,6 +309,13 @@ MonoBehaviour:
   m_isShakingY: 0
   m_shakingDuration: 0
   m_isGameOver: 0
+  zoom: 2.29999995
+  rectCamera:
+    serializedVersion: 2
+    x: .0900000036
+    y: .25
+    width: .819999993
+    height: .550000012
 --- !u!124 &12469720
 Behaviour:
   m_ObjectHideFlags: 1

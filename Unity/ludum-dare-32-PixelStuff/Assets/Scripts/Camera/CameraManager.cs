@@ -17,6 +17,8 @@ public class CameraManager : MonoBehaviour {
 	public float m_shakingDuration = 0.0f;
 	public bool m_isGameOver = false;
 
+	public float zoom;
+	public Rect rectCamera;
 	private bool m_isGameOverScreenShowing = false;
 	private GUIText m_guiText = null;
 
@@ -32,8 +34,8 @@ public class CameraManager : MonoBehaviour {
 
 	private void initSettings() {
 		Camera.main.transform.position = new Vector3 (1.0f, 0.0f, -2.0f);
-		Camera.main.orthographicSize = 2.3f;
-		Camera.main.rect = new Rect(0.0f, 0.25f, 1.0f, 0.55f);
+		Camera.main.orthographicSize = zoom;
+		Camera.main.rect = rectCamera;//new Rect(0.0f, 0.25f, 1.0f, 0.55f);
 		m_guiText.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 		gameOverScreenSprite.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
@@ -44,8 +46,8 @@ public class CameraManager : MonoBehaviour {
 			Mathf.SmoothStep (Camera.main.transform.position.y, 0.0f, 0.01f),
 			Mathf.SmoothStep (Camera.main.transform.position.z, -2.0f, 0.01f)
 			);
-		Camera.main.orthographicSize = 2.3f;
-		Camera.main.rect = new Rect(0.0f, 0.25f, 1.0f, 0.55f);
+		Camera.main.orthographicSize = zoom;
+		Camera.main.rect =rectCamera;// new Rect(0.0f, 0.25f, 1.0f, 0.55f);
 		m_guiText.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 		gameOverScreenSprite.transform.position = new Vector3 (0.0f, 0.0f, -1.0f);
 	}
