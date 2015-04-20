@@ -43,8 +43,8 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   treePrefab: {fileID: 123868, guid: 0d959b480e9167b4aadd858463bd0ca6, type: 2}
   weaponTreePrefab: {fileID: 183298, guid: f41d06de0d8e479439111f0e0bc02b84, type: 2}
-  spawnBeaverMin: 1
-  spawnBeaverMax: 2
+  spawnBeaverMin: 15
+  spawnBeaverMax: 25
   nbBeaverUntilSpawnTree: 6
   lastDeadBeaverNumber: 0
 --- !u!1001 &100100000
