@@ -9,7 +9,7 @@ public class RestartGameScript : MonoBehaviour {
 	bool isPush = false;
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKey && !isPush) {
+		if ((Input.GetKeyDown(KeyCode.KeypadEnter) ||  Input.GetKeyDown(KeyCode.Escape)) && !isPush) {
 			isPush = true;
 			if(onKeyDown != null){
 				onKeyDown();
