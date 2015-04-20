@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/beaver_death.mp3.meta
 guid: f02ad5f57f79f4c699b5a3a63da50161
 timeCreated: 1429568543
+=======
+guid: 4963b9d9fa0e76f4583272b7e80283df
+timeCreated: 1429568194
+>>>>>>> origin/master:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/beaver_death.mp3.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/tree_chop.mp3.meta
 guid: e536ac7c0b5004607b75adf2e37cfac4
 timeCreated: 1429568543
+=======
+guid: c62219637c1c2754698eb5805dc933c2
+timeCreated: 1429568195
+>>>>>>> origin/master:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/tree_chop.mp3.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/foot_step.mp3.meta
 guid: 706d29e1701cd430dbe5980f7efd581b
 timeCreated: 1429568541
+=======
+guid: dc7ce2b736e29914a9c37da48fa9907f
+timeCreated: 1429568195
+>>>>>>> origin/master:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/foot_step.mp3.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6

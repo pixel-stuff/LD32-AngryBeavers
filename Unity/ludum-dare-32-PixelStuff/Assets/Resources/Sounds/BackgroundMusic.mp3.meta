@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/BackgroundMusic.mp3.meta
 guid: 9f29e8d20464f4e039d16a042c3e6838
 timeCreated: 1429568542
+=======
+guid: b92e9a67af106a74c86b32368148344b
+timeCreated: 1429568195
+>>>>>>> origin/master:Unity/ludum-dare-32-PixelStuff/Assets/Resources/Sounds/BackgroundMusic.mp3.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6
