@@ -54,7 +54,7 @@ public class Beaver : MonoBehaviour {
 		m_treeManager = treeManager;
 		m_currentState= BeaverState.Running;
 		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/40,this.transform.lossyScale.x/20)*1.6f,0f,0f);
-		m_decalageHangOnTree = new Vector3 (UnityEngine.Random.Range (-1.0f, 0.8f), UnityEngine.Random.Range (-0.5f, 0.5f), 0f);
+		m_decalageHangOnTree = new Vector3 (UnityEngine.Random.Range (-1.0f, 0.5f), UnityEngine.Random.Range (-0.3f, 0.3f), 0f);
 
 		m_endAnimationScript.endFlyingAnimationAction += endFlyingAnimationListener;
 	}
@@ -92,7 +92,7 @@ public class Beaver : MonoBehaviour {
 				m_life =  m_life - 15;
 				m_timeBetweenDamage = Time.deltaTime;
 				m_treeManager.currentWeapon.GetComponent<weaponTree>().isNomNom();
-				audioMan.Play("beaver_eat");
+				//audioMan.Play("beaver_eat");
 			}
 
 			if(m_treeToHang != null){

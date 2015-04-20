@@ -45,7 +45,7 @@ public class BeaversManager : MonoBehaviour {
 	private float[] m_frequenceCreationBeaver = new float[]{
 		0, //GameStarting
 		0.333f,	//LettingPlayerCutDowntree
-		1f	//Assault
+		3f	//Assault
 	};
 
 	private float[] m_timeStateStarted = new float[]{
@@ -55,7 +55,7 @@ public class BeaversManager : MonoBehaviour {
 	};
 	private float[] m_timeToStayInState = new float[]{
 		5f,
-		10f,	//LettingPlayerCutDowntree
+		5f,	//LettingPlayerCutDowntree
 		10f		//Assault
 	};
 	// Update is called once per frame
@@ -141,6 +141,15 @@ public class BeaversManager : MonoBehaviour {
 		if (onBeaverKilledListener != null) {
 			onBeaverKilledListener(m_beaverKilledTotal);
 		}
+	}
+
+	public void Restart(){
+		m_currentState = BeaversManagerState.GameStarting;
+		
+		m_timeStateStarted[(int)m_currentState] = Time.time;
+		m_beaverCreated = 0;
+		m_beaverKilledTotal = 0;
+
 	}
 
 	public int getBeaverOnScreen(){
