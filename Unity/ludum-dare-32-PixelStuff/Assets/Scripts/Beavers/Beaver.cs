@@ -89,7 +89,7 @@ public class Beaver : MonoBehaviour {
 		case BeaverState.HangOnTree:
 			m_timeBetweenDamage += Time.deltaTime;
 			if(m_timeBetweenDamage >= 1.0f){
-				m_life =  m_life - 15;
+				//m_life =  m_life - 15;
 				m_timeBetweenDamage = Time.deltaTime;
 				m_treeManager.currentWeapon.GetComponent<weaponTree>().isNomNom();
 				//audioMan.Play("beaver_eat");
@@ -187,7 +187,7 @@ public class Beaver : MonoBehaviour {
 				break;
 			case BeaverState.Smashed:
 				m_smashSprite.SetActive (true);
-			Debug.Log("ISSAMSH");
+			//Debug.Log("ISSAMSH");
 			m_smashSprite.GetComponentInChildren<ParticleSystem>().Play();
 				m_timeSmashStateBegin = Time.time;
 				this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
