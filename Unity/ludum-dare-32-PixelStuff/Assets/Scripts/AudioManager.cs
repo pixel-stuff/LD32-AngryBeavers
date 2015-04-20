@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class AudioManager : MonoBehaviour {
-
+	
+	GameObject m_backgroundGameObject;
 	AudioSource m_backgroundAudioSource;
 
 	public void Play(string clipname)
@@ -33,6 +34,8 @@ public class AudioManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//Create an empty game object
+		m_backgroundGameObject = new GameObject ("Audio_Background");
 		//Load clip from ressources folder
 		AudioClip bgClip =  Instantiate(Resources.Load ("Sounds/BackgroundMusic", typeof(AudioClip))) as AudioClip;
 		
@@ -40,6 +43,7 @@ public class AudioManager : MonoBehaviour {
 		m_backgroundAudioSource = new AudioSource();
 		m_backgroundAudioSource.clip = bgClip;
 		m_backgroundAudioSource.loop = true;
+		m_backgroundAudioSource.volume = 0.2f;
 		//Play and destroy the component
 	}
 	

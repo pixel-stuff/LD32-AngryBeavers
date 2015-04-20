@@ -111,11 +111,12 @@ public class Beaver : MonoBehaviour {
 		case BeaverState.Smashed:
 			//TO DO: Afficher Anim écrasé
 			//Debug.Log ("Ecrasé");
-			audioMan.Play("beaver_death");
 			if (this.transform.position.x <= -20f) {
+				audioMan.Play("beaver_death");
 				Destroy (this.gameObject);
 			}
 			if(Time.time - m_timeSmashStateBegin >= 5){
+				audioMan.Play("beaver_death");
 				Destroy (this.gameObject);
 			}
 			break;
