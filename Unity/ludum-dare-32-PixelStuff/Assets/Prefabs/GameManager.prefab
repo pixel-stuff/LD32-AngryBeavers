@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5045776}
   - 114: {fileID: 11452376}
   - 212: {fileID: 21212510}
+  - 114: {fileID: 11443224}
   m_Layer: 0
   m_Name: GameOverScreen
   m_TagString: Beaver
@@ -76,7 +77,7 @@ Transform:
   m_GameObject: {fileID: 177498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: -1.5}
-  m_LocalScale: {x: 1.29999995, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.20000005, z: 1}
   m_Children: []
   m_Father: {fileID: 408862}
   m_RootOrder: 1
@@ -88,7 +89,7 @@ Transform:
   m_GameObject: {fileID: 175776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: -1.5}
-  m_LocalScale: {x: 1.29999995, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408862}
   m_RootOrder: 0
@@ -148,6 +149,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 23.2600002, y: 45.5200005}
+--- !u!114 &11443224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b568ac3e93c7547658947f1af7052b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beaverKilled: 0
+  myFont: {fileID: 12800000, guid: 828c7f40f2b5348eea37747deb8a0c72, type: 3}
 --- !u!114 &11444024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,6 +201,7 @@ MonoBehaviour:
   treeMan: {fileID: 0}
   restartGameScript: {fileID: 11452376}
   introScript: {fileID: 11444024}
+  scoreGUI: {fileID: 11443224}
   score: 0
   _state: 2
 --- !u!212 &21212510

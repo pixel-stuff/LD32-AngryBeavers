@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
 	public RestartGameScript restartGameScript;
 	public IntroScript introScript;
+	public ScoreGUI scoreGUI;
 
 	public int score;
 
@@ -213,6 +214,7 @@ public class GameManager : MonoBehaviour {
 		treeMan.gameObject.SetActive (false);
 		restartGameScript.gameObject.SetActive (true);
 		introScript.gameObject.SetActive (false);
+		scoreGUI.beaverKilled = score;
 		state = GameState.Over;
 		m_audioManager.stopAudioBackground ();
 	}
