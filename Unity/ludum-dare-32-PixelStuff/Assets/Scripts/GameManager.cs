@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	public int score;
 
 	public GameState _state = GameState.Over;
+	private AudioManager m_audioManager;
 	private GameState state {
 		get {
 			return _state;
@@ -62,6 +63,8 @@ public class GameManager : MonoBehaviour {
 		introScript.gameObject.SetActive (true);
 
 		brothersManager.brothersDiedAction += BrothersDied;
+
+		m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 	}
 
 	void Awake() {
@@ -188,6 +191,7 @@ public class GameManager : MonoBehaviour {
 		restartGameScript.gameObject.SetActive (false);
 		introScript.gameObject.SetActive (false);
 		state = GameState.InGame;
+		m_audioManager.startAudioBackground ();
 	}
 
 	public void MenuRestartBtnClicked() {
@@ -210,6 +214,6 @@ public class GameManager : MonoBehaviour {
 		restartGameScript.gameObject.SetActive (true);
 		introScript.gameObject.SetActive (false);
 		state = GameState.Over;
-
+		m_audioManager.stopAudioBackground ();
 	}
 }

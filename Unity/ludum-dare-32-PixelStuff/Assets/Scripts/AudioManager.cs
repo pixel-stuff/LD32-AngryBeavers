@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour {
 		AudioClip bgClip =  Instantiate(Resources.Load ("Sounds/BackgroundMusic", typeof(AudioClip))) as AudioClip;
 		
 		//Add and bind an audio source
-		m_backgroundAudioSource = new AudioSource();
+		m_backgroundAudioSource = m_backgroundGameObject.AddComponent<AudioSource>();
 		m_backgroundAudioSource.clip = bgClip;
 		m_backgroundAudioSource.loop = true;
 		m_backgroundAudioSource.volume = 0.2f;
