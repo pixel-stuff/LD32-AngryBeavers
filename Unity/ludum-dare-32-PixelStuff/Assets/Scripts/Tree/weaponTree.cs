@@ -140,9 +140,10 @@ public class weaponTree : MonoBehaviour {
 		if (currentEtat == Etat.isThrown) {
 			// throw the tree :D hell yeah !
 			smashBox.enabled = true;
+			sharpBox.enabled = false;
 			if(throwCurrentTime<throwDuration) {
 
-				float y=0.8f*Mathf.Sin ((throwCurrentTime/throwDuration)*(Mathf.PI+0.2f)) + yPickUp ;
+				float y=0.2f*Mathf.Sin ((throwCurrentTime/throwDuration)*(Mathf.PI+0.2f)) + yPickUp ;
 				transform.position = new Vector3(transform.position.x+0.03f, y, 0.0f);
 				print ("throw "+throwCurrentTime+" < "+throwDuration);
 				throwCurrentTime += Time.deltaTime;
@@ -151,6 +152,7 @@ public class weaponTree : MonoBehaviour {
 				currentEtat = Etat.throwFinish;
 				throwItNextTime = false;
 				smashBox.enabled = false;
+				sharpBox.enabled = true;
 			}
 		}
 	}
