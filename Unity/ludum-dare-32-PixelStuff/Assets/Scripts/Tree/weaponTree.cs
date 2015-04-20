@@ -48,6 +48,7 @@ public class weaponTree : MonoBehaviour {
 	public float widthBaseSmashBoxCollider;
 	private float previousXSharpBoxCollider;
 	public float xBaseSharpBoxCollider;
+	private float m_lastHalfWidth;
 
 	// Use this for initialization
 	void Start () {
@@ -88,6 +89,19 @@ public class weaponTree : MonoBehaviour {
 				m_xSharpBoxCollider[CurrentState+1],
 				sharpBox.transform.localPosition.y,
 				sharpBox.transform.localPosition.z);
+
+			if (this.GetComponent<SpriteRenderer>().sprite != finalSprite) {
+				this.transform.position = new Vector3(this.transform.position.x - (m_lastHalfWidth-TabState[CurrentState].rect.width/2)/100 ,
+			    	                                  this.transform.position.y,				                                 
+			        	                              this.transform.position.z);
+				m_lastHalfWidth = TabState[CurrentState].rect.width/2;
+			} else {
+				this.transform.position = new Vector3(this.transform.position.x - (m_lastHalfWidth-finalSprite.rect.width/2)/100 ,
+				                                      this.transform.position.y,				                                 
+				                                      this.transform.position.z);
+				m_lastHalfWidth = finalSprite.rect.width/2;
+			}
+
 		}
 		if (currentEtat == Etat.isOnTheFloor) {
 			this.GetComponent<FollowingGroundSpeed>().enabled = true;
@@ -228,5 +242,6 @@ public class weaponTree : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("GripTree").GetComponent<BoxCollider2D> ().enabled = false;
 		this.transform.position = new Vector3(this.transform.position.x,yPickUp,this.transform.position.z);
 		currentEtat = Etat.idle;
+		m_lastHalfWidth = TabState[CurrentState].rect.width/2;
 	}
 }
