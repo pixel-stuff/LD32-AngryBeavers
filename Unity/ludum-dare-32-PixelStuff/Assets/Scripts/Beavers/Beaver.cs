@@ -53,7 +53,7 @@ public class Beaver : MonoBehaviour {
 	public void Initialize(treeManager treeManager){
 		m_treeManager = treeManager;
 		m_currentState= BeaverState.Running;
-		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/40,this.transform.lossyScale.x/20),0f,0f);
+		m_beaverSpeedRunning = new Vector3(UnityEngine.Random.Range(this.transform.lossyScale.x/40,this.transform.lossyScale.x/20)*1.6f,0f,0f);
 		m_decalageHangOnTree = new Vector3 (UnityEngine.Random.Range (-1.0f, 0.8f), UnityEngine.Random.Range (-0.5f, 0.5f), 0f);
 
 		m_endAnimationScript.endFlyingAnimationAction += endFlyingAnimationListener;
