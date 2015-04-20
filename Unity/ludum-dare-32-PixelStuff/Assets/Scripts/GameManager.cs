@@ -3,7 +3,7 @@ using System.Collections;
 
 public enum GameState {
 	Intro, // Game launched
-	Start,
+	InGame,
 	Over
 }
 
@@ -11,7 +11,14 @@ public class GameManager : MonoBehaviour {
 
 	public BrothersManager brothersManager;
 	public BeaversManager beaversManager;
-	public MenuManager menuManager;
+	public ParallaxManager parallaxManager;
+	public treeManager treeMan;
+
+
+	public RestartGameScript restartGameScript;
+	public IntroScript introScript;
+
+	public int score;
 
 	public GameState _state = GameState.Over;
 	private GameState state {
@@ -20,7 +27,7 @@ public class GameManager : MonoBehaviour {
 		}
 		set {
 			
-			Debug.Log("[GameManager] Changing from state: " + _state.ToString() + ", to: " + value.ToString());
+			//Debug.Log("[GameManager] Changing from state: " + _state.ToString() + ", to: " + value.ToString());
 
 			if (value == _state) 
 				return;
@@ -31,7 +38,7 @@ public class GameManager : MonoBehaviour {
 			case GameState.Intro:
 				DoIntro ();
 				break;
-			case GameState.Start:
+			case GameState.InGame:
 				DoRestart ();
 				break;
 			case GameState.Over:
@@ -42,25 +49,23 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start(){
-		if (brothersManager == null) {
-			brothersManager = GameObject.FindGameObjectWithTag ("Player").GetComponent<BrothersManager> ();
-		}
-			
-		brothersManager.brothersDiedAction += BrothersDied;
+		//parallax, beavermanager, brotherManager, TreeManager
+		brothersManager.gameObject.SetActive (false);
+		beaversManager.gameObject.SetActive (false);
+		parallaxManager.gameObject.SetActive (false);
+		treeMan.gameObject.SetActive (false);
 
-		if (beaversManager == null) {
-			beaversManager = GameObject.FindGameObjectWithTag ("BeaversManager").GetComponent<BeaversManager> ();
-		}
+		restartGameScript.onKeyDown += MenuRestartBtnClicked;
+		introScript.onKeyDown += StartIngame;
 
-		if (menuManager == null) {
-			menuManager = GameObject.FindGameObjectWithTag ("MenuManager").GetComponent<MenuManager> ();
-		}
+		restartGameScript.gameObject.SetActive (false);
+		introScript.gameObject.SetActive (true);
 	}
 
 	void Awake() {
 		state = GameState.Intro;
 		beaversManager.onBeaverKilledListener += OnBeaverKilled;
-		menuManager.restartClicked += MenuRestartBtnClicked;
+
 	}
 	
 	// Update is called once per frame
@@ -68,13 +73,11 @@ public class GameManager : MonoBehaviour {
 
 		// Handle Keyboard inputs
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			DoIntro();
-		}
+
 
 		// While playing
 
-		if (state == GameState.Start) {
+		if (state == GameState.InGame) {
 
 
 			if (Input.GetKeyDown (KeyCode.S)) {
@@ -115,11 +118,11 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.Return)) {
+		/*if (Input.GetKey (KeyCode.Return)) {
 			if (state == GameState.Intro) {
-				state = GameState.Start;
+				state = GameState.InGame;
 			}
-		}
+		}*/
 
 	}
 
@@ -143,7 +146,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void DoIntro() {
-		state = GameState.Start;
+		state = GameState.InGame;
 	}
 
 	private void DoRestart() {
@@ -168,15 +171,40 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnBeaverKilled(int totalBeaverKilled) {
-		menuManager.IncrementScore ();
+		score++;
+	}
+
+	public void StartIngame(){
+		Debug.Log ("START INGAME");
+		brothersManager.gameObject.SetActive (true);
+		beaversManager.gameObject.SetActive (true);
+		parallaxManager.gameObject.SetActive (true);
+		treeMan.gameObject.SetActive (true);
+		restartGameScript.gameObject.SetActive (false);
+		introScript.gameObject.SetActive (false);
+		state = GameState.InGame;
 	}
 
 	public void MenuRestartBtnClicked() {
-		DoIntro ();
+		Debug.Log ("START INTRO");
+		state = GameState.Intro;
+			brothersManager.gameObject.SetActive (false);
+		beaversManager.gameObject.SetActive (false);
+		parallaxManager.gameObject.SetActive (false);
+		treeMan.gameObject.SetActive (false);
+		restartGameScript.gameObject.SetActive (false);
+		introScript.gameObject.SetActive (true);
 	}
 
 	public void BrothersDied() {
-		/*
-		state = GameState.Over;*/
+		Debug.Log ("START GAMEOVER");
+		brothersManager.gameObject.SetActive (false);
+		beaversManager.gameObject.SetActive (false);
+		parallaxManager.gameObject.SetActive (false);
+		treeMan.gameObject.SetActive (false);
+		restartGameScript.gameObject.SetActive (true);
+		introScript.gameObject.SetActive (false);
+		state = GameState.Over;
+
 	}
 }
