@@ -30,6 +30,7 @@ public class weaponTree : MonoBehaviour {
 	private float throwCurrentTime = 0.0f;
 
 
+	public float xPickUp;
 	public float yPickUp;
 	public enum Etat{
 		isOnTheFloor,
@@ -91,12 +92,14 @@ public class weaponTree : MonoBehaviour {
 				sharpBox.transform.localPosition.z);
 
 			if (this.GetComponent<SpriteRenderer>().sprite != finalSprite) {
-				this.transform.position = new Vector3(this.transform.position.x - (m_lastHalfWidth-TabState[CurrentState].rect.width/2)/100 ,
+				xPickUp = this.transform.position.x - (m_lastHalfWidth-TabState[CurrentState].rect.width/2)/100;
+				this.transform.position = new Vector3(xPickUp,
 			    	                                  this.transform.position.y,				                                 
 			        	                              this.transform.position.z);
 				m_lastHalfWidth = TabState[CurrentState].rect.width/2;
 			} else {
-				this.transform.position = new Vector3(this.transform.position.x - (m_lastHalfWidth-finalSprite.rect.width/2)/100 ,
+				xPickUp = this.transform.position.x - (m_lastHalfWidth-finalSprite.rect.width/2)/100;
+				this.transform.position = new Vector3(xPickUp,
 				                                      this.transform.position.y,				                                 
 				                                      this.transform.position.z);
 				m_lastHalfWidth = finalSprite.rect.width/2;
@@ -119,7 +122,7 @@ public class weaponTree : MonoBehaviour {
 		if (currentEtat == Etat.isSmashing) {
 				if (setAngleTo(onTheGroundAngle -smashAngle,secondeSmash)){
 					this.transform.localEulerAngles = new Vector3(0,0,onTheGroundAngle) ;
-				this.transform.position = new Vector3(this.transform.position.x,yPickUp,this.transform.position.z);
+				this.transform.position = new Vector3(xPickUp,yPickUp,this.transform.position.z);
 					smashHitTheGround();
 
 				}
@@ -152,7 +155,7 @@ public class weaponTree : MonoBehaviour {
 
 
 	private bool setAngleTo(float angle,float seconde){
-		this.transform.RotateAround (new Vector3(GameObject.FindGameObjectWithTag ("Player").transform.position.x,this.transform.position.y,this.transform.position.z), new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
+		this.transform.RotateAround (new Vector3(this.transform.position.x - TabState[CurrentState].rect.width/200 ,this.transform.position.y,this.transform.position.z), new Vector3 (0, 0, 1), (angle/seconde) * Time.deltaTime);
 		currentTimeAnim -= Time.deltaTime;
 		return currentTimeAnim < 0.0f ;
 	}
@@ -240,6 +243,7 @@ public class weaponTree : MonoBehaviour {
 	public void pick(){
 		this.GetComponent<FollowingGroundSpeed>().enabled = false;
 		GameObject.FindGameObjectWithTag ("GripTree").GetComponent<BoxCollider2D> ().enabled = false;
+		xPickUp = this.transform.position.x;
 		this.transform.position = new Vector3(this.transform.position.x,yPickUp,this.transform.position.z);
 		currentEtat = Etat.idle;
 		m_lastHalfWidth = TabState[CurrentState].rect.width/2;
