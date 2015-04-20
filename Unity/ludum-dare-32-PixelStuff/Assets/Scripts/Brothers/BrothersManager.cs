@@ -198,6 +198,11 @@ public class BrothersManager : MonoBehaviour {
 			DoHaveTree();
 		}
 	}
+
+	public void restart() {
+		brother1.restart ();
+		brother2.restart ();
+	}
 	
 	public void treeIsChop(){
 		brother1.backToNormal ();

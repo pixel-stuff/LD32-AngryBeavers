@@ -204,6 +204,7 @@ public class GameManager : MonoBehaviour {
 		treeMan.gameObject.SetActive (false);
 		restartGameScript.gameObject.SetActive (false);
 		introScript.gameObject.SetActive (true);
+		score = 0;
 	}
 
 	public void BrothersDied() {

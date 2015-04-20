@@ -94,4 +94,8 @@ public class Brother : MonoBehaviour {
 	public void DropThunk() {
 //		animator.SetTrigger ("DropTrunk");
 	}
+
+	public void restart() {
+
+	}
 }
