@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 
 public enum BeaversManagerState{
+	GameStarting,
 	LettingPlayerCutDowntree,
 	Assault
 	
@@ -32,7 +33,7 @@ public class BeaversManager : MonoBehaviour {
 		m_listBeavers = new List<Beaver> ();
 		m_beaverContainer.transform.position = GameObject.FindGameObjectWithTag ("SpawnArea").transform.position;
 
-		m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
+		m_currentState = BeaversManagerState.GameStarting;
 		
 		m_timeStateStarted[(int)m_currentState] = Time.time;
 
@@ -42,15 +43,18 @@ public class BeaversManager : MonoBehaviour {
 
 	private float m_lastCreated;
 	private float[] m_frequenceCreationBeaver = new float[]{
+		0, //GameStarting
 		0.333f,	//LettingPlayerCutDowntree
 		1f	//Assault
 	};
 
 	private float[] m_timeStateStarted = new float[]{
+		0,
 		0f,	//LettingPlayerCutDowntree
 		0f	//Assault
 	};
 	private float[] m_timeToStayInState = new float[]{
+		5f,
 		10f,	//LettingPlayerCutDowntree
 		10f		//Assault
 	};
@@ -59,6 +63,15 @@ public class BeaversManager : MonoBehaviour {
 		if (m_beaverCreated - m_beaverKilledTotal >= 35) {
 			m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
 			return;
+		}
+
+		if (m_currentState == BeaversManagerState.GameStarting) {
+			if (Time.time - m_timeStateStarted [(int)m_currentState] > m_timeToStayInState [(int)m_currentState]) {
+				int cur = (int)m_currentState;
+				cur++;
+				m_currentState = (BeaversManagerState)cur;
+				m_timeStateStarted[(int)m_currentState] = Time.time;
+			}
 		}
 
 		
@@ -71,7 +84,8 @@ public class BeaversManager : MonoBehaviour {
 		//Change State lorsque temps écoulé
 		if (Time.time - m_timeStateStarted [(int)m_currentState] > m_timeToStayInState [(int)m_currentState]) {
 			int cur = (int)m_currentState;
-			cur = (cur+1)%2;
+			cur = Mathf.Min((cur+1)%3,1);
+
 			m_currentState = (BeaversManagerState)cur;
 			m_timeStateStarted[(int)m_currentState] = Time.time;
 		}
