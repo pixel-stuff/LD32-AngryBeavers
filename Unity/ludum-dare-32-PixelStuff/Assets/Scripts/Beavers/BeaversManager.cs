@@ -42,10 +42,10 @@ public class BeaversManager : MonoBehaviour {
 
 
 	private float m_lastCreated;
-	private float[] m_frequenceCreationBeaver = new float[]{
+	public float[] m_frequenceCreationBeaver = new float[]{
 		0, //GameStarting
 		0.333f,	//LettingPlayerCutDowntree
-		3f	//Assault
+		30f	//Assault
 	};
 
 	private float[] m_timeStateStarted = new float[]{
