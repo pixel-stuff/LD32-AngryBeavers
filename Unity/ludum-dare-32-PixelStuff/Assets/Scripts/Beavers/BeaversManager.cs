@@ -54,7 +54,7 @@ public class BeaversManager : MonoBehaviour {
 		0f	//Assault
 	};
 	private float[] m_timeToStayInState = new float[]{
-		5f,
+		8f,
 		8f,	//LettingPlayerCutDowntree
 		10f		//Assault
 	};

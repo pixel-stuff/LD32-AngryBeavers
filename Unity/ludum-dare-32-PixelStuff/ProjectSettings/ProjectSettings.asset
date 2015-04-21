@@ -39,7 +39,7 @@ PlayerSettings:
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   disableDepthAndStencilBuffers: 0
-  defaultIsFullScreen: 1
+  defaultIsFullScreen: 0
   defaultIsNativeResolution: 1
   runInBackground: 0
   captureSingleScreen: 0
@@ -140,7 +140,7 @@ PlayerSettings:
     - m_Icon: {fileID: 0}
       m_Size: 128
   m_BuildTargetBatching: []
-  webPlayerTemplate: APPLICATION:Default
+  webPlayerTemplate: APPLICATION:No Context Menu
   m_TemplateCustomTags: {}
   actionOnDotNetUnhandledException: 1
   enableInternalProfiler: 0
