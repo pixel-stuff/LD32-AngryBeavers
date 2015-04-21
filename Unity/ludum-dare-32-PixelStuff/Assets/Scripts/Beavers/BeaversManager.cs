@@ -45,7 +45,7 @@ public class BeaversManager : MonoBehaviour {
 	public float[] m_frequenceCreationBeaver = new float[]{
 		0, //GameStarting
 		0.333f,	//LettingPlayerCutDowntree
-		30f	//Assault
+		2f	//Assault
 	};
 
 	private float[] m_timeStateStarted = new float[]{
@@ -55,7 +55,7 @@ public class BeaversManager : MonoBehaviour {
 	};
 	private float[] m_timeToStayInState = new float[]{
 		5f,
-		5f,	//LettingPlayerCutDowntree
+		8f,	//LettingPlayerCutDowntree
 		10f		//Assault
 	};
 	// Update is called once per frame
