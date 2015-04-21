@@ -96,6 +96,9 @@ public class Brother : MonoBehaviour {
 	}
 
 	public void restart() {
-
+		if (transform.localRotation.y == 1.0f) {
+			backToNormal ();
+		}
+		Run ();
 	}
 }

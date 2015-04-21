@@ -201,7 +201,11 @@ public class BrothersManager : MonoBehaviour {
 
 	public void restart() {
 		brother1.restart ();
+		leg1.restart ();
 		brother2.restart ();
+		leg2.restart ();
+		GameObject.FindGameObjectWithTag ("ParallaxManager").GetComponent<ParallaxManager> ().isPaused = false;
+		state = BrotherState.Running;
 	}
 	
 	public void treeIsChop(){

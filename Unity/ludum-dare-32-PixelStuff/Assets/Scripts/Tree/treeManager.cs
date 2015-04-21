@@ -123,4 +123,19 @@ public class treeManager : MonoBehaviour {
 	private int getRandNbBeaver() {
 		return (int) Mathf.Floor(Random.Range (spawnBeaverMin, spawnBeaverMax+1));
 	}
+
+	public void restart() {
+		if (currentTree) {
+			GameObject.Destroy(currentTree);
+			currentTree = null;
+		}
+		if (currentWeapon) {
+			GameObject.Destroy(currentWeapon);
+			currentWeapon = null;
+		}
+		spawnArea = GameObject.FindGameObjectWithTag ("SpawnArea").transform;
+		spawnOneTree = true; // TODO false
+		nbBeaverUntilSpawnTree = getRandNbBeaver();
+		lastDeadBeaverNumber = 0;
+	}
 }

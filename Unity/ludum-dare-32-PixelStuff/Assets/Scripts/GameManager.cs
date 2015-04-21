@@ -77,9 +77,6 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// Handle Keyboard inputs
-
-
 
 		// While playing
 
@@ -129,6 +126,13 @@ public class GameManager : MonoBehaviour {
 				state = GameState.InGame;
 			}
 		}*/
+		
+		// Handle Keyboard inputs
+		if (state == GameState.Over) {
+			if(Input.GetKeyDown (KeyCode.Return)) {
+				MenuRestartBtnClicked();
+			}
+		}
 
 	}
 
@@ -193,6 +197,9 @@ public class GameManager : MonoBehaviour {
 		introScript.gameObject.SetActive (false);
 		state = GameState.InGame;
 		m_audioManager.startAudioBackground ();
+		beaversManager.Restart ();
+		brothersManager.restart ();
+		treeMan.restart ();
 	}
 
 	public void MenuRestartBtnClicked() {
@@ -204,6 +211,7 @@ public class GameManager : MonoBehaviour {
 		treeMan.gameObject.SetActive (false);
 		restartGameScript.gameObject.SetActive (false);
 		introScript.gameObject.SetActive (true);
+
 		score = 0;
 	}
 

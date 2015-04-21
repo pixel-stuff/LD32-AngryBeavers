@@ -153,7 +153,12 @@ public class BeaversManager : MonoBehaviour {
 		m_timeStateStarted[(int)m_currentState] = Time.time;
 		m_beaverCreated = 0;
 		m_beaverKilledTotal = 0;
-
+		if (m_listBeavers!=null) {
+			foreach (Beaver b in m_listBeavers) {
+				GameObject.Destroy (b.gameObject);
+			}
+			m_listBeavers.Clear ();
+		}
 	}
 
 	public int getBeaverOnScreen(){
