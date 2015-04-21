@@ -61,8 +61,11 @@ public class weaponTree : MonoBehaviour {
 		this.GetComponent<SpriteRenderer>().sprite = TabState[CurrentState];
 
 		// Ground truth values
-		m_widthSmashBoxCollider = new float[]{1.6f, 2.45f, 3.14f, 3.82f, 4.4f};
+		/*m_widthSmashBoxCollider = new float[]{1.6f, 2.45f, 3.14f, 3.82f, 4.4f};
 		m_xOffSmashBoxCollider = new float[]{-0.2f, -0.25f, -0.25f, -0.25f, -0.25f};
+		m_xSharpBoxCollider = new float[]{0.8f, 1.25f, 1.55f, 1.88f, 2.2f};*/
+		m_widthSmashBoxCollider = new float[]{1.9f, 2.6f, 3.50f, 4.00f, 4.8f};
+		m_xOffSmashBoxCollider = new float[]{-0.08f, -0.08f, -0.08f, -0.16f, -0.01f};
 		m_xSharpBoxCollider = new float[]{0.8f, 1.25f, 1.55f, 1.88f, 2.2f};
 
 		smashBox = this.GetComponent<BoxCollider2D> ();
