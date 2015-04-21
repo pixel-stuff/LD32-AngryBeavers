@@ -139,7 +139,7 @@ public class weaponTree : MonoBehaviour {
 		}
 		if (currentEtat == Etat.isThrown) {
 			// throw the tree :D hell yeah !
-			smashBox.enabled = false;
+			smashBox.enabled = true;
 			if(throwCurrentTime<throwDuration) {
 
 				float y=0.8f*Mathf.Sin ((throwCurrentTime/throwDuration)*(Mathf.PI+0.2f)) + yPickUp ;
@@ -150,6 +150,7 @@ public class weaponTree : MonoBehaviour {
 				throwCurrentTime = 0.0f;
 				currentEtat = Etat.throwFinish;
 				throwItNextTime = false;
+				smashBox.enabled = false;
 			}
 		}
 	}
