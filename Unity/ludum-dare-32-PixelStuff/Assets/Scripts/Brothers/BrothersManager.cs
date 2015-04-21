@@ -168,7 +168,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.tag == "Beaver") {
+		if (col.gameObject.tag == "Beaver" && col.gameObject.GetComponent<Beaver>().getCurrentState() == BeaverState.Running) {
 			DoDeath();
 		}
 		if (col.gameObject.tag == "CanChopTree") {
