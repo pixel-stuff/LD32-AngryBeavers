@@ -60,7 +60,7 @@ public class BeaversManager : MonoBehaviour {
 	};
 	// Update is called once per frame
 	void Update () {
-		if (m_beaverCreated - m_beaverKilledTotal >= 35) {
+		if (m_beaverCreated - m_beaverKilledTotal >= 50) {
 			m_currentState = BeaversManagerState.LettingPlayerCutDowntree;
 			return;
 		}
@@ -71,6 +71,7 @@ public class BeaversManager : MonoBehaviour {
 				cur++;
 				m_currentState = (BeaversManagerState)cur;
 				m_timeStateStarted[(int)m_currentState] = Time.time;
+				return;
 			}
 		}
 
@@ -84,8 +85,11 @@ public class BeaversManager : MonoBehaviour {
 		//Change State lorsque temps écoulé
 		if (Time.time - m_timeStateStarted [(int)m_currentState] > m_timeToStayInState [(int)m_currentState]) {
 			int cur = (int)m_currentState;
-			cur = Mathf.Min((cur+1)%3,1);
+			cur = (cur+1)%3;
+			if(cur == 0){
+				cur = 1;
 
+			}
 			m_currentState = (BeaversManagerState)cur;
 			m_timeStateStarted[(int)m_currentState] = Time.time;
 		}
