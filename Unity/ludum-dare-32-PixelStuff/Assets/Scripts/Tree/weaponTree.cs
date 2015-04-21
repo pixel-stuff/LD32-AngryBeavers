@@ -222,7 +222,7 @@ public class weaponTree : MonoBehaviour {
 	}
 
 	public void prepareSmash(){
-		smashBox.enabled = false;
+		//smashBox.enabled = false;
 		currentTimeAnim = secondePrepareSmash;
 		currentEtat = Etat.prepareSmash;
 	}
@@ -230,7 +230,7 @@ public class weaponTree : MonoBehaviour {
 	public void smashHitTheGround(){
 		smashNextTime = false;
 		sharpBox.enabled = true;
-		smashBox.enabled = false;
+		//smashBox.enabled = false;
 		currentEtat = Etat.idle;
 		AudioManager audioMan = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 		audioMan.Play ("tree_smash");
