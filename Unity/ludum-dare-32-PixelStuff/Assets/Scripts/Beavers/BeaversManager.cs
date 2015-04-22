@@ -107,8 +107,8 @@ public class BeaversManager : MonoBehaviour {
 		foreach (Beaver beav in m_listBeavers) {
 			if (beav.getCurrentState () == BeaverState.HangOnTree) {
 				beav.transform.position = new Vector3(
-					beav.transform.position.x,
-					GameObject.FindGameObjectWithTag ("SpawnArea").transform.position.y,
+					-GameObject.FindGameObjectWithTag ("SpawnArea").transform.position.x,
+					beav.transform.position.y,
 					beav.transform.position.z
 					);
 				beav.changeState(BeaverState.Running);
