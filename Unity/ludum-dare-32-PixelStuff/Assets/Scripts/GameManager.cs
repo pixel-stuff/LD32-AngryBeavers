@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour {
 		
 		// Handle Keyboard inputs
 		if (state == GameState.Over) {
-			if(Input.GetKeyDown (KeyCode.Return)) {
+			if(Input.GetKeyDown (KeyCode.R)) {
 				MenuRestartBtnClicked();
 			}
 		}
