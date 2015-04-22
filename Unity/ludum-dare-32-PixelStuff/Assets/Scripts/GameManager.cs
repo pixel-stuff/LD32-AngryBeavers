@@ -190,6 +190,7 @@ public class GameManager : MonoBehaviour {
 	public void StartIngame(){
 		Debug.Log ("START INGAME");
 		brothersManager.gameObject.SetActive (true);
+		brothersManager.gameObject.GetComponent<BrothersManager> ().stopAtNextTree = true;
 		beaversManager.gameObject.SetActive (true);
 		parallaxManager.gameObject.SetActive (true);
 		treeMan.gameObject.SetActive (true);
