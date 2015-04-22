@@ -209,6 +209,7 @@ public class BrothersManager : MonoBehaviour {
 	}
 	
 	public void treeIsChop(){
+		Chop = false;
 		brother1.backToNormal ();
 		leg1.backToNormal ();
 		DoRunning();
