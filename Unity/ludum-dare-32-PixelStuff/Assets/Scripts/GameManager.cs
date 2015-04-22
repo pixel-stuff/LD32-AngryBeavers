@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
 
 			switch (_state) {
 			case GameState.Intro:
-				DoIntro ();
+			//	DoIntro ();
 				break;
 			case GameState.InGame:
 				DoRestart ();
@@ -221,7 +221,9 @@ public class GameManager : MonoBehaviour {
 		brothersManager.gameObject.SetActive (false);
 		beaversManager.gameObject.SetActive (false);
 		parallaxManager.gameObject.SetActive (false);
-		treeMan.gameObject.GetComponent<treeManager> ().currentWeapon.SetActive (false);
+		if (treeMan.gameObject.GetComponent<treeManager> ().currentWeapon != null) {
+			treeMan.gameObject.GetComponent<treeManager> ().currentWeapon.SetActive (false);
+		}
 		treeMan.gameObject.SetActive (false);
 		restartGameScript.gameObject.SetActive (true);
 		introScript.gameObject.SetActive (false);
