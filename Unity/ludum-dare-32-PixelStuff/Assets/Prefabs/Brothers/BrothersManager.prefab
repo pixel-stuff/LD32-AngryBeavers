@@ -151,6 +151,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &179234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 456718}
+  m_Layer: 0
+  m_Name: TreeLegBrother2Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &403614
 Transform:
   m_ObjectHideFlags: 1
@@ -205,6 +220,7 @@ Transform:
   - {fileID: 421630}
   - {fileID: 406316}
   - {fileID: 497054}
+  - {fileID: 456718}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &431922
@@ -219,6 +235,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 428812}
   m_RootOrder: 0
+--- !u!4 &456718
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -.401000023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 428812}
+  m_RootOrder: 8
 --- !u!4 &459114
 Transform:
   m_ObjectHideFlags: 1
@@ -226,7 +254,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.360000014, y: .165000007, z: .5}
+  m_LocalPosition: {x: -.360000014, y: .165000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 428812}
@@ -250,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.407999992, y: -.411000013, z: .589999974}
+  m_LocalPosition: {x: -.407999992, y: -.411000013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 428812}
@@ -429,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0dc0baaf1687e468118484289ff997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreeRepere: {fileID: 0}
+  TreeRepere: {fileID: 179234}
 --- !u!212 &21205654
 SpriteRenderer:
   m_ObjectHideFlags: 1
