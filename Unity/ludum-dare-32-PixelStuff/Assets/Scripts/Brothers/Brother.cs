@@ -29,18 +29,18 @@ public class Brother : MonoBehaviour {
 	}
 
 
-	public void changePositionForTree(){
-
-		if (TreeRepere != null) {
+	public void changePositionForTree(bool haveTo){
+		if (haveTo && TreeRepere != null) {
 			this.transform.position = TreeRepere.transform.position;
 			this.transform.Rotate( new Vector3(0,180,0));
 		}
-
 	}
 
 	public void backToNormal(){
 		this.transform.position = normalPosition;
-		this.transform.Rotate( new Vector3(0,180,0));
+		if (transform.localRotation.y != 0) {
+			this.transform.Rotate (new Vector3 (0, 180, 0));
+		}
 	}
 	public void reset(){
 		//animator.SetBool ("NoTree",false);
@@ -70,7 +70,6 @@ public class Brother : MonoBehaviour {
 
 	public void chop(){
 		animator.SetTrigger("Chop");
-
 	}
 	public void Idle() {
 		//animator.SetBool ("Running", false);
@@ -91,7 +90,7 @@ public class Brother : MonoBehaviour {
 //		animator.SetTrigger ("Attack");
 	}
 
-	public void DropThunk() {
+	public void DropTrunk() {
 //		animator.SetTrigger ("DropTrunk");
 	}
 

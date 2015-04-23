@@ -112,8 +112,8 @@ public class BrothersManager : MonoBehaviour {
 
 	private void DoDropTunk() {
 		m_audioManager.stopAudioBrothersRunning ();
-		brother1.DropThunk ();
-		brother2.DropThunk ();
+		brother1.DropTrunk ();
+		brother2.DropTrunk ();
 
 		state = BrotherState.ChoppingWood;
 	}
@@ -142,24 +142,27 @@ public class BrothersManager : MonoBehaviour {
 			Debug.Log ("LEFT");
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopLeft ();
 			brother2.chop();
-			//leg2.chop();
+			leg2.chop(true);
 		}
 	}
 	public void ChopRight(){
 		if (Chop) {
 			GameObject.FindGameObjectWithTag ("TreeManager").GetComponent<treeManager> ().ChopRight ();
 			brother1.chop();
+			leg1.chop(false);
 		}
 	}
 
 
 	public void prepareChop(){
 		brother1.prepareChop ();
-		brother1.changePositionForTree ();
+		brother1.changePositionForTree (true);
 		brother2.prepareChop ();
+		brother1.changePositionForTree (false);
 		leg1.prepareChop ();
-		leg1.changePositionForTree ();
+		leg1.changePositionForTree (true, -0.28f);
 		leg2.prepareChop ();
+		leg2.changePositionForTree (false, -0.1f);
 	}
 	public void StopAtNextTree(){
 		if (AuthoriseStop) {
@@ -212,6 +215,8 @@ public class BrothersManager : MonoBehaviour {
 		Chop = false;
 		brother1.backToNormal ();
 		leg1.backToNormal ();
+		brother2.backToNormal ();
+		leg2.backToNormal ();
 		DoRunning();
 	}
 	void Start() {

@@ -126,6 +126,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11466880, guid: 814997581e49447a882961816588bbce, type: 2}
+      propertyPath: TreeRepere
+      value: 
+      objectReference: {fileID: 700411679}
+    - target: {fileID: 494300, guid: 814997581e49447a882961816588bbce, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459114, guid: 814997581e49447a882961816588bbce, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814997581e49447a882961816588bbce, type: 2}
   m_IsPrefabParent: 0
@@ -229,6 +241,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 501057857}
   m_Script: {fileID: 11500000, guid: d8a2d9794f66347b2a2a41a9467c8bb8, type: 3}
+--- !u!1 &700411679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 118930, guid: 814997581e49447a882961816588bbce, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 700411680}
+  m_Layer: 0
+  m_Name: TreeLegBrother2Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &700411680
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 497054, guid: 814997581e49447a882961816588bbce, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 700411679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -.401000023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408045669}
+  m_RootOrder: 8
 --- !u!1001 &709551898
 Prefab:
   m_ObjectHideFlags: 0
@@ -377,6 +416,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ea81944f1c988741b3c6c2148054053, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1408045669 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 428812, guid: 814997581e49447a882961816588bbce, type: 2}
+  m_PrefabInternal: {fileID: 70576292}
 --- !u!1 &1608639957
 GameObject:
   m_ObjectHideFlags: 0

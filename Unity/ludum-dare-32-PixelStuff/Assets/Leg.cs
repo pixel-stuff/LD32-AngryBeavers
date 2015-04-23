@@ -15,18 +15,22 @@ public class Leg : MonoBehaviour {
 		normalPosition = this.transform.position;
 	}
 
-	public void changePositionForTree(){
+	public void changePositionForTree(bool mirror, float offsetX){
 		
 		if (TreeRepere != null) {
-			this.transform.position = TreeRepere.transform.position;
-			this.transform.Rotate( new Vector3(0,180,0));
+			this.transform.position = TreeRepere.transform.position+(new Vector3(offsetX,0.0f,0.0f));
+			if(mirror) {
+				this.transform.Rotate( new Vector3(0,180,0));
+			}
 		}
 		
 	}
 	
 	public void backToNormal(){
 		this.transform.position = normalPosition;
-		this.transform.Rotate( new Vector3(0,180,0));
+		if (this.transform.localRotation.y != 0) {
+			this.transform.Rotate( new Vector3(0,180,0));
+		}
 	}
 
 
@@ -42,15 +46,18 @@ public class Leg : MonoBehaviour {
 	
 	public void prepareChop() {
 		Debug.Log ("Chop");
-	
 		animator.SetBool ("Run",false);
 		animator.SetBool ("StartChop",true);
 		
 	}
 
-	public void chop(){
+	public void chop(bool isLeft){
 		animator.SetTrigger("Chop");
-		
+		if (isLeft) {
+			transform.localPosition += new Vector3(-0.1f, 0.0f, 0.0f);
+		} else {
+			transform.localPosition += new Vector3(0.1f, 0.0f, 0.0f);
+		}
 	}
 
 	public void restart() {
