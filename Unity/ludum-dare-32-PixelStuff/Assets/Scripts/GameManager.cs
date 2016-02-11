@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameState _state = GameState.Over;
 	private AudioManager m_audioManager;
+	private int chopAltern = 0;
 	private GameState state {
 		get {
 			return _state;
@@ -81,6 +82,34 @@ public class GameManager : MonoBehaviour {
 		// While playing
 
 		if (state == GameState.InGame) {
+
+			if (Input.touchCount == 1) {    
+				// touch on screen
+				if (Input.GetTouch (0).phase == TouchPhase.Began) {
+					DoPrepareSmash();
+				}
+				if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+					DoSmash();
+				}
+			}
+
+			if (Input.touchCount == 2) {    
+				StopAtNextTree();
+			}
+
+			if (Input.touchCount == 1) {   
+				if (Input.GetTouch (0).phase == TouchPhase.Began) {
+				if(chopAltern++ %2 ==0){
+					ChopTreeLeft();
+				}else{
+					ChopTreeRight();
+				}
+				}
+			}
+
+
+
+
 
 
 			if (Input.GetKeyDown (KeyCode.S)) {
